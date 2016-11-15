@@ -10,7 +10,7 @@ function page1() {
     
     // Create tasks table
     var tasks = document.createElement("div");
-    writetasks(tasks);
+    tasks.appendChild(writetasks());
     elems.push(tasks);
     
     // Create buttons div with button linking to page 2
@@ -40,17 +40,72 @@ function page2() {
     return elems
 }
 
+// Placeholder for profile page
+function profile() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Profile page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1());
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+// Placeholder for tasks page
+function tasks() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Tasks page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1());
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+// Placeholder for updates page
+function updates() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Updates page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1());
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+// Placeholder for settings page
+function settings() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Profile page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1());
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
 // Sample/test function for making a table and appending it to a given element
-function writetasks(elem) {
+function writetasks() {
     var table = document.createElement("table");
-    elem.appendChild(table);
     var tr = document.createElement("tr");
     tr.innerHTML = "<th>task</th> <th>urgency</th> <th>whatever</th>";
     table.appendChild(tr);
     tr = document.createElement("tr");
     tr.innerHTML = "<td>refill my basketballs</td> <td>very</td> <td>thankyou</td>";
     table.appendChild(tr);
-    elem.appendChild(table);
+    return table;
 }
 
 // link_button
@@ -87,6 +142,31 @@ function self_button(button_text, callback) {
     button.value = button_text;
     button.onclick = callback;
     return button;
+}
+
+// Function for creating the navbar that contains the menu button
+function menubar() {
+    var navbar = document.createElement("nav");
+    var menubutton = self_button("Menu", function() {
+        var app = document.querySelector(".app");
+        app.appendChild(sidebar());
+}
+
+// Function for creating the sidebar
+function sidebar() {
+    var box = slideout();
+    box.appendChild(link_button("Profile", profile()));
+    box.appendChild(link_button("Tasks", tasks()));
+    box.appendChild(link_button("Updates", updates()));
+    box.appendChild(link_button("Settings", settings()));
+    return box;
+}
+
+// TODO: This
+// Placeholder for function for animated slideout box
+function slideout() {
+    var box = document.createElement("div");
+    return box;
 }
 
 function onclick_test() {
