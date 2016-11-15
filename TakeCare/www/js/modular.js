@@ -120,6 +120,7 @@ function link_button(button_text, page) {
 }
 
 function __init() {
+    app.initialize();
     build_page(page1);
 }
 
