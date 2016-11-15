@@ -116,8 +116,8 @@ function writetasks() {
 // First argument is the text that appears on button
 // Second is the onclick function (the object, not its name)
 function link_button(button_text, page) {
-    link_button = self_button(button_text, function () {
-        build_page()
+    var link_button = self_button(button_text, function () {
+        build_page(page)
     });
     return link_button;
 }
@@ -131,7 +131,7 @@ function build_page(page) {
     var app = document.querySelector(".app");
     app.innerHTML = "";
     //app.appendChild(page());//given that a page returns an HTMLElement. 
-    pageElements = page();//given that a page returns an array of HTMLElements.
+    var pageElements = page();//given that a page returns an array of HTMLElements.
     for (var i = 0; i < pageElements.length; i++) {
         app.appendChild(pageElements[i]);
     }
