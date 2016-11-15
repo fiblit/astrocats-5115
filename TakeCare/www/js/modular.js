@@ -152,10 +152,12 @@ function self_button(button_text, callback) {
 function menubar() {
     var navbar = document.createElement("nav");
     var menubutton = self_button("Menu", function () {
-        if (!document.querySelector(".sidebar"))
-        {
-            var app = document.querySelector(".app");
+        var app = document.querySelector(".app");
+        if (!document.querySelector(".sidebar")) {
             app.appendChild(sidebar());
+        }
+        else {
+            app.removeChild(app.querySelector(".sidebar"));
         }
     });
     navbar.appendChild(menubutton);
