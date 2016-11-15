@@ -151,9 +151,12 @@ function self_button(button_text, callback) {
 // Function for creating the navbar that contains the menu button
 function menubar() {
     var navbar = document.createElement("nav");
-    var menubutton = self_button("Menu", function() {
-        var app = document.querySelector(".app");
-        app.appendChild(sidebar());
+    var menubutton = self_button("Menu", function () {
+        if (!document.querySelector(".sidebar"))
+        {
+            var app = document.querySelector(".app");
+            app.appendChild(sidebar());
+        }
     });
     navbar.appendChild(menubutton);
     return navbar;
@@ -166,6 +169,7 @@ function sidebar() {
     box.appendChild(link_button("Tasks", tasks));
     box.appendChild(link_button("Updates", updates));
     box.appendChild(link_button("Settings", settings));
+    box.className = "sidebar";
     return box;
 }
 
