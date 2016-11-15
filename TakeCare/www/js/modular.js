@@ -3,6 +3,10 @@ function page1() {
     //create the array to store returned HTMLElements
     var elems = [];
 
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+
     // Create paragraph element saying "this is page 1!"
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is page 1";
@@ -15,7 +19,7 @@ function page1() {
     
     // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
-    buttons.appendChild(self_button("button1", page2)); 
+    buttons.appendChild(link_button("button1", page2)); 
     elems.push(buttons);
 
     return elems;
@@ -33,8 +37,7 @@ function page2() {
     
     // Create buttons div with button linking to page 1
     var buttons = document.createElement("div");
-    buttons.appendChild(self_button("button2", page1)); 
-    buttons.appendChild(self_button("button2", onclick_test));
+    buttons.appendChild(link_button("button2", page1));
     elems.push(buttons);
 
     return elems;
@@ -48,7 +51,7 @@ function profile() {
     pagename.innerHTML = "Profile page";
     elems.push(pagename);
     
-    var returnbutton = link_button("Return", page1());
+    var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
     return elems;
@@ -62,7 +65,7 @@ function tasks() {
     pagename.innerHTML = "Tasks page";
     elems.push(pagename);
     
-    var returnbutton = link_button("Return", page1());
+    var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
     return elems;
@@ -76,7 +79,7 @@ function updates() {
     pagename.innerHTML = "Updates page";
     elems.push(pagename);
     
-    var returnbutton = link_button("Return", page1());
+    var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
     return elems;
@@ -90,7 +93,7 @@ function settings() {
     pagename.innerHTML = "Profile page";
     elems.push(pagename);
     
-    var returnbutton = link_button("Return", page1());
+    var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
     return elems;
@@ -152,15 +155,17 @@ function menubar() {
         var app = document.querySelector(".app");
         app.appendChild(sidebar());
     });
+    navbar.appendChild(menubutton);
+    return navbar;
 }
 
 // Function for creating the sidebar
 function sidebar() {
     var box = popout();
-    box.appendChild(link_button("Profile", profile()));
-    box.appendChild(link_button("Tasks", tasks()));
-    box.appendChild(link_button("Updates", updates()));
-    box.appendChild(link_button("Settings", settings()));
+    box.appendChild(link_button("Profile", profile));
+    box.appendChild(link_button("Tasks", tasks));
+    box.appendChild(link_button("Updates", updates));
+    box.appendChild(link_button("Settings", settings));
     return box;
 }
 
