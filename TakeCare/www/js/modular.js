@@ -18,7 +18,7 @@ function page1() {
     buttons.appendChild(self_button("button1", page2)); 
     elems.push(buttons);
 
-    return elems
+    return elems;
 }   
 
 // Sample/test function for loading a different page
@@ -37,7 +37,7 @@ function page2() {
     buttons.appendChild(self_button("button2", onclick_test));
     elems.push(buttons);
 
-    return elems
+    return elems;
 }
 
 // Placeholder for profile page
@@ -151,11 +151,12 @@ function menubar() {
     var menubutton = self_button("Menu", function() {
         var app = document.querySelector(".app");
         app.appendChild(sidebar());
+    });
 }
 
 // Function for creating the sidebar
 function sidebar() {
-    var box = slideout();
+    var box = popout();
     box.appendChild(link_button("Profile", profile()));
     box.appendChild(link_button("Tasks", tasks()));
     box.appendChild(link_button("Updates", updates()));
@@ -164,8 +165,8 @@ function sidebar() {
 }
 
 // TODO: This
-// Placeholder for function for animated slideout box
-function slideout() {
+// Placeholder for function for animated popout box
+function popout() {
     var box = document.createElement("div");
     return box;
 }
