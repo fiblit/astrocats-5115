@@ -3,6 +3,10 @@ function page1() {
     //create the array to store returned HTMLElements
     var elems = [];
 
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+
     // Create paragraph element saying "this is page 1!"
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is page 1";
@@ -10,15 +14,15 @@ function page1() {
     
     // Create tasks table
     var tasks = document.createElement("div");
-    writetasks(tasks);
+    tasks.appendChild(writetasks());
     elems.push(tasks);
     
     // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
-    buttons.appendChild(self_button("button1", page2)); 
+    buttons.appendChild(link_button("button1", page2)); 
     elems.push(buttons);
 
-    return elems
+    return elems;
 }   
 
 // Sample/test function for loading a different page
@@ -33,24 +37,78 @@ function page2() {
     
     // Create buttons div with button linking to page 1
     var buttons = document.createElement("div");
-    buttons.appendChild(self_button("button2", page1)); 
-    buttons.appendChild(self_button("button2", onclick_test));
+    buttons.appendChild(link_button("button2", page1));
     elems.push(buttons);
 
-    return elems
+    return elems;
+}
+
+// Placeholder for profile page
+function profile() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Profile page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+// Placeholder for tasks page
+function tasks() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Tasks page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+// Placeholder for updates page
+function updates() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Updates page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+// Placeholder for settings page
+function settings() {
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Profile page";
+    elems.push(pagename);
+    
+    var returnbutton = link_button("Return", page1);
+    elems.push(returnbutton);
+    
+    return elems;
 }
 
 // Sample/test function for making a table and appending it to a given element
-function writetasks(elem) {
+function writetasks() {
     var table = document.createElement("table");
-    elem.appendChild(table);
     var tr = document.createElement("tr");
     tr.innerHTML = "<th>task</th> <th>urgency</th> <th>whatever</th>";
     table.appendChild(tr);
     tr = document.createElement("tr");
     tr.innerHTML = "<td>refill my basketballs</td> <td>very</td> <td>thankyou</td>";
     table.appendChild(tr);
-    elem.appendChild(table);
+    return table;
 }
 
 // link_button
@@ -58,13 +116,14 @@ function writetasks(elem) {
 // First argument is the text that appears on button
 // Second is the onclick function (the object, not its name)
 function link_button(button_text, page) {
-    link_button = self_button(button_text, function () {
-        build_page()
+    var link_button = self_button(button_text, function () {
+        build_page(page)
     });
     return link_button;
 }
 
 function __init() {
+    app.initialize();
     build_page(page1);
 }
 
@@ -72,8 +131,8 @@ function build_page(page) {
     var app = document.querySelector(".app");
     app.innerHTML = "";
     //app.appendChild(page());//given that a page returns an HTMLElement. 
-    pageElements = page();//given that a page returns an array of HTMLElements.
-    for (int i = 0; i < pageElements.length; i++) {
+    var pageElements = page();//given that a page returns an array of HTMLElements.
+    for (var i = 0; i < pageElements.length; i++) {
         app.appendChild(pageElements[i]);
     }
 }
@@ -87,6 +146,38 @@ function self_button(button_text, callback) {
     button.value = button_text;
     button.onclick = callback;
     return button;
+}
+
+// Function for creating the navbar that contains the menu button
+function menubar() {
+    var navbar = document.createElement("nav");
+    var menubutton = self_button("Menu", function () {
+        if (!document.querySelector(".sidebar"))
+        {
+            var app = document.querySelector(".app");
+            app.appendChild(sidebar());
+        }
+    });
+    navbar.appendChild(menubutton);
+    return navbar;
+}
+
+// Function for creating the sidebar
+function sidebar() {
+    var box = popout();
+    box.appendChild(link_button("Profile", profile));
+    box.appendChild(link_button("Tasks", tasks));
+    box.appendChild(link_button("Updates", updates));
+    box.appendChild(link_button("Settings", settings));
+    box.className = "sidebar";
+    return box;
+}
+
+// TODO: This
+// Placeholder for function for animated popout box
+function popout() {
+    var box = document.createElement("div");
+    return box;
 }
 
 function onclick_test() {

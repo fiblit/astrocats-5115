@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <div class="app">
+    <div class="app"> <!-- This is overwritten immediately -->
         <h1>PhoneGap</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
@@ -52,8 +52,9 @@
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/modular.js"></script>
     <script type="text/javascript">
-        app.initialize();
+        window.onload = __init();
     </script>
 </body>
 
