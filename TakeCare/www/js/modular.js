@@ -73,7 +73,7 @@ function build_page(page) {
     app.innerHTML = "";
     //app.appendChild(page());//given that a page returns an HTMLElement. 
     pageElements = page();//given that a page returns an array of HTMLElements.
-    for (int i = 0; i < pageElements.length; i++) {
+    for (var i = 0; i < pageElements.length; i++) {
         app.appendChild(pageElements[i]);
     }
 }
