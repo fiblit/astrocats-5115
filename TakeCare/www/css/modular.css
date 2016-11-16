@@ -32,9 +32,30 @@ nav button:active {
 .sidebar {
 	animation-name: popout;
 	animation-duration: 1s;
+    background: #CCCCDD; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #CCCCDD, #446699); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #CCCCDD, #446699); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #CCCCDD, #446699); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #CCCCDD, #446699); /* Standard syntax */
+	width: 75vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+}
+
+.sidebar button {
+	display: inline-block;
+	background-color: white;
+	border: 0px;
+	margin: 5px;
+	padding: 0px;
+	height: 34px;
+	width: 70vw; 
+	border-radius: 5px;
+
 }
 
 @keyframes popout {
-	from {background: red;}
-	to {background: yellow;}
+	from {left: -100%;}
+	to {left: 0%;}
 }
