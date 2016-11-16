@@ -138,12 +138,18 @@ function build_page(page) {
 }
 
 // self_button
-// takes button text and a callback function as input
+// takes internal Element/Text/Null to be put inside the self_button
+//   and a callback function as input
 // creates and returns a button whose onclick value is the callback function
-function self_button(button_text, callback) {
-    var button = document.createElement("input");
+function self_button(internal, callback) {
+    var button = document.createElement("button");
     button.type = "button";
-    button.value = button_text;
+    if (typeof(internal) === "string") {
+        internal = document.createTextNode(internal);
+    }
+    if (internal) {
+        button.appendChild(internal);
+    }
     button.onclick = callback;
     return button;
 }
