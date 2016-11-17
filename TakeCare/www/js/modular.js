@@ -172,7 +172,6 @@ function menubar() {
 
 // Function for creating the sidebar
 function sidebar() {    
-    var box = popout();
     var sidebar = document.createElement("div");
     sidebar.appendChild(link_button("Profile", profile));
     sidebar.appendChild(link_button("Tasks", tasks));
@@ -184,15 +183,19 @@ function sidebar() {
     back.className = "back";
     sidebar.appendChild(back);
     sidebar.className = "sidebar";
-    box.appendChild(sidebar);
+    var box = popout(sidebar);
     return box;
 }
 
 //todo: make this better
 // Placeholder for function for animated popout box
-function popout() {
+function popout(internal) {
     var box = document.createElement("div");
     box.className = "popout";
+    box.style.width = internal.style.width;
+    box.style.height = internal.style.height;
+    internal.style.animation = "popout 0.65s";
+    box.appendChild(internal);
     return box;
 }
 

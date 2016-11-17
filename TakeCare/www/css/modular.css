@@ -24,8 +24,7 @@ nav button:active {
 	background: #DDDDDD;
 }
 
-.popout {	
-	animation: popout 0.65s;
+.popout {
 	position: absolute;
 	top: 0px;
 	left: 0vw;
@@ -67,23 +66,17 @@ nav button:active {
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
-	width: 25vw;
+	width: 125vw;
 	height: 100vh;
 	position: absolute;
 	top: 0;
 	left: 100%;
 	border-radius: 0px;
-	animation: filterSidebarBack 0.65s;
 }
 
 @keyframes popout {
 	from {left: -100%;}
 	to {left: 0%;}
-}
-
-@keyframes filterSidebarBack {
-	from {width: 125vw;}
-	to {width: 25vw;}
 }
 
 /* Landscape layout (with min-width) */
