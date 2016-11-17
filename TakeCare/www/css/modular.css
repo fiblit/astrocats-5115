@@ -29,8 +29,6 @@ nav button:active {
 	position: absolute;
 	top: 0px;
 	left: 0vw;
-	width: 100vw;
-	height: 100vh;
 }
 
 .sidebar {
@@ -56,7 +54,10 @@ nav button:active {
 	height: 34px;
 	width: 70vw; 
 	border-radius: 5px;
+}
 
+.sidebar button:active {
+	background-color: #DDDDDD;
 }
 
 .sidebar .back {
