@@ -183,18 +183,20 @@ function sidebar() {
     back.className = "back";
     sidebar.appendChild(back);
     sidebar.className = "sidebar";
-    var box = popout(sidebar);
+    var box = popout(sidebar, 0.65);
     return box;
 }
 
 //todo: make this better
 // Placeholder for function for animated popout box
-function popout(internal) {
+// internal = what to popout
+// time = how long it takes to popout "internal"
+function popout(internal, time) {
     var box = document.createElement("div");
     box.className = "popout";
     box.style.width = internal.style.width;
     box.style.height = internal.style.height;
-    internal.style.animation = "popout 0.65s";
+    internal.style.animation = "popout "+time+"s";
     box.appendChild(internal);
     return box;
 }
