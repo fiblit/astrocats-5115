@@ -1,0 +1,58 @@
+{
+  "persons" : {
+    "Alice" : {
+      "teams" : {
+        "TeamA": {"own":false},
+        "TeamB": {"own":true}
+      }
+    },
+    "Bertrand" : {
+      "teams" : {
+        "TeamB": {"own":false},
+        "TeamC": {"own":true}
+      }
+    },
+    "Caroline" : {
+      "teams" : {
+        "TeamA": {"own":true},
+        "TeamB": {"own":true},
+        "TeamC": {"own":false}
+      }
+    },
+    "Dennis" : {
+      "teams" : {
+        "TeamA": {"own":false}
+      }
+    }
+  },
+  "teams" : {
+    "TeamA" : {
+      "owners" : [ 
+        "Caroline"  
+      ],
+      "tasks" : {
+        
+      },
+      "updates" : {       
+      }
+    },
+    "TeamB" : {
+      "owners" : [ 
+        "Alice, Caroline"  
+      ],
+      "tasks" : {
+      },
+      "updates" : {
+      }
+    },
+    "TeamC" : {
+      "owners" : [ 
+        "Bertrand"  
+      ],
+      "tasks" : {
+      },
+      "updates" : {
+      }
+    }
+  }
+}

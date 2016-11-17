@@ -88,8 +88,6 @@ function self_button(internal, callback) {
     return button;
 }
 
-
-//todo: make this better
 // Placeholder for function for animated popout box
 // internal = what to popout
 // time = how long it takes to popout "internal"
@@ -101,4 +99,52 @@ function popout(internal, time) {
     internal.style.animation = "popout "+time+"s";
     box.appendChild(internal);
     return box;
+}
+
+//TODO: This whole thing....
+//NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
+function data_list(data) {
+    var dataListed = document.createElement("table");
+    
+    return dataListed;
+}
+
+//returns via local methods the JSON database
+// note: if in the future this is changed to asynchrounously requesting data from a server, 
+//   it would probably be best to use MySQL or some other database query.
+function read_data(callback) {
+    /* so I'm thinking I'll pivot and do this only on initialization and not have any peristent writing to the server */
+    /* get the latest data file */
+    var xhr = new XMLHttpRequest();
+    var url = "fakedatabase/database.json";
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            callback(JSON.parse(this.responseText));
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+}
+
+
+//updates via local methods the JSON database
+//I/O blocking (?)
+//modifyCallback takes in the database and spits out the new one or how to get to the new one.
+// it's an unfinished map basically.
+// note: if in the future this is changed to asynchrounously writing data tp a server, 
+//  it would probably be best to use MySQL or some other database query.
+function write_data(callback) {
+    /* get the latest data file */
+
+
+
+    /* well.... this sucks
+    kinda need server side stuff for this one. Javascript can't write files on the client side, and the data is stored on the server anyways
+    Maybe I can do this with AJAX?
+    Or just say screw it and actually implement the necessary server-side functionality for reading/writing from a mock database.
+    Or say screw it in the other way and don't use any sort of persistent file, only reading from a JSON object.
+
+    ^^^^ I like that last idea. Less work for Dalton.
+    */   
 }
