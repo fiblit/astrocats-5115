@@ -24,9 +24,16 @@ nav button:active {
 	background: #DDDDDD;
 }
 
+.popout {	
+	animation: popout 0.65s;
+	position: absolute;
+	top: 0px;
+	left: 0vw;
+	width: 100vw;
+	height: 100vh;
+}
+
 .sidebar {
-	animation-name: SidebarPopout;
-	animation-duration: 1s;
     background: #CCCCDD; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(left, #CCCCDD, #446699); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(right, #CCCCDD, #446699); /* For Opera 11.1 to 12.0 */
@@ -34,8 +41,9 @@ nav button:active {
     background: linear-gradient(to right, #CCCCDD, #446699); /* Standard syntax */
 	width: 75vw;
 	height: 100vh;
+	margin: 0;
 	left: 0vw;
-	position: absolute;
+	position: relative;
 	top: 0;
 }
 
@@ -58,24 +66,23 @@ nav button:active {
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
-	width: 30vw;
+	width: 25vw;
 	height: 100vh;
 	position: absolute;
 	top: 0;
-	right: -30vw;
+	left: 100%;
 	border-radius: 0px;
-	animation-name: filterSidebarPopout;
-	animation-duration: 1s;
+	animation: filterSidebarBack 0.65s;
 }
 
-@keyframes SidebarPopout {
-	from {left: -75vw;} /* this is a hacky solution */
-	to {left: 0vw;}
+@keyframes popout {
+	from {left: -100%;}
+	to {left: 0%;}
 }
 
-@keyframes filterSidebarPopout {
-	from {width: 100vw; right: -100vw;}
-	to {width: 30vw; right: -30vw;}
+@keyframes filterSidebarBack {
+	from {width: 125vw;}
+	to {width: 25vw;}
 }
 
 /* Landscape layout (with min-width) */

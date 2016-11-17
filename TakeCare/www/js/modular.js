@@ -117,7 +117,7 @@ function writetasks() {
 // Second is the onclick function (the object, not its name)
 function link_button(button_text, page) {
     var link_button = self_button(button_text, function () {
-        build_page(page)
+        build_page(page);
     });
     return link_button;
 }
@@ -163,7 +163,7 @@ function menubar() {
             app.appendChild(sidebar());
         }
         else {
-            app.removeChild(app.querySelector(".sidebar"));
+            app.removeChild(app.querySelector(".sidebar").parentNode);
         }
     });
     navbar.appendChild(menubutton);
@@ -171,25 +171,28 @@ function menubar() {
 }
 
 // Function for creating the sidebar
-function sidebar() {
+function sidebar() {    
     var box = popout();
-    box.appendChild(link_button("Profile", profile));
-    box.appendChild(link_button("Tasks", tasks));
-    box.appendChild(link_button("Updates", updates));
-    box.appendChild(link_button("Settings", settings));
+    var sidebar = document.createElement("div");
+    sidebar.appendChild(link_button("Profile", profile));
+    sidebar.appendChild(link_button("Tasks", tasks));
+    sidebar.appendChild(link_button("Updates", updates));
+    sidebar.appendChild(link_button("Settings", settings));
     back = self_button(null, function() {
         box.parentNode.removeChild(box);
     });
     back.className = "back";
-    box.appendChild(back);
-    box.className = "sidebar";
+    sidebar.appendChild(back);
+    sidebar.className = "sidebar";
+    box.appendChild(sidebar);
     return box;
 }
 
-// TODO: This
+//todo: make this better
 // Placeholder for function for animated popout box
 function popout() {
     var box = document.createElement("div");
+    box.className = "popout";
     return box;
 }
 
