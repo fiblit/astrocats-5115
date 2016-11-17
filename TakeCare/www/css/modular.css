@@ -24,13 +24,8 @@ nav button:active {
 	background: #DDDDDD;
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-	
-}
-
 .sidebar {
-	animation-name: popout;
+	animation-name: SidebarPopout;
 	animation-duration: 1s;
     background: #CCCCDD; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(left, #CCCCDD, #446699); /* For Safari 5.1 to 6.0 */
@@ -39,6 +34,7 @@ nav button:active {
     background: linear-gradient(to right, #CCCCDD, #446699); /* Standard syntax */
 	width: 75vw;
 	height: 100vh;
+	left: 0vw;
 	position: absolute;
 	top: 0;
 }
@@ -55,7 +51,34 @@ nav button:active {
 
 }
 
-@keyframes popout {
-	from {left: -100%;}
-	to {left: 0%;}
+.sidebar .back {
+	display: inline-block;
+	background-color: #999999;
+	opacity: 0.5;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	width: 30vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	right: -30vw;
+	border-radius: 0px;
+	animation-name: filterSidebarPopout;
+	animation-duration: 1s;
+}
+
+@keyframes SidebarPopout {
+	from {left: -75vw;} /* this is a hacky solution */
+	to {left: 0vw;}
+}
+
+@keyframes filterSidebarPopout {
+	from {width: 100vw; right: -100vw;}
+	to {width: 30vw; right: -30vw;}
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+	
 }

@@ -177,6 +177,11 @@ function sidebar() {
     box.appendChild(link_button("Tasks", tasks));
     box.appendChild(link_button("Updates", updates));
     box.appendChild(link_button("Settings", settings));
+    back = self_button(null, function() {
+        box.parentNode.removeChild(box);
+    });
+    back.className = "back";
+    box.appendChild(back);
     box.className = "sidebar";
     return box;
 }
