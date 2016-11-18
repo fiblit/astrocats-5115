@@ -115,7 +115,7 @@ function login(){
     var loginFields = document.createElement("div");
     var user = document.createTextNode("Username: ");
     loginFields.appendChild(user);
-    var psw = document.createTextNode("\nPassword: ");
+    var psw = document.createTextNode("Password: ");
     loginFields.appendChild(psw);
     elems.push(loginFields);
    
