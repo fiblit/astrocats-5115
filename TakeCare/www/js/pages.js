@@ -98,3 +98,17 @@ function settings() {
     
     return elems;
 }
+
+// Login page
+function login(){
+    var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Login Page";
+    elems.push(pagename);
+    
+    var x = document.createElement("div");
+    
+    var username = document.createElement("Username:");
+    var password = document.createElement("Password");
+}
