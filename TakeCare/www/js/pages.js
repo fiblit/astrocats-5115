@@ -21,6 +21,11 @@ function page1() {
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("button1", page2)); 
     elems.push(buttons);
+    
+    //create button div with button linking to login page
+    var buttons = document.createElement("div");
+    buttons.appendChild(link_button("button2",login));
+    elems.push(buttons);
 
     return elems;
 }   
