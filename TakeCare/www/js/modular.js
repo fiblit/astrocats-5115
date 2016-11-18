@@ -1,7 +1,6 @@
 //call at window load
 function __init() {
     app.initialize();
-    init_local_database();
     build_page(login);
 }
 
@@ -100,21 +99,6 @@ function popout(internal, time) {
     internal.style.animation = "popout "+time+"s";
     box.appendChild(internal);
     return box;
-}
-
-var database = {};
-function init_local_database() {
-    /* get the latest data file */
-    var xhr = new XMLHttpRequest();
-    var url = "fakedatabase/database.json";
-
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            database = JSON.parse(this.responseText);
-        }
-    };
-    xhr.open("GET", url, true);
-    xhr.send();
 }
 
 //NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.

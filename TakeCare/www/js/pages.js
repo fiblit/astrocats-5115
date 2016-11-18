@@ -66,7 +66,10 @@ function login() {
 
     //Create login button
     var buttons = document.createElement("div");
-    buttons.appendChild(link_button("Login", landing));//will eventually be a self_button
+    buttons.appendChild(self_button("Login", function () {
+        database['current_user'] = input_area.childNodes[0].childNodes[1].value;
+        build_page(landing);
+    }));
     input_area.appendChild(buttons);
     input_area.className = "inputarea";
     elems.push(input_area);
@@ -87,6 +90,8 @@ function landing() {
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is landing page (WIP)";
     elems.push(pagenum);
+
+    console.log(database);
     
     // Create tasks table
     var tasks = document.createElement("div");
