@@ -115,7 +115,8 @@ function login(){
     var x = document.createElement("div");
     
     var user = document.createTextNode("Username: ");
+    elems.push(user);
     var psw = document.createTextNode("Password: ");
-    
+    elems.push(psw);
     return elems;
 }
