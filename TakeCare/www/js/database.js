@@ -1,42 +1,43 @@
+var database =
 {
   "persons" : {
     "Alice" : {
       "teams" : {
-        "TeamA": {"own":false},
-        "TeamB": {"own":true}
+        "TeamCharilearoline": {"own":false},
+        "TeamMartin": {"own":true}
       }
     },
     "Bertrand" : {
       "teams" : {
-        "TeamB": {"own":false},
-        "TeamC": {"own":true}
+        "TeamMartin": {"own":false},
+        "TeamCharile": {"own":true}
       }
     },
     "Caroline" : {
       "teams" : {
-        "TeamA": {"own":true},
-        "TeamB": {"own":true},
-        "TeamC": {"own":false}
+        "TeamCharilearoline": {"own":true},
+        "TeamMartin": {"own":true},
+        "TeamCharile": {"own":false}
       }
     },
     "Dennis" : {
       "teams" : {
-        "TeamA": {"own":false}
+        "TeamCharilearoline": {"own":false}
       }
     }
   },
   "teams" : {
-    "TeamA" : {
+    "TeamCharilearoline" : {
       "owners" : [ 
         "Caroline"  
       ],
       "tasks" : {
         
       },
-      "updates" : {       
+      "updates" : {     
       }
     },
-    "TeamB" : {
+    "TeamMartin" : {
       "owners" : [ 
         "Alice, Caroline"  
       ],
@@ -45,7 +46,7 @@
       "updates" : {
       }
     },
-    "TeamC" : {
+    "TeamCharile" : {
       "owners" : [ 
         "Bertrand"  
       ],
@@ -55,4 +56,4 @@
       }
     }
   }
-}
+};
