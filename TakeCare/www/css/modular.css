@@ -1,3 +1,8 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
 /* nav bar */
 nav {
     background: #415acf; /* For browsers that do not support gradients */
@@ -78,6 +83,31 @@ nav button:active {
 	from {left: -100%;}
 	to {left: 0%;}
 }
+
+.inputarea {
+	position: absolute;
+	margin: auto;
+	padding: 5px;
+	display: inline-block;
+	background: #DDDDDD;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* affects login and password */
+.inputarea label {
+	text-decoration: underline;
+	margin: 2px;
+}
+
+/* affects login and password */
+.inputarea input {
+	border: #C0C0C0;
+	margin: 2px;
+	border-bottom: 2px solid #6699CC;
+}
+
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {

@@ -43,6 +43,64 @@ function page2() {
     return elems;
 }
 
+function login() {
+    //create the array to store returned HTMLElements
+    var elems = [];
+
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+
+    // Create input area for (fake) login/password
+    var input_area = document.createElement("div");
+    input_area.innerHTML = ""+
+    "<div id=\"login\">"+
+        "<label>Login</label>"+
+        "<input type=\"text\" name=\"login\" required/>" +
+    "</div>"+
+    "<div id =\"password\">"+
+        "<label>Password</label>"+
+        "<input type=\"password\" name=\"password\" required/>"+
+    "</div>";
+
+
+    //Create login button
+    var buttons = document.createElement("div");
+    buttons.appendChild(link_button("Login", landing));//will eventually be a self_button
+    input_area.appendChild(buttons);
+    input_area.className = "inputarea";
+    elems.push(input_area);
+    
+
+    return elems;
+}
+
+function landing() {
+    //create the array to store returned HTMLElements
+    var elems = [];
+
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+
+    // Create paragraph element saying "this is page 1!"
+    var pagenum = document.createElement("p");
+    pagenum.innerHTML = "This is landing page (WIP)";
+    elems.push(pagenum);
+    
+    // Create tasks table
+    var tasks = document.createElement("div");
+    tasks.appendChild(writetasks());
+    elems.push(tasks);
+    
+    // Create buttons div with button linking to page 2
+    var buttons = document.createElement("div");
+    buttons.appendChild(link_button("button1", page2)); 
+    elems.push(buttons);
+
+    return elems;
+}
+
 // Placeholder for profile page
 function profile() {
     var elems = [];

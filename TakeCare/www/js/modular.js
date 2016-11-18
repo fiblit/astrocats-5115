@@ -2,7 +2,7 @@
 function __init() {
     app.initialize();
     init_local_database();
-    build_page(page1);
+    build_page(login);
 }
 
 //given the page (array of HTMLElements) it will build it into the app.
