@@ -112,11 +112,12 @@ function login(){
     pagename.innerHTML = "Login Page";
     elems.push(pagename);
     
-    var x = document.createElement("div");
-    
+    var loginFields = document.createElement("div");
     var user = document.createTextNode("Username: ");
-    elems.push(user);
+    loginFields.appendChild(user);
     var psw = document.createTextNode("Password: ");
-    elems.push(psw);
+    loginFields.appendChild(psw);
+    elems.push(loginFields);
+   
     return elems;
 }
