@@ -1,6 +1,7 @@
 //call at window load
 function __init() {
     app.initialize();
+    init_local_database();
     build_page(page1);
 }
 
@@ -101,30 +102,54 @@ function popout(internal, time) {
     return box;
 }
 
-//TODO: This whole thing....
-//NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
-function data_list(data) {
-    var dataListed = document.createElement("table");
-    
-    return dataListed;
-}
-
-//returns via local methods the JSON database
-// note: if in the future this is changed to asynchrounously requesting data from a server, 
-//   it would probably be best to use MySQL or some other database query.
-function read_data(callback) {
-    /* so I'm thinking I'll pivot and do this only on initialization and not have any peristent writing to the server */
+var database = {};
+function init_local_database() {
     /* get the latest data file */
     var xhr = new XMLHttpRequest();
     var url = "fakedatabase/database.json";
 
-    xmlhttp.onreadystatechange = function() {
+    xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            callback(JSON.parse(this.responseText));
+            database = JSON.parse(this.responseText);
         }
     };
     xhr.open("GET", url, true);
     xhr.send();
+}
+
+//NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
+//  This is useful for creating dataToList
+//dataToList is an array of objects with key:value pairs.
+function data_list(dataToList) {
+    var dataListed = document.createElement("table");
+    var row = document.createElement("tr");
+    for (var k in dataToList[0]) {
+        var th = document.createElement("th");
+        th.appendChild(document.createTextNode(k));
+        th.className = k;
+        row.appendChild(th);
+    }
+    dataListed.appendChild(row);
+    for (var i; i < dataToList.length; i++) {
+        row = document.createElement("tr");
+        for (var j; j < dataToList[i].length; j++) {
+            var col = document.createElement("td");
+            col.appendChild(document.createTextNode(dataToList[i][j]));
+            col.className = "data_"+k;
+            row.appendChild(col);
+        }
+        dataListed.appendChild(row);
+    }
+    return dataListed;
+}
+
+/*** DEPRECATED BELOW ***/
+//returns via local methods the JSON database
+// note: if in the future this is changed to asynchrounously requesting data from a server, 
+//   it would probably be best to use MySQL or some other database query.
+function read_data(callbackAfterRead) {
+    /* so I'm thinking I'll pivot and do this only on initialization and not have any peristent writing to the server */
+
 }
 
 
@@ -134,10 +159,8 @@ function read_data(callback) {
 // it's an unfinished map basically.
 // note: if in the future this is changed to asynchrounously writing data tp a server, 
 //  it would probably be best to use MySQL or some other database query.
-function write_data(callback) {
+function write_data(callbackAfterWrite) {
     /* get the latest data file */
-
-
 
     /* well.... this sucks
     kinda need server side stuff for this one. Javascript can't write files on the client side, and the data is stored on the server anyways
