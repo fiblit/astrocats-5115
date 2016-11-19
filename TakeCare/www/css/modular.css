@@ -102,7 +102,8 @@ nav button:active {
 }
 
 /* affects login and password */
-.inputarea input {
+.inputarea input {	
+	position: relative;
 	border: #C0C0C0;
 	margin: 2px;
 	border-bottom: 2px solid #6699CC;

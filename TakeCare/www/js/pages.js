@@ -54,21 +54,27 @@ function login() {
     // Create input area for (fake) login/password
     var input_area = document.createElement("div");
     input_area.innerHTML = ""+
-    "<div id=\"login\">"+
+    "<div id=\"username\">"+
         "<label>Login</label>"+
-        "<input type=\"text\" name=\"login\" required/>" +
+        "<input type=\"text\" name=\"username\" required/>" +
     "</div>"+
     "<div id =\"password\">"+
         "<label>Password</label>"+
         "<input type=\"password\" name=\"password\" required/>"+
     "</div>";
 
-
     //Create login button
     var buttons = document.createElement("div");
     buttons.appendChild(self_button("Login", function () {
-        database['current_user'] = input_area.childNodes[0].childNodes[1].value;
-        build_page(landing);
+        var user = input_area.getElementById("username").getElementsByTagName("input")[0].value;
+        var pass = input_area.getElementById("password").getElementsByTagName("input")[0].value;
+        if (database["persons"][user]["password"] === pass) {
+            database['current_user'] = user;
+            build_page(landing);
+        }
+        else if(!input_area.getElementById("error")) {
+            input_area.appendChild(document.createTextNode("Password is incorrect."))
+        }
     }));
     input_area.appendChild(buttons);
     input_area.className = "inputarea";
