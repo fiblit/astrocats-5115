@@ -102,9 +102,11 @@ function popout(internal, time) {
 }
 
 //NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
-//  This is useful for creating dataToList
+//  This may be useful for creating dataToList
 //dataToList is an array of objects with key:value pairs.
+//** this is broken
 function data_list(dataToList) {
+    console.log(dataToList);
     var dataListed = document.createElement("table");
     var row = document.createElement("tr");
     for (var k in dataToList[0]) {
@@ -116,9 +118,9 @@ function data_list(dataToList) {
     dataListed.appendChild(row);
     for (var i; i < dataToList.length; i++) {
         row = document.createElement("tr");
-        for (var j; j < dataToList[i].length; j++) {
+        for (var k in dataToList[i]) {
             var col = document.createElement("td");
-            col.appendChild(document.createTextNode(dataToList[i][j]));
+            col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
             row.appendChild(col);
         }

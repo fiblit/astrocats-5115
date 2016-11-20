@@ -58,7 +58,7 @@ function login() {
         "<label>Login</label>"+
         "<input type=\"text\" name=\"username\" required/>" +
     "</div>"+
-    "<div id =\"password\">"+
+    "<div id=\"password\">"+
         "<label>Password</label>"+
         "<input type=\"password\" name=\"password\" required/>"+
     "</div>";
@@ -66,20 +66,24 @@ function login() {
     //Create login button
     var buttons = document.createElement("div");
     buttons.appendChild(self_button("Login", function () {
-        var user = input_area.getElementById("username").getElementsByTagName("input")[0].value;
-        var pass = input_area.getElementById("password").getElementsByTagName("input")[0].value;
-        if (database["persons"][user]["password"] === pass) {
+        var user = input_area.querySelector("#username > input").value;
+        var pass = input_area.querySelector("#password > input").value;
+        if (database["persons"][user] && //null check
+            database["persons"][user]["password"] === pass) {
+
             database['current_user'] = user;
             build_page(landing);
         }
-        else if(!input_area.getElementById("error")) {
-            input_area.appendChild(document.createTextNode("Password is incorrect."))
+        else if(!input_area.querySelector("#error")) {
+            var p = document.createElement("p");
+            p.innerHTML = "Password is incorrect.";
+            p.id = "error";
+            input_area.appendChild(p);
         }
     }));
     input_area.appendChild(buttons);
     input_area.className = "inputarea";
     elems.push(input_area);
-    
 
     return elems;
 }
@@ -97,13 +101,32 @@ function landing() {
     pagenum.innerHTML = "This is landing page (WIP)";
     elems.push(pagenum);
 
-    console.log(database);
-    
-    // Create tasks table
-    var tasks = document.createElement("div");
-    tasks.appendChild(writetasks());
-    elems.push(tasks);
-    
+    //** the following is rather broken **//
+    var ownedTeams = data_list(function () {
+        var list = [];
+        for (let k of Object.keys(database['teams']).filter(function(elem, i, arr) {
+                return (database['persons'][database['current_user']]['teams'][elem] && //null check
+                       database['persons'][database['current_user']]['teams'][elem]['own']);
+            })) {
+            list.push(database['teams'][k])
+        }
+        return list;
+    }());
+    var followedTeams = data_list(function () {
+        var list = [];
+        for (let k of Object.keys(database['teams']).filter(function(elem, i, arr) {
+                return (database['persons'][database['current_user']]['teams'][elem] && //null check
+                       database['persons'][database['current_user']]['teams'][elem]['own']);
+            })) {
+            list.push(database['teams'][k])
+        }
+        return list;
+    }());
+    elems.push(ownedTeams);
+    elems.push(followedTeams);
+    //** the above is rather broken **//
+
+
     // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("button1", page2)); 
