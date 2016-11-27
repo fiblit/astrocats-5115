@@ -35,6 +35,29 @@ nav button:active {
 	left: 0vw;
 }
 
+.alert {
+    background: #FFFFFF;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 2;
+}
+
+.dimmer {
+    background: #000000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1;
+}
+
 .sidebar {
     background: #CCCCDD; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(left, #CCCCDD, #446699); /* For Safari 5.1 to 6.0 */

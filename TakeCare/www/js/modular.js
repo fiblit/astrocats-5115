@@ -8,6 +8,19 @@ function __init() {
 function build_page(page) {
     var app = document.querySelector(".app");
     app.innerHTML = "";
+
+    // add the dimmer div
+    var dimmer = document.createElement("div");
+    dimmer.className = "dimmer";
+    dimmer.onclick = function() {
+        var popouts = document.querySelectorAll(".sidebar, .alert");
+        for (var i = 0; i < popouts.length; i++) {
+            popouts[i].parentNode.removeChild(popouts[i]);
+        }
+        undim();
+    };
+    app.appendChild(dimmer);
+
     //app.appendChild(page());//given that a page returns an HTMLElement. 
     var pageElements = page();//given that a page returns an array of HTMLElements.
     for (var i = 0; i < pageElements.length; i++) {
@@ -88,7 +101,7 @@ function self_button(internal, callback) {
     return button;
 }
 
-// Placeholder for function for animated popout box
+// Function for animated popout box
 // internal = what to popout
 // time = how long it takes to popout "internal"
 function popout(internal, time) {
@@ -100,6 +113,29 @@ function popout(internal, time) {
     box.appendChild(internal);
     return box;
 }
+
+// Function for making an alert/confirmation box in the middle of the screen
+function alertbox(internal) {
+    var box = document.createElement("div");
+    box.className = "alert";
+    box.style.width = internal.style.width;
+    box.style.height = internal.style.height;
+    box.appendChild(internal);
+    return box;
+}
+
+// Function for activating the dimmer div
+function dim() {
+    var dimmer = document.querySelector(".dimmer");
+    dimmer.style.display = "block";
+}
+
+// Function for deactivating the dimmer div
+function undim() {
+    var dimmer = document.querySelector(".dimmer");
+    dimmer.style.display = "none";
+}
+
 
 //NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
 //  This may be useful for creating dataToList

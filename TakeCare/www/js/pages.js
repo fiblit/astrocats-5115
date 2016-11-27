@@ -34,10 +34,22 @@ function page2() {
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is page 2";
     elems.push(pagenum);
+
+    // create a button that opens a popup
+    var popbutton = self_button("popup", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "This is an alert box.\nYou have been alerted.";
+        var box = alertbox(stuff);
+        document.querySelector(".app").appendChild(box);
+        dim();
+    });
     
     // Create buttons div with button linking to page 1
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("button2", page1));
+    buttons.appendChild(popbutton);
     elems.push(buttons);
 
     return elems;
