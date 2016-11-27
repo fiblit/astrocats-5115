@@ -369,8 +369,8 @@ function addupdate(){
         "<input type=\"text\" name=\"update\" required/>" +
     "</div>"+
     "<div id=\"message\">"+
-        "<label>Task Message: * </label>"+
-        "<input type=\"text\" name=\"message\" required/>"+
+        "<label>Message: * </label>"+
+        "<input type=\"text\" rows=\"5\" name=\"message\" required/>"+
     "</div>";
     
      //Create send update button
