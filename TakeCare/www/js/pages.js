@@ -232,12 +232,7 @@ function addtasks() {
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-    
-    var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
-    elems.push(postbutton);
-    
-    var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
-    elems.push(cancelbutton);
+
     
     //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
@@ -284,6 +279,8 @@ function addtasks() {
          build_page(tasks);
         }
     }));
+    //create cancel button
+     buttons.appendChild(link_button("Cancel", tasks));
     text_area.appendChild(buttons);
     text_area.className = "textarea";
     elems.push(text_area);
