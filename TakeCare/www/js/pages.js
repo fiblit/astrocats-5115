@@ -274,7 +274,7 @@ function addtasks() {
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
         var time = text_area.querySelector("#time > input").value;
-        if (careteam > 0 && taskname > 0 && date > 0 && time > 0) {
+        if (careteam != null && taskname != null && date != null && time != null) {
             build_page(tasks);
         }
         else if(!text_area.querySelector("#error")) {
