@@ -70,8 +70,74 @@ function tasks() {
     pagename.innerHTML = "Tasks page";
     elems.push(pagename);
     
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
+    
+    var viewbutton = link_button("View All",martintask);
+    elems.push(viewbutton);
+    
+    var viewbutton2 = link_button("View All",bettytask);
+    elems.push(viewbutton2);
+    
+    var addbutton = link_button("Add a new task",addtasks);
+    elems.push(addbutton);
+    
+    return elems;
+}
+
+function martintask() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Martin's Tasks";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var returnbutton = link_button("Return", tasks);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+function bettytask() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Betty's Tasks";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var returnbutton = link_button("Return", tasks);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+function addtasks() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Add a new task";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
+    elems.push(returnbutton);
+    
+    var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
     
     return elems;
 }
