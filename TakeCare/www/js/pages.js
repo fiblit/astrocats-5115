@@ -165,8 +165,105 @@ function tasks() {
     pagename.innerHTML = "Tasks page";
     elems.push(pagename);
     
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
+    
+    var viewbutton = link_button("View All",martintask);
+    elems.push(viewbutton);
+    
+    var viewbutton2 = link_button("View All",bettytask);
+    elems.push(viewbutton2);
+    
+    var addbutton = link_button("Add a new task",addtasks);
+    elems.push(addbutton);
+    
+    return elems;
+}
+
+function martintask() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Martin's Tasks";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var returnbutton = link_button("Return", tasks);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+function bettytask() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Betty's Tasks";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var returnbutton = link_button("Return", tasks);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+function addtasks() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Add a new task";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
+    elems.push(postbutton);
+    
+    var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
+    elems.push(cancelbutton);
+    
+    //create input area for task, need to add importance buttons
+    var text_area = document.createElement("div");
+    text_area.innerHTML = ""+
+    "<div id=\"careteam\">"+
+        "<label>Care Team: </label>"+
+        "<input type=\"text\" name=\"careteam\" required/>" +
+    "</div>"+
+    "<div id=\"taskname\">"+
+        "<label>Task Name: </label>"+
+        "<input type=\"text\" name=\"taskname\" required/>"+
+    "</div>"+
+    "<div id=\"date\">"+
+        "<label>Date: </label>"+
+        "<input type=\"text\" name=\"date\" required/>"+
+    "</div>"+
+     "<div id=\"time\">"+
+        "<label>Time: </label>"+
+        "<input type=\"text\" name=\"time\" required/>"+
+    "</div>"+
+     "<div id=\"location\">"+
+        "<label>Location: </label>"+
+        "<input type=\"text\" name=\"location\" optional/>"+
+    "</div>"+
+         "<div id=\"description\">"+
+        "<label>Description: </label>"+
+        "<input type=\"text\" name=\"description\" optional/>"+
+    "</div>";
+    elems.push(text_area);
+
     
     return elems;
 }
