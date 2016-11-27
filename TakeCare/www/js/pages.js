@@ -182,7 +182,7 @@ function tasks() {
     var viewbutton2 = link_button("View All",bettytask);
     elems.push(viewbutton2);
     
-    var isFriend = true;
+    var isFriend = false;
     if (!isFriend) {
     var addbutton = link_button("Add a new task",addtasks);
     elems.push(addbutton);
