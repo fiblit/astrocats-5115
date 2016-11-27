@@ -274,14 +274,14 @@ function addtasks() {
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
         var time = text_area.querySelector("#time > input").value;
-        if (careteam != null && taskname != null && date != null && time != null) {
-            build_page(tasks);
-        }
-        else if(!text_area.querySelector("#error")) {
+        if (careteam == null || taskname == null || date == null || time == null) {
             var p = document.createElement("p");
             p.innerHTML = "Error: Field is required.";
             p.id = "error";
             text_area.appendChild(p);
+        }
+        else {
+         build_page(tasks);
         }
     }));
     text_area.appendChild(buttons);
