@@ -370,7 +370,7 @@ function addupdate(){
     "</div>"+
     "<div id=\"message\">"+
         "<label>Message: * </label>"+
-        "<input type=\"text\" rows=\"5\" name=\"message\" required/>"+
+        "<input type=\"textarea\" name=\"message\" required/>"+
     "</div>";
     
      //Create send update button
