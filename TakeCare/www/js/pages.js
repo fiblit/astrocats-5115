@@ -296,15 +296,107 @@ function updates() {
     var elems = [];
     
     var pagename = document.createElement("p");
-    pagename.innerHTML = "Updates page";
+    pagename.innerHTML = "Updates";
     elems.push(pagename);
     
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
     var returnbutton = link_button("Return", page1);
+    elems.push(returnbutton);
+    
+    var viewbutton = link_button("View All",martinupdates);
+    elems.push(viewbutton);
+    
+    var viewbutton2 = link_button("View All",bettyupdates);
+    elems.push(viewbutton2);
+    
+    var isFriend = false;
+    if (!isFriend) {
+    var addbutton = link_button("Add a new update",addupdate);
+    elems.push(addbutton);
+    }
+    return elems;
+}
+
+function martinupdates() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Martin's Updates";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var returnbutton = link_button("Return", updates);
     elems.push(returnbutton);
     
     return elems;
 }
 
+function bettyupdates() {
+     var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Betty's Updates";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+    var returnbutton = link_button("Return", updates);
+    elems.push(returnbutton);
+    
+    return elems;
+}
+
+function addupdate(){
+    var elems = [];
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
+     //create input area for task, need to add importance buttons
+    var text_area = document.createElement("div");
+    text_area.innerHTML = ""+
+    "<div id=\"update\">"+
+        "<label>Send update to: * </label>"+
+        "<input type=\"text\" name=\"update\" required/>" +
+    "</div>"+
+    "<div id=\"message\">"+
+        "<label>Task Message: * </label>"+
+        "<input type=\"text\" name=\"message\" required/>"+
+    "</div>";
+    
+     //Create send update button
+    var buttons = document.createElement("div");
+    buttons.appendChild(self_button("Send Update", function () {
+        var update = text_area.querySelector("#update > input").value;
+        var message = text_area.querySelector("#message > input").value;
+        if (update == null || message == null || update.trim()=="" || message.trim()=="") {
+            var p = document.createElement("p");
+            p.innerHTML = "Error: Field is required.";
+            p.id = "error";
+            text_area.appendChild(p);
+        }
+        else {
+         build_page(updates);
+        }
+    }));
+    //create cancel button
+    buttons.appendChild(link_button("Cancel", updates));
+    text_area.appendChild(buttons);
+    text_area.className = "textarea";
+    elems.push(text_area);
+
+    
+    return elems;
+}
 // Placeholder for settings page
 function settings() {
     var elems = [];
