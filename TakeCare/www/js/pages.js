@@ -239,31 +239,33 @@ function addtasks() {
     var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
     elems.push(cancelbutton);
     
+    //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
     text_area.innerHTML = ""+
     "<div id=\"careteam\">"+
-        "<label>Care Team</label>"+
+        "<label>Care Team: </label>"+
         "<input type=\"text\" name=\"careteam\" required/>" +
     "</div>"+
     "<div id=\"taskname\">"+
-        "<label>Task Name</label>"+
+        "<label>Task Name: </label>"+
         "<input type=\"text\" name=\"taskname\" required/>"+
     "</div>"+
     "<div id=\"date\">"+
-        "<label>Date</label>"+
+        "<label>Date: </label>"+
         "<input type=\"text\" name=\"date\" required/>"+
     "</div>"+
      "<div id=\"time\">"+
-        "<label>Time</label>"+
+        "<label>Time: </label>"+
         "<input type=\"text\" name=\"time\" required/>"+
     "</div>"+
      "<div id=\"location\">"+
-        "<label>Location</label>"+
-        "<input type=\"text\" name=\"location\" required/>"+
+        "<label>Location: </label>"+
+        "<input type=\"text\" name=\"location\" optional/>"+
+    "</div>"+
+         "<div id=\"description\">"+
+        "<label>Description: </label>"+
+        "<input type=\"text\" name=\"description\" optional/>"+
     "</div>";
-    
-        //Create login button
-
     elems.push(text_area);
 
     
