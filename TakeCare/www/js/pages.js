@@ -135,9 +135,10 @@ function addtasks() {
     elems.push(navbar);
     
     var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
-    elems.push(returnbutton);
+    elems.push(postbutton);
     
     var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
+    elems.push(cancelbutton);
     
     return elems;
 }
