@@ -241,13 +241,25 @@ function addtasks() {
     
     var text_area = document.createElement("div");
     text_area.innerHTML = ""+
-    "<div id=\"Care Team\">"+
-        "<label>Login</label>"+
-        "<input type=\"text\" name=\"Care Team\" required/>" +
+    "<div id=\"careteam\">"+
+        "<label>Care Team</label>"+
+        "<input type=\"text\" name=\"careteam\" required/>" +
     "</div>"+
-    "<div id=\"password\">"+
-        "<label>Password</label>"+
-        "<input type=\"password\" name=\"password\" required/>"+
+    "<div id=\"taskname\">"+
+        "<label>Task Name</label>"+
+        "<input type=\"text\" name=\"taskname\" required/>"+
+    "</div>"+
+    "<div id=\"date\">"+
+        "<label>Date</label>"+
+        "<input type=\"text\" name=\"date\" required/>"+
+    "</div>"+
+     "<div id=\"time\">"+
+        "<label>Time</label>"+
+        "<input type=\"text\" name=\"time\" required/>"+
+    "</div>"+
+     "<div id=\"location\">"+
+        "<label>Location</label>"+
+        "<input type=\"text\" name=\"location\" required/>"+
     "</div>";
     
         //Create login button
