@@ -41,7 +41,7 @@ function page2() {
         stuff.style.width = "30vw";
         stuff.style.height = "20vh";
         stuff.innerHTML = "This is an alert box.\nYou have been alerted.";
-        var box = alertbox(stuff);
+        var box = popup(stuff);
         document.querySelector(".app").appendChild(box);
         dim();
     });

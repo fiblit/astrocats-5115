@@ -115,7 +115,7 @@ function popout(internal, time) {
 }
 
 // Function for making an alert/confirmation box in the middle of the screen
-function alertbox(internal) {
+function popup(internal) {
     var box = document.createElement("div");
     box.className = "alert";
     box.style.width = internal.style.width;
