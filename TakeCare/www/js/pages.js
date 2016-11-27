@@ -248,7 +248,7 @@ function addtasks() {
         dim();
 });
     
-    var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
+    var postbutton = link_button("Post", popbutton); //needs to link to confirmation popup
     elems.push(postbutton);
     
     var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
