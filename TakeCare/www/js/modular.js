@@ -13,7 +13,7 @@ function build_page(page) {
     var dimmer = document.createElement("div");
     dimmer.className = "dimmer";
     dimmer.onclick = function() {
-        var popouts = document.querySelectorAll(".sidebar, .alert");
+        var popouts = document.querySelectorAll(".popout, .alert");
         for (var i = 0; i < popouts.length; i++) {
             popouts[i].parentNode.removeChild(popouts[i]);
         }
@@ -63,13 +63,9 @@ function sidebar() {
     sidebar.appendChild(link_button("Tasks", tasks));
     sidebar.appendChild(link_button("Updates", updates));
     sidebar.appendChild(link_button("Settings", settings));
-    back = self_button(null, function() {
-        box.parentNode.removeChild(box);
-    });
-    back.className = "back";
-    sidebar.appendChild(back);
     sidebar.className = "sidebar";
     var box = popout(sidebar, 0.65);
+    dim();
     return box;
 }
 

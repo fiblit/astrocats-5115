@@ -59,10 +59,6 @@ function login() {
     //create the array to store returned HTMLElements
     var elems = [];
 
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-
     // Create input area for (fake) login/password
     var input_area = document.createElement("div");
     input_area.innerHTML = ""+
