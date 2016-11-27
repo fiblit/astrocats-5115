@@ -228,12 +228,7 @@ function addtasks() {
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-    
-    var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
-    elems.push(postbutton);
-    
-    var cancelbutton = link_button("Cancel",tasks); //needs to link to confirmation popup
-    elems.push(cancelbutton);
+
     
     //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
@@ -262,11 +257,34 @@ function addtasks() {
         "<label>Description: </label>"+
         "<input type=\"text\" name=\"description\" optional/>"+
     "</div>";
+    
+     //Create post button
+    var buttons = document.createElement("div");
+    buttons.appendChild(self_button("Post", function () {
+        var careteam = text_area.querySelector("#careteam > input").value;
+        var taskname = text_area.querySelector("#taskname > input").value;
+        var date = text_area.querySelector("#date > input").value;
+        var time = text_area.querySelector("#time > input").value;
+        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {
+            var p = document.createElement("p");
+            p.innerHTML = "Error: Field is required.";
+            p.id = "error";
+            text_area.appendChild(p);
+        }
+        else {
+         build_page(tasks);
+        }
+    }));
+    //create cancel button
+    buttons.appendChild(link_button("Cancel", tasks));
+    text_area.appendChild(buttons);
+    text_area.className = "textarea";
     elems.push(text_area);
 
     
     return elems;
-}
+} 
+
 
 // Placeholder for updates page
 function updates() {
