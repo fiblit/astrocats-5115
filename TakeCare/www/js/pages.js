@@ -178,9 +178,11 @@ function tasks() {
     var viewbutton2 = link_button("View All",bettytask);
     elems.push(viewbutton2);
     
+    //only show "Add a new task" button for CM UI
+    if (!isFriend){ //Dalton to implement isFriend
     var addbutton = link_button("Add a new task",addtasks);
     elems.push(addbutton);
-    
+    }
     return elems;
 }
 
