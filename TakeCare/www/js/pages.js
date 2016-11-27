@@ -274,8 +274,7 @@ function addtasks() {
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
         var time = text_area.querySelector("#time > input").value;
-        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" ||...
-        date.trim()=="" || time.trim()=="") {
+        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {
             var p = document.createElement("p");
             p.innerHTML = "Error: Field is required.";
             p.id = "error";
