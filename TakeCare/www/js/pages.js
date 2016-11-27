@@ -233,6 +233,21 @@ function addtasks() {
     var navbar = menubar();
     elems.push(navbar);
     
+     // create a button that opens a popup
+    var popbutton = self_button("popup", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "Are you sure you want to post this task?";
+        var box = popup(stuff);
+        var yesbutton = link_button("Yes", tasks);
+        var nobutton = link_button("No",tasks);
+        document.querySelector(".app").appendChild(box);
+        document.querySelector(".app").appendChild(yesbutton);
+        document.querySelector(".app").appendChild(nobutton);
+        dim();
+});
+    
     var postbutton = link_button("Post", tasks); //needs to link to confirmation popup
     elems.push(postbutton);
     
