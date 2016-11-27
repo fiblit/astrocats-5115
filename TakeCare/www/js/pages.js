@@ -266,6 +266,26 @@ function addtasks() {
         "<label>Description: </label>"+
         "<input type=\"text\" name=\"description\" optional/>"+
     "</div>";
+    
+     //Create post button
+    var buttons = document.createElement("div");
+    buttons.appendChild(self_button("Post", function () {
+        var careteam = text_area.querySelector("#careteam > input").value;
+        var taskname = text_area.querySelector("#taskname > input").value;
+        var date = text_area.querySelector("#date > input").value;
+        var time = text_area.querySelector("#time > input").value;
+        if (careteam > 0 && taskname > 0 && date > 0 && time > 0) {
+            build_page(tasks);
+        }
+        else if(!text_area.querySelector("#error")) {
+            var p = document.createElement("p");
+            p.innerHTML = "Error: Field is required.";
+            p.id = "error";
+            text_area.appendChild(p);
+        }
+    }));
+    text_area.appendChild(buttons);
+    text_area.className = "textarea";
     elems.push(text_area);
 
     
