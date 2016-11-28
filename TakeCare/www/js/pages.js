@@ -172,51 +172,12 @@ function tasks() {
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
-    var viewbutton = link_button("View All",martintask);
-    elems.push(viewbutton);
-    
-    var viewbutton2 = link_button("View All",bettytask);
-    elems.push(viewbutton2);
     
     //only show "Add a new task" button for CM UI
     if (!isFriend){ //Dalton to implement isFriend
     var addbutton = link_button("Add a new task",addtasks);
     elems.push(addbutton);
     }
-    return elems;
-}
-
-function martintask() {
-     var elems = [];
-    
-    var pagename = document.createElement("p");
-    pagename.innerHTML = "Martin's Tasks";
-    elems.push(pagename);
-    
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-    
-    var returnbutton = link_button("Return", tasks);
-    elems.push(returnbutton);
-    
-    return elems;
-}
-
-function bettytask() {
-     var elems = [];
-    
-    var pagename = document.createElement("p");
-    pagename.innerHTML = "Betty's Tasks";
-    elems.push(pagename);
-    
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-    
-    var returnbutton = link_button("Return", tasks);
-    elems.push(returnbutton);
-    
     return elems;
 }
 
@@ -302,52 +263,12 @@ function updates() {
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
-    var viewbutton = link_button("View All",martinupdates);
-    elems.push(viewbutton);
-    
-    var viewbutton2 = link_button("View All",bettyupdates);
-    elems.push(viewbutton2);
-    
    //only add "Add a new update" button if user is care manager
    var isFriend = false; //remove after isFriend is implemented
     if (!isFriend) {
     var addbutton = link_button("Add a new update",addupdate);
     elems.push(addbutton);
     }
-    return elems;
-}
-
-function martinupdates() {
-     var elems = [];
-    
-    var pagename = document.createElement("p");
-    pagename.innerHTML = "Martin's Updates";
-    elems.push(pagename);
-    
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-    
-    var returnbutton = link_button("Return", updates);
-    elems.push(returnbutton);
-    
-    return elems;
-}
-
-function bettyupdates() {
-     var elems = [];
-    
-    var pagename = document.createElement("p");
-    pagename.innerHTML = "Betty's Updates";
-    elems.push(pagename);
-    
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-    
-    var returnbutton = link_button("Return", updates);
-    elems.push(returnbutton);
-    
     return elems;
 }
 
