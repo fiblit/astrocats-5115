@@ -309,6 +309,7 @@ function updates() {
     elems.push(viewbutton2);
     
    //only add "Add a new update" button if user is care manager
+   var isFriend = false; //remove after isFriend is implemented
     if (!isFriend) {
     var addbutton = link_button("Add a new update",addupdate);
     elems.push(addbutton);
