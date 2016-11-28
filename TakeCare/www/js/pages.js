@@ -278,7 +278,8 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
-         build_page(tasks);
+ 
+         
         }
     }));
     //create cancel button
