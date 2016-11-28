@@ -4,6 +4,58 @@ function __init() {
     build_page(page1);
 }
 
+
+// Function for animated popout box
+// internal = what to popout
+// time = how long it takes to popout "internal"
+function popout(internal, time) {
+    var box = document.createElement("div");
+    box.className = "popout";
+    box.style.width = internal.style.width;
+    box.style.height = internal.style.height;
+    internal.style.animation = "popout "+time+"s";
+    box.appendChild(internal);
+    return box;
+}
+
+// Function for making an alert/confirmation box in the middle of the screen
+function popup(internal) {
+    var box = document.createElement("div");
+    box.className = "alert";
+    box.style.width = internal.style.width;
+    box.style.height = internal.style.height;
+    box.appendChild(internal);
+    return box;
+}
+
+// Extension of popup for error boxes
+function errorpopup(internal) {
+	var buttons = document.createElement("div");
+	buttons.appendChild(self_button("Ok", function() {
+		undim();
+	}));
+	internal.appendChild(buttons);
+	
+	var box = popup(internal);
+    return box;
+}
+
+// Extension of popup for confirmation boxes
+function confirmationpopup(internal, confirmedfunction) {
+	var buttons = document.createElement("div");
+	buttons.appendChild(self_button("Cancel", function() {
+		undim();
+	}));
+	buttons.appendChild(self_button("Ok", function() {
+		confirmedfunction();
+		undim();
+	}));
+	internal.appendChild(buttons);
+	
+	var box = popup(internal);
+	return box;
+}
+
 //given the page (array of HTMLElements) it will build it into the app.
 function build_page(page) {
     var app = document.querySelector(".app");
