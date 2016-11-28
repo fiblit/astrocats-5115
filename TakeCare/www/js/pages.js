@@ -71,6 +71,8 @@ function page2() {
         dim();
     });
 	
+	var accepttaskbutton = link_button("Accept Task Page", accepttask);
+	
 	// Create a confirmation button that either does the thing you want or lets you cancel
 	
     
@@ -80,6 +82,7 @@ function page2() {
     buttons.appendChild(popbutton);
 	buttons.appendChild(errorbutton);
 	buttons.appendChild(confirmbutton);
+	buttons.appendChild(accepttaskbutton);
     elems.push(buttons);
 
     return elems;
@@ -306,14 +309,16 @@ function addtasks() {
 // Accept Task page
 function accepttask() {
 	var elems = [];
-    
+	
+	// Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);    
+	
     var pagename = document.createElement("p");
     pagename.innerHTML = "Accept a task";
     elems.push(pagename);
     
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
+    
 	
 	var taskbutton = document.createElement("div");
 	taskbutton.appendChild(self_button("Accept Task", function(){
