@@ -270,39 +270,9 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
- 	 // create a button that opens a popup
-    	var popbutton = self_button("popup", function () {
-        var stuff = document.createElement("div");
-        stuff.style.width = "30vw";
-        stuff.style.height = "20vh";
-        stuff.innerHTML = "This is an alert box.\nYou have been alerted.";
-        var box = popup(stuff);
-        document.querySelector(".app").appendChild(box);
-        dim();
-    });
-    	var confirmbutton = self_button("confirmation", function () {
-        var stuff = document.createElement("div");
-        stuff.style.width = "30vw";
-        stuff.style.height = "20vh";
-        stuff.innerHTML = "Are you sure you want to post this task?";
-        var box = confirmationpopup(stuff, function() {
-			var cool = document.createElement("div");
-			cool.innerHTML = "Task has been posted.";
-			document.querySelector(".app").appendChild(cool);
-		});
-        document.querySelector(".app").appendChild(box);
-        dim();
-    var buttons = document.createElement("div");
-    
-    buttons.appendChild(popbutton);
-	
-	buttons.appendChild(confirmbutton);
-    elems.push(buttons);
-    }));
+ 	buildpages(tasks);
     });
 
-
-    
     return elems;
 } 
 
@@ -366,13 +336,14 @@ function accepttask() {
 function updates() {
     var elems = [];
     
-    var pagename = document.createElement("p");
-    pagename.innerHTML = "Updates";
-    elems.push(pagename);
-    
+        
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Updates";
+    elems.push(pagename);
     
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
