@@ -187,7 +187,7 @@ function profile() {
     return elems;
 }
 
-// Placeholder for tasks page
+// Tasks page
 function tasks() {
     var elems = [];
     
@@ -278,7 +278,63 @@ function addtasks() {
     return elems;
 } 
 
-// Placeholder for updates page
+// Accept Task page
+function accepttask() {
+	var elems = [];
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Accept a task";
+    elems.push(pagename);
+    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+	
+	var taskbutton = document.createElement("div");
+	taskbutton.appendChild(self_button("Accept Task", function(){
+		
+	}));
+	elems.push(taskbutton)
+	
+	var taskinfo = document.createElement("div");
+	
+	var d = new Date();
+	var hours = d.getHours();
+	var minutes = d.getMinutes();
+	var ampm = hours >= 12 ? 'pm' : 'am';
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	minutes = minutes < 10 ? '0'+minutes : minutes;
+	var strTime = hours + ':' + minutes + ' ' + ampm;
+	
+	var careteam = document.createElement("p");
+	careteam.innerHTML = "Care Team: " + "PLACEHOLDER TEXT";
+	var taskname = document.createElement("p");
+	taskname.innerHTML = "Task Name: " + "PLACEHOLDER TEXT";
+	var monthday = document.createElement("p");
+	monthday.innerHTML = "Date: " + d.getMonth() + "/" + d.getDate();
+	var timeofday = document.createElement("p");
+	timeofday.innerHTML = "Time: " + strTime;
+	var address = document.createElement("p");
+	address.innerHTML = "Location: " + "PLACEHOLDER TEXT";
+	var importance = document.createElement("p");
+	importance.innerHTML = "Importance: " + "Sure";
+	var description = document.createElement("p");
+	description.innerHTML = "Description: " + "PLACEHOLDER TEXT";
+	
+	taskinfo.appendChild(careteam);
+	taskinfo.appendChild(taskname);
+	taskinfo.appendChild(monthday);
+	taskinfo.appendChild(timeofday);
+	taskinfo.appendChild(address);
+	taskinfo.appendChild(importance);
+	taskinfo.appendChild(description);
+	elems.push(taskinfo);
+	
+    return elems;
+}
+
+// Updates page
 function updates() {
     var elems = [];
     
