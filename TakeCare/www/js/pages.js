@@ -71,8 +71,6 @@ function page2() {
         dim();
     });
 	
-	var accepttaskbutton = link_button("Accept Task Page", accepttask);
-	
 	// Create a confirmation button that either does the thing you want or lets you cancel
 	
     
@@ -82,7 +80,6 @@ function page2() {
     buttons.appendChild(popbutton);
 	buttons.appendChild(errorbutton);
 	buttons.appendChild(confirmbutton);
-	buttons.appendChild(accepttaskbutton);
     elems.push(buttons);
 
     return elems;
@@ -193,14 +190,14 @@ function profile() {
 // Tasks page
 function tasks() {
     var elems = [];
+        
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
     
     var pagename = document.createElement("p");
     pagename.innerHTML = "Tasks page";
     elems.push(pagename);
-    
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
     
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
@@ -217,15 +214,14 @@ function tasks() {
 function addtasks() {
      var elems = [];
     
+        // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+    
     var pagename = document.createElement("p");
     pagename.innerHTML = "Add a new task";
     elems.push(pagename);
-    
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-
-    
+   
     //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
     text_area.innerHTML = ""+
@@ -254,6 +250,12 @@ function addtasks() {
         "<textarea class=\"description\" rows=\"5\" optional/></textarea>"+
     "</div>";
     
+     //create cancel button
+    buttons.appendChild(link_button("Cancel", tasks));
+    text_area.appendChild(buttons);
+    text_area.className = "textarea";
+    elems.push(text_area);
+    
      //Create post button
     var buttons = document.createElement("div");
     buttons.appendChild(self_button("Post", function () {
@@ -268,7 +270,8 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
-        var popbutton = self_button("popup", function () {
+ 	 // create a button that opens a popup
+    	var popbutton = self_button("popup", function () {
         var stuff = document.createElement("div");
         stuff.style.width = "30vw";
         stuff.style.height = "20vh";
@@ -276,8 +279,8 @@ function addtasks() {
         var box = popup(stuff);
         document.querySelector(".app").appendChild(box);
         dim();
-});
-        var confirmbutton = self_button("confirmation", function () {
+    });
+    	var confirmbutton = self_button("confirmation", function () {
         var stuff = document.createElement("div");
         stuff.style.width = "30vw";
         stuff.style.height = "20vh";
@@ -289,18 +292,15 @@ function addtasks() {
 		});
         document.querySelector(".app").appendChild(box);
         dim();
-});
- 	var buttons = document.createElement("div");
- 	buttons.appendChild(popbutton);
-		buttons.appendChild(confirmbutton);
-    	elems.push(buttons);
-        }
+    var buttons = document.createElement("div");
+    
+    buttons.appendChild(popbutton);
+	
+	buttons.appendChild(confirmbutton);
+    elems.push(buttons);
     }));
-    //create cancel button
-    buttons.appendChild(link_button("Cancel", tasks));
-    text_area.appendChild(buttons);
-    text_area.className = "textarea";
-    elems.push(text_area);
+    });
+
 
     
     return elems;
@@ -309,16 +309,14 @@ function addtasks() {
 // Accept Task page
 function accepttask() {
 	var elems = [];
-	
-	// Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);    
-	
+    
     var pagename = document.createElement("p");
     pagename.innerHTML = "Accept a task";
     elems.push(pagename);
     
-    
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
 	
 	var taskbutton = document.createElement("div");
 	taskbutton.appendChild(self_button("Accept Task", function(){
