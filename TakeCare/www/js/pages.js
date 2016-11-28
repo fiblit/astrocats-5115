@@ -45,11 +45,41 @@ function page2() {
         document.querySelector(".app").appendChild(box);
         dim();
     });
+	
+	// create a button that opens an error popup
+	var errorbutton = self_button("error", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "This is an error box.\nYou have been errored.";
+        var box = errorpopup(stuff);
+        document.querySelector(".app").appendChild(box);
+        dim();
+    });
+	
+	var confirmbutton = self_button("confirmation", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "This is an confirm box.\nYou have been confirmed.";
+        var box = confirmationpopup(stuff, function() {
+			var cool = document.createElement("div");
+			cool.innerHTML = "COOL";
+			document.querySelector(".app").appendChild(cool);
+		});
+        document.querySelector(".app").appendChild(box);
+        dim();
+    });
+	
+	// Create a confirmation button that either does the thing you want or lets you cancel
+	
     
     // Create buttons div with button linking to page 1
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("button2", page1));
     buttons.appendChild(popbutton);
+	buttons.appendChild(errorbutton);
+	buttons.appendChild(confirmbutton);
     elems.push(buttons);
 
     return elems;

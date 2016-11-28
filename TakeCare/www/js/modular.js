@@ -13,10 +13,6 @@ function build_page(page) {
     var dimmer = document.createElement("div");
     dimmer.className = "dimmer";
     dimmer.onclick = function() {
-        var popouts = document.querySelectorAll(".popout, .alert");
-        for (var i = 0; i < popouts.length; i++) {
-            popouts[i].parentNode.removeChild(popouts[i]);
-        }
         undim();
     };
     app.appendChild(dimmer);
@@ -120,6 +116,34 @@ function popup(internal) {
     return box;
 }
 
+// Extension of popup for error boxes
+function errorpopup(internal) {
+	var buttons = document.createElement("div");
+	buttons.appendChild(self_button("Ok", function() {
+		undim();
+	}));
+	internal.appendChild(buttons);
+	
+	var box = popup(internal);
+    return box;
+}
+
+// Extension of popup for confirmation boxes
+function confirmationpopup(internal, confirmedfunction) {
+	var buttons = document.createElement("div");
+	buttons.appendChild(self_button("Cancel", function() {
+		undim();
+	}));
+	buttons.appendChild(self_button("Ok", function() {
+		confirmedfunction();
+		undim();
+	}));
+	internal.appendChild(buttons);
+	
+	var box = popup(internal);
+	return box;
+}
+
 // Function for activating the dimmer div
 function dim() {
     var dimmer = document.querySelector(".dimmer");
@@ -128,6 +152,11 @@ function dim() {
 
 // Function for deactivating the dimmer div
 function undim() {
+	var popouts = document.querySelectorAll(".popout, .alert");
+	for (var i = 0; i < popouts.length; i++) {
+		popouts[i].parentNode.removeChild(popouts[i]);
+	}
+    
     var dimmer = document.querySelector(".dimmer");
     dimmer.style.display = "none";
 }
