@@ -236,11 +236,11 @@ function addtasks() {
     "</div>"+
     "<div id=\"date\">"+
         "<label>Date: * </label>"+
-        "<input type=\"text\" name=\"date\" required/>"+
+        "<input type=\"date\" name=\"date\" required/>"+
     "</div>"+
      "<div id=\"time\">"+
         "<label>Time: * </label>"+
-        "<input type=\"text\" name=\"time\" required/>"+
+        "<input type=\"time\" name=\"time\" required/>"+
     "</div>"+
      "<div id=\"location\">"+
         "<label>Location: (optional) </label>"+
