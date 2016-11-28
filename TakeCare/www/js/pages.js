@@ -278,26 +278,6 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
-        var popbutton = self_button("popup", function () {
-        var stuff = document.createElement("div");
-        stuff.style.width = "30vw";
-        stuff.style.height = "20vh";
-        stuff.innerHTML = "This is an alert box.\nYou have been alerted.";
-        var box = popup(stuff);
-        document.querySelector(".app").appendChild(box);
-        dim();
-    });
-	
-	// create a button that opens an error popup
-	var errorbutton = self_button("error", function () {
-        var stuff = document.createElement("div");
-        stuff.style.width = "30vw";
-        stuff.style.height = "20vh";
-        stuff.innerHTML = "This is an error box.\nYou have been errored.";
-        var box = errorpopup(stuff);
-        document.querySelector(".app").appendChild(box);
-        dim();
-});
         var confirmbutton = self_button("confirmation", function () {
         var stuff = document.createElement("div");
         stuff.style.width = "30vw";
@@ -312,9 +292,6 @@ function addtasks() {
         dim();
 });
     var buttons = document.createElement("div");
-    buttons.appendChild(link_button("button2", page1));
-    buttons.appendChild(popbutton);
-	buttons.appendChild(errorbutton);
 	buttons.appendChild(confirmbutton);
     elems.push(buttons);
         }
