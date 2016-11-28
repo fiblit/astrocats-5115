@@ -291,8 +291,12 @@ function addtasks() {
         document.querySelector(".app").appendChild(box);
         dim();
 });
- 
-         
+    var buttons = document.createElement("div");
+    buttons.appendChild(link_button("button2", page1));
+    buttons.appendChild(popbutton);
+	buttons.appendChild(errorbutton);
+	buttons.appendChild(confirmbutton);
+    elems.push(buttons);
         }
     }));
     //create cancel button
