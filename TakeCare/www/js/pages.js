@@ -202,7 +202,7 @@ function tasks() {
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
-    
+    var isFriend = false; //delete after ifFriend is implemented
     //only show "Add a new task" button for CM UI
     if (!isFriend){ //Dalton to implement isFriend
     var addbutton = link_button("Add a new task",addtasks);
