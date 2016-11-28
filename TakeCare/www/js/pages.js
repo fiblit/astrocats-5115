@@ -265,6 +265,15 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
+        var popbutton = self_button("popup", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "This is an alert box.\nYou have been alerted.";
+        var box = popup(stuff);
+        document.querySelector(".app").appendChild(box);
+        dim();
+});
         var confirmbutton = self_button("confirmation", function () {
         var stuff = document.createElement("div");
         stuff.style.width = "30vw";
@@ -279,7 +288,8 @@ function addtasks() {
         dim();
 });
  	var buttons = document.createElement("div");
-	buttons.appendChild(confirmbutton);
+ 	buttons.appendChild(popbutton);
+		buttons.appendChild(confirmbutton);
     	elems.push(buttons);
         }
     }));
