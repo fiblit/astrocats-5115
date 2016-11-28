@@ -265,7 +265,22 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
-         build_page(tasks);
+        var confirmbutton = self_button("confirmation", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "Are you sure you want to post this task?";
+        var box = confirmationpopup(stuff, function() {
+			var cool = document.createElement("div");
+			cool.innerHTML = "Task has been posted.";
+			document.querySelector(".app").appendChild(cool);
+		});
+        document.querySelector(".app").appendChild(box);
+        dim();
+});
+ 	var buttons = document.createElement("div");
+	buttons.appendChild(confirmbutton);
+    	elems.push(buttons);
         }
     }));
     //create cancel button
