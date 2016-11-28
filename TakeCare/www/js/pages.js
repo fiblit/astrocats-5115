@@ -202,7 +202,7 @@ function tasks() {
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
-    
+    var isFriend = false; //delete after ifFriend is implemented
     //only show "Add a new task" button for CM UI
     if (!isFriend){ //Dalton to implement isFriend
     var addbutton = link_button("Add a new task",addtasks);
@@ -236,11 +236,11 @@ function addtasks() {
     "</div>"+
     "<div id=\"date\">"+
         "<label>Date: * </label>"+
-        "<input type=\"text\" name=\"date\" required/>"+
+        "<input type=\"date\" name=\"date\" required/>"+
     "</div>"+
      "<div id=\"time\">"+
         "<label>Time: * </label>"+
-        "<input type=\"text\" name=\"time\" required/>"+
+        "<input type=\"time\" name=\"time\" required/>"+
     "</div>"+
      "<div id=\"location\">"+
         "<label>Location: (optional) </label>"+
@@ -265,7 +265,32 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
-         build_page(tasks);
+        var popbutton = self_button("popup", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "This is an alert box.\nYou have been alerted.";
+        var box = popup(stuff);
+        document.querySelector(".app").appendChild(box);
+        dim();
+});
+        var confirmbutton = self_button("confirmation", function () {
+        var stuff = document.createElement("div");
+        stuff.style.width = "30vw";
+        stuff.style.height = "20vh";
+        stuff.innerHTML = "Are you sure you want to post this task?";
+        var box = confirmationpopup(stuff, function() {
+			var cool = document.createElement("div");
+			cool.innerHTML = "Task has been posted.";
+			document.querySelector(".app").appendChild(cool);
+		});
+        document.querySelector(".app").appendChild(box);
+        dim();
+});
+ 	var buttons = document.createElement("div");
+ 	buttons.appendChild(popbutton);
+		buttons.appendChild(confirmbutton);
+    	elems.push(buttons);
         }
     }));
     //create cancel button
