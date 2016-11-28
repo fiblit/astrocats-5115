@@ -40,6 +40,7 @@ var database =
         "time": 1480348031365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
+        "own": "Dennis",
         "description": "We need 2 boxes of cookies"}
       ],
       "updates" : [
@@ -63,6 +64,7 @@ var database =
         "time": 1480349031365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
+        "own": "Dennis",
         "description": "We need 2 boxes of brownies"}
       ],
       "updates" : [
@@ -86,6 +88,7 @@ var database =
         "time": 1480349931365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
+        "own": null,
         "description": "We need 2 tons of frozen milk ASAP"}
       ],
       "updates" : [

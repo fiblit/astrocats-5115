@@ -140,26 +140,30 @@ function landing() {
     elems.push(pagenum);
 
     //** the following is rather broken **//
+    
     var ownedTeams = data_list(function () {
         var list = [];
-        for (let k of Object.keys(database['teams']).filter(function(elem, i, arr) {
+        for (k of Object.keys(database['teams']).filter(function(elem, i, arr) {
                 return (database['persons'][database['current_user']]['teams'][elem] && //null check
                        database['persons'][database['current_user']]['teams'][elem]['own']);
             })) {
-            list.push(database['teams'][k])
+            var o = {"teamname":k, "info":database['teams'][k]}
+            list.push(o);
         }
         return list;
     }());
     var followedTeams = data_list(function () {
         var list = [];
-        for (let k of Object.keys(database['teams']).filter(function(elem, i, arr) {
+        for (k of Object.keys(database['teams']).filter(function(elem, i, arr) {
                 return (database['persons'][database['current_user']]['teams'][elem] && //null check
-                       database['persons'][database['current_user']]['teams'][elem]['own']);
+                       !database['persons'][database['current_user']]['teams'][elem]['own']);
             })) {
-            list.push(database['teams'][k])
+            var o = {"teamname":k, "info":database['teams'][k]}
+            list.push(o);
         }
         return list;
     }());
+    
     elems.push(ownedTeams);
     elems.push(followedTeams);
     //** the above is rather broken **//
@@ -204,6 +208,7 @@ function tasks() {
     
     var isFriend = false; //delete after ifFriend is implemented
     //only show "Add a new task" button for CM UI
+    var isFriend = false;
     if (!isFriend){ //Dalton to implement isFriend
     var addbutton = link_button("Add a new task",addtasks);
     elems.push(addbutton);

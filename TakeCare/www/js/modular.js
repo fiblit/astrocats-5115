@@ -1,7 +1,8 @@
 //call at window load
 function __init() {
     app.initialize();
-    build_page(login);
+    database['current_user'] = "Alice";
+    build_page(landing);
 }
 
 //given the page (array of HTMLElements) it will build it into the app.
@@ -177,9 +178,12 @@ function data_list(dataToList) {
         row.appendChild(th);
     }
     dataListed.appendChild(row);
-    for (var i; i < dataToList.length; i++) {
+    console.log(dataToList.length);
+    for (var i = 0; i < dataToList.length; i++) {
         row = document.createElement("tr");
+        console.log(dataToList[i]);
         for (var k in dataToList[i]) {
+            console.log(dataToList[i]);
             var col = document.createElement("td");
             col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
@@ -188,6 +192,38 @@ function data_list(dataToList) {
         dataListed.appendChild(row);
     }
     return dataListed;
+}
+
+/* source: 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+This is for compatibility with all browsers */
+if (!Array.prototype.filter) {
+  Array.prototype.filter = function(fun/*, thisArg*/) {
+    'use strict';
+
+    if (this === void 0 || this === null) {
+      throw new TypeError();
+    }
+
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (typeof fun !== 'function') {
+      throw new TypeError();
+    }
+
+    var res = [];
+    var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+    for (var i = 0; i < len; i++) {
+      if (i in t) {
+        var val = t[i];
+        if (fun.call(thisArg, val, i, t)) {
+          res.push(val);
+        }
+      }
+    }
+
+    return res;
+  };
 }
 
 /*** DEPRECATED BELOW ***/
