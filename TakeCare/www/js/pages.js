@@ -139,8 +139,7 @@ function landing() {
     pagenum.innerHTML = "This is landing page (WIP)";
     elems.push(pagenum);
 
-    //** the following is rather broken **//
-    
+    //** I will try to make the following easier to use/copy **//
     var ownedTeams = data_list(function () {
         var list = [];
         for (k of Object.keys(database['teams']).filter(function(elem, i, arr) {

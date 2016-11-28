@@ -226,6 +226,24 @@ if (!Array.prototype.filter) {
   };
 }
 
+/*
+source:
+http://stackoverflow.com/questions/5072136/javascript-filter-for-objects
+*/
+Object.filter = function( obj, predicate) {
+    var result = {}, key;
+    // ---------------^---- as noted by @CMS, 
+    //      always declare variables with the "var" keyword
+
+    for (key in obj) {
+        if (obj.hasOwnProperty(key) && !predicate(obj[key])) {
+            result[key] = obj[key];
+        }
+    }
+
+    return result;
+};
+
 /*** DEPRECATED BELOW ***/
 //returns via local methods the JSON database
 // note: if in the future this is changed to asynchrounously requesting data from a server, 
