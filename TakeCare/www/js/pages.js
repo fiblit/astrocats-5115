@@ -274,8 +274,9 @@ function addtasks() {
             text_area.appendChild(p);
         }
         else {
- 	buildpages(tasks);
-    });
+            buildpages(tasks);
+        }
+    }));
 
     return elems;
 } 
