@@ -141,22 +141,26 @@ function landing() {
 
     //** I will try to make the following easier to use/copy **//
 
+    //*** SETH ***//
+    /* you may want to make the next line a div which will have ownedTeams in it */
     var h = document.createElement("p");
     h.innerHTML = "owned";
     elems.push(h);
     var ownedTeams = data_list(ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                database['persons'][database['current_user']]['teams'][name]['own']);
-    }, true, "team", "details_press_f12"));
+    }, true,  true, "team", "details_press_f12"));
     elems.push(ownedTeams);
 
+    //*** SETH ***//
+    /* you may want to make the next line a div which will have unownedTeams in it */
     var h = document.createElement("p");
     h.innerHTML = "unowned";
     elems.push(h);
     var followedTeams = data_list(ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                !database['persons'][database['current_user']]['teams'][name]['own']);
-    }, true, "team", "details_press_f12"));
+    }, true, false ));
     elems.push(followedTeams);
     //** the above is rather broken **//
 

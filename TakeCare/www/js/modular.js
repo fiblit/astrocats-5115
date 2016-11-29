@@ -1,8 +1,7 @@
 //call at window load
 function __init() {
     app.initialize();
-    database['current_user'] ="Alice";
-    build_page(landing);
+    build_page(login);
 }
 
 //given the page (array of HTMLElements) it will build it into the app.
@@ -60,6 +59,7 @@ function sidebar() {
     sidebar.appendChild(link_button("Tasks", tasks));
     sidebar.appendChild(link_button("Updates", updates));
     sidebar.appendChild(link_button("Settings", settings));
+    sidebar.appendChild(link_button("Log out", login));
     sidebar.className = "sidebar";
     var box = popout(sidebar, 0.65);
     dim();
@@ -168,7 +168,6 @@ function undim() {
 //dataToList is an array of objects with key:value pairs.
 //** this is broken
 function data_list(dataToList) {
-  //  console.log(dataToList);
     var dataListed = document.createElement("table");
     var row = document.createElement("tr");
     for (var k in dataToList[0]) {
@@ -178,12 +177,9 @@ function data_list(dataToList) {
         row.appendChild(th);
     }
     dataListed.appendChild(row);
-   // console.log(dataToList.length);
     for (var i = 0; i < dataToList.length; i++) {
         row = document.createElement("tr");
-       // console.log(dataToList[i]);
         for (var k in dataToList[i]) {
-            //console.log(dataToList[i]);
             var col = document.createElement("td");
             col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
@@ -202,14 +198,18 @@ function data_list(dataToList) {
 //      describes the filter where elem is the current element value being filter, and key is its key;
 //  withKey:: boolean 
 //      whether the returned array objects have the key wrapper;
-function ufilter(obj, fun, withKey=true, keyName="key", valName="val") {
+//  withVal:: boolean
+//      same as withKey but for val; only takes affect if withKey == true.
+function ufilter(obj, fun, withKey=true, withVal=true, keyName="key", valName="val") {
     var result = [];
     for (var key in obj) {
         if (obj.hasOwnProperty(key) && fun(obj[key], key)) {
             if (withKey) {
                 var o = {};
                 o[keyName] = key;
-                o[valName] = obj[key];
+                if (withVal) {
+                    o[valName] = obj[key];
+                }
                 result.push(o);
             }
             else {              
