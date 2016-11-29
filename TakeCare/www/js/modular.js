@@ -1,8 +1,7 @@
 //call at window load
 function __init() {
     app.initialize();
-    database['current_user'] = "Alice";
-    build_page(landing);
+    build_page(login);
 }
 
 //given the page (array of HTMLElements) it will build it into the app.
