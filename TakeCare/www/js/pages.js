@@ -251,14 +251,15 @@ function addtasks() {
         "<textarea class=\"description\" rows=\"5\" optional/></textarea>"+
     "</div>";
     
-     //create cancel button
+    //create buttons
+    var buttons = document.createElement("div");
+    //create cancel button
     buttons.appendChild(link_button("Cancel", tasks));
     text_area.appendChild(buttons);
     text_area.className = "textarea";
     elems.push(text_area);
     
      //Create post button
-    var buttons = document.createElement("div");
     buttons.appendChild(self_button("Post", function () {
         var careteam = text_area.querySelector("#careteam > input").value;
         var taskname = text_area.querySelector("#taskname > input").value;
