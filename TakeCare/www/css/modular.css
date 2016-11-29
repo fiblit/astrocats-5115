@@ -134,6 +134,24 @@ nav button:active {
 }
 
 
+/*** HEY SETH ***/
+table, td, th, tr {
+	border: 3px solid black;
+	border-collapse: collapse;
+	margin: 5px;
+	padding: 5px;
+}
+
+
+/* you'll probably have stuff like this
+but actually doing something decent */
+.head_team {
+	background: yellow;
+}
+.data_team {
+	background: white;
+}
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 	

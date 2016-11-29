@@ -140,30 +140,23 @@ function landing() {
     elems.push(pagenum);
 
     //** I will try to make the following easier to use/copy **//
-    var ownedTeams = data_list(function () {
-        var list = [];
-        for (k of Object.keys(database['teams']).filter(function(elem, i, arr) {
-                return (database['persons'][database['current_user']]['teams'][elem] && //null check
-                       database['persons'][database['current_user']]['teams'][elem]['own']);
-            })) {
-            var o = {"teamname":k, "info":database['teams'][k]}
-            list.push(o);
-        }
-        return list;
-    }());
-    var followedTeams = data_list(function () {
-        var list = [];
-        for (k of Object.keys(database['teams']).filter(function(elem, i, arr) {
-                return (database['persons'][database['current_user']]['teams'][elem] && //null check
-                       !database['persons'][database['current_user']]['teams'][elem]['own']);
-            })) {
-            var o = {"teamname":k, "info":database['teams'][k]}
-            list.push(o);
-        }
-        return list;
-    }());
-    
+
+    var h = document.createElement("p");
+    h.innerHTML = "owned";
+    elems.push(h);
+    var ownedTeams = data_list(ufilter(database['teams'] , function(e, name) {
+        return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
+               database['persons'][database['current_user']]['teams'][name]['own']);
+    }, true, "team", "details_press_f12"));
     elems.push(ownedTeams);
+
+    var h = document.createElement("p");
+    h.innerHTML = "unowned";
+    elems.push(h);
+    var followedTeams = data_list(ufilter(database['teams'] , function(e, name) {
+        return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
+               !database['persons'][database['current_user']]['teams'][name]['own']);
+    }, true, "team", "details_press_f12"));
     elems.push(followedTeams);
     //** the above is rather broken **//
 

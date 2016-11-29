@@ -1,7 +1,8 @@
 //call at window load
 function __init() {
     app.initialize();
-    build_page(login);
+    database['current_user'] ="Alice";
+    build_page(landing);
 }
 
 //given the page (array of HTMLElements) it will build it into the app.
@@ -167,22 +168,22 @@ function undim() {
 //dataToList is an array of objects with key:value pairs.
 //** this is broken
 function data_list(dataToList) {
-    console.log(dataToList);
+  //  console.log(dataToList);
     var dataListed = document.createElement("table");
     var row = document.createElement("tr");
     for (var k in dataToList[0]) {
         var th = document.createElement("th");
         th.appendChild(document.createTextNode(k));
-        th.className = k;
+        th.className = "head_"+k;
         row.appendChild(th);
     }
     dataListed.appendChild(row);
-    console.log(dataToList.length);
+   // console.log(dataToList.length);
     for (var i = 0; i < dataToList.length; i++) {
         row = document.createElement("tr");
-        console.log(dataToList[i]);
+       // console.log(dataToList[i]);
         for (var k in dataToList[i]) {
-            console.log(dataToList[i]);
+            //console.log(dataToList[i]);
             var col = document.createElement("td");
             col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
@@ -193,6 +194,34 @@ function data_list(dataToList) {
     return dataListed;
 }
 
+// this filter works on assoc and non-assoc arrays/objects AFAIK.
+//Will optionally return either an array of {"key","val"} objects, or just an array of the val's
+//  obj:: object 
+//      the object/assoc array to be filted;
+//  fun:: function(elem, key)
+//      describes the filter where elem is the current element value being filter, and key is its key;
+//  withKey:: boolean 
+//      whether the returned array objects have the key wrapper;
+function ufilter(obj, fun, withKey=true, keyName="key", valName="val") {
+    var result = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key) && fun(obj[key], key)) {
+            if (withKey) {
+                var o = {};
+                o[keyName] = key;
+                o[valName] = obj[key];
+                result.push(o);
+            }
+            else {              
+                result.push(obj[key]);
+            }   
+        }
+    }
+
+    return result;
+}
+
+/************ probably don't need this
 /* source: 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 This is for compatibility with all browsers */
@@ -223,51 +252,4 @@ if (!Array.prototype.filter) {
 
     return res;
   };
-}
-
-/*
-source:
-http://stackoverflow.com/questions/5072136/javascript-filter-for-objects
-*/
-Object.filter = function( obj, predicate) {
-    var result = {}, key;
-    // ---------------^---- as noted by @CMS, 
-    //      always declare variables with the "var" keyword
-
-    for (key in obj) {
-        if (obj.hasOwnProperty(key) && !predicate(obj[key])) {
-            result[key] = obj[key];
-        }
-    }
-
-    return result;
-};
-
-/*** DEPRECATED BELOW ***/
-//returns via local methods the JSON database
-// note: if in the future this is changed to asynchrounously requesting data from a server, 
-//   it would probably be best to use MySQL or some other database query.
-function read_data(callbackAfterRead) {
-    /* so I'm thinking I'll pivot and do this only on initialization and not have any peristent writing to the server */
-
-}
-
-
-//updates via local methods the JSON database
-//I/O blocking (?)
-//modifyCallback takes in the database and spits out the new one or how to get to the new one.
-// it's an unfinished map basically.
-// note: if in the future this is changed to asynchrounously writing data tp a server, 
-//  it would probably be best to use MySQL or some other database query.
-function write_data(callbackAfterWrite) {
-    /* get the latest data file */
-
-    /* well.... this sucks
-    kinda need server side stuff for this one. Javascript can't write files on the client side, and the data is stored on the server anyways
-    Maybe I can do this with AJAX?
-    Or just say screw it and actually implement the necessary server-side functionality for reading/writing from a mock database.
-    Or say screw it in the other way and don't use any sort of persistent file, only reading from a JSON object.
-
-    ^^^^ I like that last idea. Less work for Dalton.
-    */   
 }
