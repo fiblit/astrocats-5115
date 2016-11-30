@@ -89,23 +89,42 @@ function login() {
     //create the array to store returned HTMLElements
     var elems = [];
 
+
+    var logo = document.createElement('img');
+    logo.id = "login_logo";
+    logo.setAttribute("src","img/FULL_LOGO.png");
+    elems.push(logo);
+
     // Create input area for (fake) login/password
     var input_area = document.createElement("div");
     input_area.innerHTML = ""+
+    "<table>"+
+        "<tr id=\"username\">"+
+            "<td><label>Login</label></td>"+
+            "<td><input type=\"text\" name=\"username\" required/></td>"+
+        "</tr>"+
+        "<tr id=\"password\">"+
+            "<td><label>Password</label></td>"+
+            "<td><input type=\"password\" name=\"password\" required/></td>"+
+        "</tr>"+
+    "</table>";
+
+/*
     "<div id=\"username\">"+
         "<label>Login</label>"+
-        "<input type=\"text\" name=\"username\" required/>" +
+        "<div class=\"container\"><input type=\"text\" name=\"username\" required/></div>" +
     "</div>"+
     "<div id=\"password\">"+
         "<label>Password</label>"+
-        "<input type=\"password\" name=\"password\" required/>"+
+        "<div class=\"container\"><input type=\"password\" name=\"password\" required/></div>"+
     "</div>";
-
+*/
     //Create login button
-    var buttons = document.createElement("div");
-    buttons.appendChild(self_button("Login", function () {
-        var user = input_area.querySelector("#username > input").value;
-        var pass = input_area.querySelector("#password > input").value;
+    var buttons = document.createElement("tr");
+    var td = document.createElement('td');
+    td.appendChild(self_button("Login", function () {
+        var user = input_area.querySelector("#username input").value;
+        var pass = input_area.querySelector("#password input").value;
         if (database["persons"][user] && //null check
             database["persons"][user]["password"] === pass) {
 
@@ -113,13 +132,19 @@ function login() {
             build_page(landing);
         }
         else if(!input_area.querySelector("#error")) {
-            var p = document.createElement("p");
+            var p = document.createElement("div");
             p.innerHTML = "Password is incorrect.";
             p.id = "error";
-            input_area.appendChild(p);
+            p.style.width = "250px";
+            p.style.height = "125px";
+            document.querySelector(".app").appendChild(errorpopup(p));
+            dim();
         }
     }));
-    input_area.appendChild(buttons);
+    td.setAttribute("colspan", 2);
+    buttons.appendChild(td);
+    console.log(input_area);
+    input_area.firstChild.firstChild.appendChild(buttons);
     input_area.className = "inputarea";
     elems.push(input_area);
 
@@ -138,8 +163,6 @@ function landing() {
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is landing page (WIP)";
     elems.push(pagenum);
-
-    //** I will try to make the following easier to use/copy **//
 
     //*** SETH ***//
     /* you may want to make the next line a div which will have ownedTeams in it */
