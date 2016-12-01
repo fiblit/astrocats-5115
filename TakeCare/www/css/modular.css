@@ -196,6 +196,21 @@ nav button:active {
 	font-size: 140%;
 }
 
+.textarea button {
+		float: center;
+	background: #FF714C;
+	color: #FFFFFF;
+	border: 0px;
+	height: 2.5em;
+	width: 12em;
+    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
+}
+
+.textarea button:active {
+    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
+}
+	
+
 /*** HEY SETH ***/
 table, td, th, tr {
 	border: 3px solid black;
