@@ -225,14 +225,18 @@ function tasks() {
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     
-    var isFriend = false; //delete after ifFriend is implemented
     //only show "Add a new task" button for CM UI
-    var isFriend = false;
-    if (!isFriend){ //Dalton to implement isFriend
-    var buttons = document.createElement("div");
-    buttons.appendChild(link_button("Add a new task",addtasks));
-    buttons.className = "addtaskbutton";
-    elems.push(buttons);
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
+                database['persons'][database['current_user']]['teams'][name]['own']);
+    }, true, false );
+
+    //If you own SOME team, then you are a CM.
+    if (ownedTeams.length > 0){
+        var buttons = document.createElement("div");
+        buttons.appendChild(link_button("Add a new task",addtasks));
+        buttons.className = "addtaskbutton";
+        elems.push(buttons);
     }
     
     return elems;
