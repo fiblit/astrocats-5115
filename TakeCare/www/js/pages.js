@@ -220,6 +220,7 @@ function tasks() {
     
     var pagename = document.createElement("p");
     pagename.innerHTML = "Tasks page";
+    pagename.className = "taskpage";
     elems.push(pagename);
     
     var returnbutton = link_button("Return", page1);
@@ -247,6 +248,7 @@ function addtasks() {
     
     var pagename = document.createElement("p");
     pagename.innerHTML = "Add a new task";
+    pagename.className = "addtaskpage";
     elems.push(pagename);
    
     //create input area for task, need to add importance buttons
@@ -283,6 +285,7 @@ function addtasks() {
     buttons.appendChild(link_button("Cancel", tasks));
     text_area.appendChild(buttons);
     text_area.className = "textarea";
+    elems.push(buttons);
     elems.push(text_area);
     
      //Create post button
