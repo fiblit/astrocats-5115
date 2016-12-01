@@ -229,9 +229,12 @@ function tasks() {
     //only show "Add a new task" button for CM UI
     var isFriend = false;
     if (!isFriend){ //Dalton to implement isFriend
-    var addbutton = link_button("Add a new task",addtasks);
+    var buttons = document.createElement("div");
+    buttons.appendChild(link_button("Add a new task",addtasks));
+    buttons.className = "addtaskbutton";
     elems.push(addbutton);
     }
+    
     return elems;
 }
 
