@@ -143,7 +143,6 @@ function login() {
     }));
     td.setAttribute("colspan", 2);
     buttons.appendChild(td);
-    console.log(input_area);
     input_area.firstChild.firstChild.appendChild(buttons);
     input_area.className = "inputarea";
     elems.push(input_area);

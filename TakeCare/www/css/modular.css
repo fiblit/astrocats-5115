@@ -104,10 +104,11 @@ nav button:active {
 }
 
 #login_logo {
-	width: 100vmin;
+	max-height: 30vmin;
+	max-width: 90vmin;/* vmin works surprisingly well here */
+	display: block;
 	margin: auto;
-	position: relative;
-	left: 3%;
+	margin-top: 5vh;
 }
 
 .inputarea {
@@ -115,9 +116,9 @@ nav button:active {
 	padding: 5px;
 	display: inline-block;
 	background: #B1DAEE;
-    top: 30vmax;
+    margin-top: 5vh;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,  0%);
     box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
 }
 
