@@ -181,13 +181,13 @@ nav button:active {
 
 .textarea {
 	position: absolute;
-	padding: 5px;
+	padding: 10px;
 	display: inline-block;
 	background: #B1DAEE;
-    top: 30vmax;
+    top: 80vmax;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
+   
 	
 }
 .textarea label {
@@ -196,20 +196,6 @@ nav button:active {
 	font-size: 140%;
 }
 
-.textarea button {
-		float: center;
-	background: #FF714C;
-	color: #FFFFFF;
-	border: 0px;
-	height: 2.5em;
-	width: 12em;
-    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
-}
-
-.textarea button:active {
-    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
-}
-	
 
 /*** HEY SETH ***/
 table, td, th, tr {
