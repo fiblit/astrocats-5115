@@ -175,6 +175,8 @@ nav button:active {
     margin-bottom: 1em;
     margin-left: 0;
     margin-right: 0;
+    text-align: center;
+    font: 30px arial, sans-serif;
 }
 
 /*** HEY SETH ***/
