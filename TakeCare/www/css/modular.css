@@ -179,6 +179,23 @@ nav button:active {
     font: 30px arial, sans-serif;
 }
 
+.textarea {
+	position: absolute;
+	padding: 5px;
+	display: inline-block;
+	background: #B1DAEE;
+    top: 30vmax;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
+	
+}
+.textarea label {
+	color: #1d6d93;
+	font-weight: bold;
+	font-size: 140%;
+}
+
 /*** HEY SETH ***/
 table, td, th, tr {
 	border: 3px solid black;
