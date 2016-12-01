@@ -184,7 +184,7 @@ nav button:active {
 	padding: 10px;
 	display: inline-block;
 	background: #B1DAEE;
-    top: 80vmax;
+    top: 50vmax;
     left: 50%;
     transform: translate(-50%, -50%);
    
