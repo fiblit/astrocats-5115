@@ -280,16 +280,12 @@ function addtasks() {
     "</div>";
     
     //create buttons
-    var buttons = document.createElement("div");
-    //create cancel button
-    buttons.appendChild(link_button("Cancel", tasks));
-    text_area.appendChild(buttons);
+    text_area.appendChild(link_button("Cancel", tasks));
     text_area.className = "textarea";
-    elems.push(buttons);
     elems.push(text_area);
     
      //Create post button
-    buttons.appendChild(self_button("Post", function () {
+    text_area.appendChild(self_button("Post", function () {
         var careteam = text_area.querySelector("#careteam > input").value;
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
@@ -299,12 +295,13 @@ function addtasks() {
             p.innerHTML = "Error: Field is required.";
             p.id = "error";
             text_area.appendChild(p);
+            elems.push(text_area);
         }
         else {
             buildpages(tasks);
         }
     }));
-
+	
     return elems;
 } 
 
