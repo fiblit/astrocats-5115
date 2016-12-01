@@ -219,14 +219,20 @@ table, td, th, tr {
 
 /* you'll probably have stuff like this
 but actually doing something decent */
-.head_team {
+#landing_page .head_team {
 	background: yellow;
 }
-.data_team {
+#landing_page .data_team {
 	background: white;
 }
 
+#landing_page .head_tasks, #landing_page .data_tasks {
+	background: red;
+}
+
 /* Landscape layout (with min-width) */
+/* it's better to write responsive design that doesn't need to use this */
+/* this is a 'last' resort */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 	
 }

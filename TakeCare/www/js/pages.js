@@ -109,16 +109,6 @@ function login() {
         "</tr>"+
     "</table>";
 
-/*
-    "<div id=\"username\">"+
-        "<label>Login</label>"+
-        "<div class=\"container\"><input type=\"text\" name=\"username\" required/></div>" +
-    "</div>"+
-    "<div id=\"password\">"+
-        "<label>Password</label>"+
-        "<div class=\"container\"><input type=\"password\" name=\"password\" required/></div>"+
-    "</div>";
-*/
     //Create login button
     var buttons = document.createElement("tr");
     var td = document.createElement('td');
@@ -258,6 +248,7 @@ function addtasks() {
     var text_area = document.createElement("div");
     text_area.innerHTML = ""+
     "<div id=\"careteam\">"+
+    /* we should change this to a dropdown */
         "<label>Care Team: * </label>"+
         "<input type=\"text\" name=\"careteam\" required/>" +
     "</div>"+
@@ -293,15 +284,34 @@ function addtasks() {
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
         var time = text_area.querySelector("#time > input").value;
-        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {
-            var p = document.createElement("p");
-            p.innerHTML = "Error: Field is required.";
+        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {    
+            var p = document.createElement("div");
+            p.innerHTML = "Please fill all the fields.";
             p.id = "error";
-            text_area.appendChild(p);
-            elems.push(text_area);
+            p.style.width = "250px";
+            p.style.height = "125px";
+            document.querySelector(".app").appendChild(errorpopup(p));
+            dim();
         }
         else {
-            buildpages(tasks);
+            var ownedTeams = ufilter(database['teams'] , function(e, name) {
+                return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
+                database['persons'][database['current_user']]['teams'][name]['own']);
+            }, true, false ).map(function(e) {
+                return e['key'];
+            });
+            console.log(ownedTeams);
+            console.log(careteam);
+            if (!(careteam in ownedTeams)) {
+                var p = document.createElement("div");
+                p.innerHTML = "I'm sorry, you do not own that careteam or it does not exist.";
+                p.id = "error";
+                p.style.width = "250px";
+                p.style.height = "125px";
+                document.querySelector(".app").appendChild(errorpopup(p));
+                dim();
+            }
+            build_page(tasks);
         }
     }));
 	

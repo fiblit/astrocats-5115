@@ -8,6 +8,7 @@ function __init() {
 function build_page(page) {
     var app = document.querySelector(".app");
     app.innerHTML = "";
+    app.id = page.name+'_page';
 
     // add the dimmer div
     var dimmer = document.createElement("div");
@@ -200,20 +201,35 @@ function data_list(dataToList) {
 //      whether the returned array objects have the key wrapper;
 //  withVal:: boolean
 //      same as withKey but for val; only takes affect if withKey == true.
-function ufilter(obj, fun, withKey=true, withVal=true, keyName="key", valName="val") {
+function ufilter(obj, fun, withKey=true, withVal=true, keyName="key") {
     var result = [];
     for (var key in obj) {
         if (obj.hasOwnProperty(key) && fun(obj[key], key)) {
+            var objToPush = [];
+            if (typeof(obj[key])) {
+                for (var i in obj[key]) { /*unwraps objects*/
+                    objToPush.push({"key":i, "val":obj[key][i]});
+                }
+            }
+            else {
+                objToPush.push(obj[key]);
+            }
             if (withKey) {
                 var o = {};
                 o[keyName] = key;
                 if (withVal) {
-                    o[valName] = obj[key];
+                    for (var j in objToPush) {
+                        o[objToPush[j]["key"]] = objToPush[j]["val"];
+                    }
                 }
                 result.push(o);
             }
-            else {              
-                result.push(obj[key]);
+            else {
+                var o = {};
+                for (var j in objToPush) {
+                    o[objToPush[j]["key"]] = objToPush[j]["val"];
+                }
+                result.push(o);
             }   
         }
     }
