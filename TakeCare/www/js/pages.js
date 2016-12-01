@@ -232,7 +232,7 @@ function tasks() {
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("Add a new task",addtasks));
     buttons.className = "addtaskbutton";
-    elems.push(addbutton);
+    elems.push(buttons);
     }
     
     return elems;
