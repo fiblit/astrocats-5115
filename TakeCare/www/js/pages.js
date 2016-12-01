@@ -214,11 +214,23 @@ function tasks() {
     
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
-    
+    var followedTeams = database['persons'][database['current_user']]['teams'];
+
+    var followedTasks = [];
+    for (var team in followedTeams) {
+        for (var task in database['teams'][team]['tasks']) {
+            followedTasks.push(database['teams'][team]['tasks'][task]);
+        }
+    }
+    console.log(followedTasks);
+
+    var task_list = data_list(followedTasks);
+    elems.push(task_list);
+
     //only show "Add a new task" button for CM UI
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
-        return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
-                database['persons'][database['current_user']]['teams'][name]['own']);
+        return (followedTeams.hasOwnProperty(name) &&
+                followedTeams[name]['own']);
     }, true, false );
 
     //If you own SOME team, then you are a CM.
@@ -300,8 +312,6 @@ function addtasks() {
             }, true, false ).map(function(e) {
                 return e['key'];
             });
-            console.log(ownedTeams);
-            console.log(careteam);
             if (!(careteam in ownedTeams)) {
                 var p = document.createElement("div");
                 p.innerHTML = "I'm sorry, you do not own that careteam or it does not exist.";

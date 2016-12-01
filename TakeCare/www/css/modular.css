@@ -230,6 +230,13 @@ but actually doing something decent */
 	background: red;
 }
 
+#tasks_page table, #tasks_page td, #tasks_page th, #tasks_page tr {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 90%;
+}
+
 /* Landscape layout (with min-width) */
 /* it's better to write responsive design that doesn't need to use this */
 /* this is a 'last' resort */
