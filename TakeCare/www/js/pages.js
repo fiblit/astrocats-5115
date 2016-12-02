@@ -348,32 +348,75 @@ function accepttask() {
 
 	var taskinfo = document.createElement("div");
 
-	var d = new Date(); // TODO: change this to the date stamp stored for the task
+    // Find the info about the task we're accepting from the database
+	var current_care_team = database["current_care_team"];
+	var current_task = database["current_task"];
+    // now that we've grabbed them, delete the temporary variables;
+	database["current_care_team"] = undefined;
+	database["current_task"] = undefined;
+
+	var taskobj = database["teams"][current_care_team]["tasks"][current_task];  // just for copying information without having to retype this
+	var careteam = database["current_care_team"];                                                       // same here
+
+	var d = new Date(taskobj["time"]);
 	var strTime = formattime(d);
 
 	var careteam = document.createElement("p");
-	careteam.innerHTML = "Care Team: " + "PLACEHOLDER TEXT";
+	careteam.innerHTML = "Care Team: " + careteam;
+	taskinfo.appendChild(careteam);
+
 	var taskname = document.createElement("p");
-	taskname.innerHTML = "Task Name: " + "PLACEHOLDER TEXT";
+	taskname.innerHTML = "Task Name: " + taskobj["name"];
+	taskinfo.appendChild(taskname);
+
 	var monthday = document.createElement("p");
 	monthday.innerHTML = "Date: " + d.getMonth() + "/" + d.getDate();
+	taskinfo.appendChild(monthday);
+
 	var timeofday = document.createElement("p");
 	timeofday.innerHTML = "Time: " + strTime;
-	var address = document.createElement("p");
-	address.innerHTML = "Location: " + "PLACEHOLDER TEXT";
-	var importance = document.createElement("p");
-	importance.innerHTML = "Importance: " + "Sure";
-	var description = document.createElement("p");
-	description.innerHTML = "Description: " + "PLACEHOLDER TEXT";
-
-	taskinfo.appendChild(careteam);
-	taskinfo.appendChild(taskname);
-	taskinfo.appendChild(monthday);
 	taskinfo.appendChild(timeofday);
-	taskinfo.appendChild(address);
+
+	if (taskobj["location"] != undefined && taskobj["location"].trim() != "")
+	{
+	    var address = document.createElement("p");
+	    address.innerHTML = "Location: " + taskobj["location"];
+	    taskinfo.appendChild(address);
+	}
+
+	var importance = document.createElement("p");
+	importance.innerHTML = "Importance: " + taskobj["importance"];
 	taskinfo.appendChild(importance);
+
+	var description = document.createElement("p");
+	description.innerHTML = "Description: " + taskobj["description"];
 	taskinfo.appendChild(description);
+
+	var buttons = document.createElement("div");
+    //create cancel button
+	var cancelbutton = link_button("Cancel", tasks);
+	cancelbutton.className = "cancel";
+	buttons.appendChild(cancelbutton);
+    //Create send update button
+	var acceptbutton = self_button("Accept Task", function () {
+	    var d = document.createElement("div");
+	    d.innerHTML = "Are you sure you want to accept the task" +
+            taskobj["name"] + "?";
+	    d.style.width = "60vw";
+	    d.style.height = "40vh";
+	    var box = confirmationpopup(d, function () {
+	        database["teams"][current_care_team]["tasks"][current_task]["own"] = current_user;
+	        build_page(tasks);
+	    });
+	    document.querySelector(".app").appendChild(box);
+	    dim();
+	});
+	buttons.appendChild(acceptbutton);
+	taskinfo.appendChild(buttons);
+
 	elems.push(taskinfo);
+    database["current"]
+
 
     return elems;
 }
@@ -495,7 +538,6 @@ function addupdate() {
             d.innerHTML = "Create update for Care Team page " + careteam + "?";
             d.style.width = "60vw";
             d.style.height = "40vh";
-            console.log(d);
             var box = confirmationpopup(d, function () {
                 database["teams"][careteam]["updates"].push({
                     "title": titletext,
