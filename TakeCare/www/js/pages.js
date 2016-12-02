@@ -420,8 +420,8 @@ function addupdate(){
     elems.push(pagename);
 
     //create input area for task, need to add importance buttons
-    var text_area = document.createElement("div");
-    text_area.innerHTML = ""+
+    var message_area = document.createElement("div");
+    message_area.innerHTML = ""+
     "<div id=\"sendto\">"+
     /* we should change this to a dropdown */
         "<label>Send update to: * </label>"+
@@ -433,12 +433,12 @@ function addupdate(){
     "</div>";
 
     //create buttons
-    text_area.appendChild(link_button("Cancel", updates));
-    text_area.className = "textarea";
-    elems.push(text_area);
+    message_area.appendChild(link_button("Cancel", updates));
+    message_area.className = "messagearea";
+    elems.push(message_area);
 
      //Create post button
-    text_area.appendChild(self_button("Post", function () {
+    message_area.appendChild(self_button("Post", function () {
         var sendto = text_area.querySelector("#sendto > input").value;
         var message = text_area.querySelector("#message > input").value;
         if (sendto == null || message == null || sendto.trim()=="" || message.trim()=="") {
