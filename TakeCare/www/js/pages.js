@@ -228,7 +228,6 @@ function tasks() {
             followedTasks.push(database['teams'][team]['tasks'][task]);
         }
     }
-    console.log(followedTasks);
 
     var task_list = data_list(followedTasks);
     elems.push(task_list);
@@ -264,45 +263,65 @@ function addtasks() {
 
     //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
-    text_area.innerHTML = ""+
+    text_area.innerHTML = 
     "<div id=\"careteam\">"+
     /* we should change this to a dropdown */
-        "<label>Care Team: * </label>"+
-        "<input type=\"text\" name=\"careteam\" required/>" +
+        "<label>Care Team: <span class=\"required\">*</span> </label>"+
+        "<select name=\"careteam\" required/>" +
+        "</select>"+
     "</div>"+
     "<div id=\"taskname\">"+
-        "<label>Task Name: * </label>"+
+        "<label>Task Name: <span class=\"required\">*</span> </label>"+
         "<input type=\"text\" name=\"taskname\" required/>"+
     "</div>"+
     "<div id=\"date\">"+
-        "<label>Date: * </label>"+
+        "<label>Date: <span class=\"required\">*</span> </label>"+
         "<input type=\"date\" name=\"date\" required/>"+
     "</div>"+
      "<div id=\"time\">"+
-        "<label>Time: * </label>"+
+        "<label>Time: <span class=\"required\">*</span> </label>"+
         "<input type=\"time\" name=\"time\" required/>"+
     "</div>"+
+    "<div id=\"importance\">"+
+        "<label>Importance:</label>"+
+        "<div><input type=\"radio\" name=\"importance\" value=\"urgent\">Urgent</div>"+
+        "<div><input type=\"radio\" name=\"importance\" value=\"helpful\" checked>Helpful</div>"+
+    "</div>"+
      "<div id=\"location\">"+
-        "<label>Location: (optional) </label>"+
+        "<label>Location: </label>"+
         "<input type=\"text\" name=\"location\" optional/>"+
     "</div>"+
          "<div id=\"description\">"+
-        "<label>Description: (optional) </label>"+
-        "<textarea class=\"description\" rows=\"5\" optional/></textarea>"+
+        "<label>Description:</label>"+
+        "<textarea class=\"description\" rows=\"10\" optional/></textarea>"+
     "</div>";
 
-    //create buttons
-    text_area.appendChild(link_button("Cancel", tasks));
-    text_area.className = "textarea";
-    elems.push(text_area);
+    //create dropdown options
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
+                database['persons'][database['current_user']]['teams'][name]['own']);
+    }, true, false, 'name' );
+    var dropdown = text_area.querySelector('select[name=\"careteam\"]');
+    for (var team in ownedTeams) {
+        var o = document.createElement("option");
+        o.value = ownedTeams[team]['name'];
+        o.innerHTML = o.value;
+        dropdown.appendChild(o);
+    }
 
-     //Create post button
-    text_area.appendChild(self_button("Post", function () {
-        var careteam = text_area.querySelector("#careteam > input").value;
+    //create buttons
+    var cancelButton = link_button("Cancel", tasks);
+    cancelButton.className = "cancel";
+    text_area.appendChild(cancelButton);
+
+    //Create post button
+    var postButton = self_button("Post", function () {
+        var careteam = text_area.querySelector("#careteam > select").value;
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
         var time = text_area.querySelector("#time > input").value;
-        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {
+        if (careteam == null || taskname == null || date == null || time == null 
+            || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {
             var p = document.createElement("div");
             p.innerHTML = "Please fill all the fields.";
             p.id = "error";
@@ -318,7 +337,10 @@ function addtasks() {
             }, true, false ).map(function(e) {
                 return e['key'];
             });
-            if (!(careteam in ownedTeams)) {
+            
+            if (!(ownedTeams.some(function (e, i, a) { 
+                return e === careteam;
+            }))) {
                 var p = document.createElement("div");
                 p.innerHTML = "I'm sorry, you do not own that careteam or it does not exist.";
                 p.id = "error";
@@ -327,9 +349,16 @@ function addtasks() {
                 document.querySelector(".app").appendChild(errorpopup(p));
                 dim();
             }
-            build_page(tasks);
+            else {
+                build_page(tasks);   
+            }
         }
-    }));
+    });
+    postButton.className = "post";
+    text_area.appendChild(postButton);
+    
+    text_area.className = "textarea";
+    elems.push(text_area);
 
     return elems;
 }

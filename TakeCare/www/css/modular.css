@@ -122,20 +122,6 @@ nav button:active {
     box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
 }
 
-.inputarea button {
-	float: right;
-	background: #FF714C;
-	color: #FFFFFF;
-	border: 0px;
-	height: 2.5em;
-	width: 6em;
-    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
-}
-
-.inputarea button:active {
-    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
-}
-
 .inputarea table, .inputarea td, .inputarea tr, .inputarea th {
 	border: 0px;
 	padding: 2px;
@@ -156,17 +142,34 @@ nav button:active {
 	border-bottom: 2px solid #1d6d93;
 }
 
-.addtaskbutton button {
-	float: center;
+.inputarea button,
+.addtaskbutton button,
+.addupdatebutton button,
+#addtasks_page .cancel,
+#addtasks_page .post {
 	background: #FF714C;
 	color: #FFFFFF;
 	border: 0px;
+	width: 6em;
 	height: 2.5em;
-	width: 12em;
     box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
 }
 
-.addtaskbutton button:active {
+.inputarea button,
+#addtasks_page .post{
+	float: right;
+}
+
+.addtaskbutton button,
+.addupdatebutton button {
+	width: 12em;
+}
+
+.inputarea button:active,
+.addtaskbutton button:active,
+.addupdatebutton button:active,
+#addtasks_page .cancel:active,
+#addtasks_page .post:active {
     box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
 }
 
@@ -188,13 +191,16 @@ nav button:active {
     top: 50vmax;
     left: 50%;
     transform: translate(-50%, -50%);
-   
-	
 }
+
 .textarea label {
 	color: #1d6d93;
 	font-weight: bold;
 	font-size: 140%;
+}
+
+.required {
+	color:;
 }
 
 .addtaskpage {
@@ -215,20 +221,6 @@ nav button:active {
     margin-right: 0;
     text-align: center;
     font: 30px arial, sans-serif;
-}
-
-.addupdatebutton button {
-	float: center;
-	background: #FF714C;
-	color: #FFFFFF;
-	border: 0px;
-	height: 2.5em;
-	width: 12em;
-    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
-}
-
-.addupdatebutton button:active {
-    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
 }
 
 .addupdatepage {
@@ -257,35 +249,6 @@ nav button:active {
 	font-size: 140%;
 }
 
-.cancel button {
-	float: center;
-	background: #FF714C;
-	color: #FFFFFF;
-	border: 0px;
-	height: 2.5em;
-	width: 12em;
-    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
-}
-
-.cancel button:active {
-    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
-}
-
-.post button {
-	float: center;
-	background: #FF714C;
-	color: #FFFFFF;
-	border: 0px;
-	height: 2.5em;
-	width: 12em;
-    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
-}
-
-.post button:active {
-    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
-}
-
-/*** HEY SETH ***/
 table, td, th, tr {
 	border: 3px solid black;
 	border-collapse: collapse;
