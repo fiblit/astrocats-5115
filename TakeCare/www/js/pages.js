@@ -433,12 +433,14 @@ function addupdates(){
     "</div>";
 
     //create buttons
-    message_area.appendChild(link_button("Cancel", updates));
+    var cancelbutton = document.createElement("div");
+    cancelbutton.appendChild(link_button("Cancel", updates));
+   var postbutton = document.createElement("div");
     message_area.className = "messagearea";
     elems.push(message_area);
 
      //Create post button
-    message_area.appendChild(self_button("Post", function () {
+    postbutton.appendChild(self_button("Post", function () {
         var sendto = text_area.querySelector("#sendto > input").value;
         var message = text_area.querySelector("#message > input").value;
         if (sendto == null || message == null || sendto.trim()=="" || message.trim()=="") {
@@ -455,7 +457,10 @@ function addupdates(){
             build_page(updates);
         }
     }));
-
+	elems.push(postbutton);
+	elems.push(cancelbutton);
+	postbutton.className = "post";
+	cancelbutton.className = "cancel";
     return elems;
 }
 
