@@ -69,7 +69,30 @@ function sidebar() {
 
 //goes on the two careteam pages
 function preview_tasks() {
-    
+    var _container = document.createElement("div");
+    _container.className = "container";
+    _container.innerHTML = 
+    "<table>" +
+        "<tr>"+
+            "<p>Tasks Preview</p><span id=\"a\"/>"+
+        "</tr>"+
+        "<tr>"+
+        "</tr>"+
+    "</table>";
+    _container.querySelector("tr < #a");
+}
+
+function profile_title() {
+    var head = document.createElement("div");
+    head.innerHTML =
+    "<table>"+
+    "<tr>"+
+        "<td><img id=\"profilepic\" src=\"img/default_profile_icon.jpg\"></td>"+
+        "<td id=\"right_data\"><p>"+database['current_team']+"'s CareTeam Page</p></td>"+
+    "</tr>"+
+    "</table>";
+    head.id = "head";
+    return head;
 }
 
 // link_button
@@ -91,7 +114,8 @@ function self_button(internal, callback) {
     var button = document.createElement("button");
     button.type = "button";
     if (typeof(internal) === "string") {
-        internal = document.createTextNode(internal);
+        button.innerHTML = internal;
+        internal = null;
     }
     if (internal) {
         button.appendChild(internal);

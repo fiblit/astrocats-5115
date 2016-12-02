@@ -187,30 +187,39 @@ function landing() {
 function owned_careteam() {
     var elems = [];
 
-    /* image & title bar */
-    var head = document.createElement("div");
-    /*var profilePic = document.createElement("img");
-    profilePic.setAttribute("src","img/default_profile_icon.jpg");
-    profilePic.id = "profilepic";
-    head.appendChild(profilePic);
-    var p = document.createElement("p");
-    p.innerHTML = database['current_team']+" CareTeam";
-    head.appendChild(p);
+            // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
 
-    head.id = "head";*/
-    head.innerHTML =
-    "<table>"+
-    "<tr>"+
-        "<td><img id=\"profilepic\" src=\"img/default_profile_icon.jpg\"></td>"+
-        "<td id=\"right_data\"><p>"+database['current_team']+"'s CareTeam Page</p></td>"+
-    "</tr>"+
-    "</table>";
-    head.id = "head";
-    elems.push(head);
+    /* image & title */
+    elems.push(profile_title());
+
+    /* buttttons */
+    var buttonBar = document.createElement("div");
 
     /* invite teammates button */
-    /* new updaet button */
+    var inviteTeammates = self_button("Invite Teammates", function() {
+        var p = document.createElement("div");
+        p.innerHTML = "I'm sorry, this is currently unimplemented.";
+        p.id = "error";
+        p.style.width = "250px";
+        p.style.height = "125px";
+        document.querySelector(".app").appendChild(errorpopup(p));
+        dim();
+    });
+    inviteTeammates.id = "invite";
+    buttonBar.appendChild(inviteTeammates);
+
+    /* add update button */
+    var newupdate = link_button("<img src=\"img/update_icon.jpg\" style=\"width:2em;height2em;\">Add Update", addupdate);
+    newupdate.id = "add_update";
+    buttonBar.appendChild(newupdate);
+
+    buttonBar.id = "button_bar";
+    elems.push(buttonBar);
+
     /* tasks preview + view all button */
+    elems.push(preview_tasks());
 
     var returnbutton = link_button("Return", landing);
     elems.push(returnbutton);
@@ -220,13 +229,23 @@ function owned_careteam() {
 // Placeholder for careteam
 function friend_careteam() {
     var elems = [];
+
+            // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+
     var p = document.createElement("p");
     p.innerHTML = "unowned";
     elems.push(p);
 
     /* image & title bar */
+    elems.push(profile_title());
+
     /* most recent update + view all */
+
+
     /* tasks preview + view all */
+    elems.push(preview_tasks());
 
     var returnbutton = link_button("Return", landing);
     elems.push(returnbutton);
@@ -532,7 +551,8 @@ function addupdate() {
     var selector = document.createElement("select");
     selector.name = "careteam";
     var carepages = ufilter(database['persons'][database['current_user']]['teams'], function(e, team) {
-        return database['persons'][database['current_user']]['teams'][team].hasOwnProperty('own');
+        return database['persons'][database['current_user']]['teams'][team].hasOwnProperty('own') &&
+               database['persons'][database['current_user']]['teams'][team]['own'];
     }, true, false, 'name').map(function(obj) {
         return obj['name'];
     });
