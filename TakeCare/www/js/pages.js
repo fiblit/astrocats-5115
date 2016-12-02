@@ -413,6 +413,11 @@ function addupdate(){
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
+    
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Add an update";
+    pagename.className = "addupdatepage";
+    elems.push(pagename);
 
      //create input area for updates
     var text_area = document.createElement("div");
