@@ -186,9 +186,32 @@ function landing() {
 // Placeholder for owned careteam
 function owned_careteam() {
     var elems = [];
+
+    /* image & title bar */
+    var head = document.createElement("div");
+    /*var profilePic = document.createElement("img");
+    profilePic.setAttribute("src","img/default_profile_icon.jpg");
+    profilePic.id = "profilepic";
+    head.appendChild(profilePic);
     var p = document.createElement("p");
-    p.innerHTML = "owned";
-    elems.push(p);
+    p.innerHTML = database['current_team']+" CareTeam";
+    head.appendChild(p);
+
+    head.id = "head";*/
+    head.innerHTML =
+    "<table>"+
+    "<tr>"+
+        "<td><img id=\"profilepic\" src=\"img/default_profile_icon.jpg\"></td>"+
+        "<td id=\"right_data\"><p>"+database['current_team']+"'s CareTeam Page</p></td>"+
+    "</tr>"+
+    "</table>";
+    head.id = "head";
+    elems.push(head);
+
+    /* invite teammates button */
+    /* new updaet button */
+    /* tasks preview + view all button */
+
     var returnbutton = link_button("Return", landing);
     elems.push(returnbutton);
     return elems;
@@ -200,6 +223,11 @@ function friend_careteam() {
     var p = document.createElement("p");
     p.innerHTML = "unowned";
     elems.push(p);
+
+    /* image & title bar */
+    /* most recent update + view all */
+    /* tasks preview + view all */
+
     var returnbutton = link_button("Return", landing);
     elems.push(returnbutton);
     return elems;
@@ -225,10 +253,19 @@ function tasks() {
     var followedTasks = [];
     for (var team in followedTeams) {
         for (var task in database['teams'][team]['tasks']) {
+
             followedTasks.push(database['teams'][team]['tasks'][task]);
         }
     }
 
+    console.log(followedTasks);
+    followedTasks.map(function( e ) {
+        console.log(e);
+        console.log(e['time']);
+        var d = new Date(e['time']);
+        e['time'] = d.toLocaleString();
+        return e;
+    });
     var task_list = data_list(followedTasks);
     elems.push(task_list);
 
@@ -331,27 +368,14 @@ function addtasks() {
             dim();
         }
         else {
-            var ownedTeams = ufilter(database['teams'] , function(e, name) {
-                return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
-                database['persons'][database['current_user']]['teams'][name]['own']);
-            }, true, false ).map(function(e) {
-                return e['key'];
+            database['teams'][careteam]['tasks'].push({
+                "name": taskname,
+                "time": Date.parse(date+" "+time),
+                "location": text_area.querySelector("#location > input").value,
+                "own": null,
+                "description": text_area.querySelector("#description > input").value
             });
-            
-            if (!(ownedTeams.some(function (e, i, a) { 
-                return e === careteam;
-            }))) {
-                var p = document.createElement("div");
-                p.innerHTML = "I'm sorry, you do not own that careteam or it does not exist.";
-                p.id = "error";
-                p.style.width = "250px";
-                p.style.height = "125px";
-                document.querySelector(".app").appendChild(errorpopup(p));
-                dim();
-            }
-            else {
-                build_page(tasks);   
-            }
+            build_page(tasks);
         }
     });
     postButton.className = "post";

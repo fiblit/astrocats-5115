@@ -67,6 +67,11 @@ function sidebar() {
     return box;
 }
 
+//goes on the two careteam pages
+function preview_tasks() {
+    
+}
+
 // link_button
 // Simple function to write a button with an javascript onclick function
 // First argument is the text that appears on button

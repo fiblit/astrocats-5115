@@ -115,10 +115,10 @@ nav button:active {
 	position: absolute;
 	padding: 5px;
 	display: inline-block;
-	background: #B1DAEE;
     margin-top: 5vh;
     left: 50%;
     transform: translate(-50%,  0%);
+	background: #B1DAEE;
     box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
 }
 
@@ -200,7 +200,7 @@ nav button:active {
 }
 
 .required {
-	color:;
+	color: #FF714C;
 }
 
 .addtaskpage {
@@ -275,6 +275,44 @@ but actually doing something decent */
 	margin: 0px;
 	padding: 0px;
 	font-size: 90%;
+}
+
+#profilepic {
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	overflow-wrap: none;
+}
+
+#owned_careteam_page #head p {
+    position: relative;
+    display: block;
+    margin: 0;
+    font-size: 160%;
+    font-weight: bold;
+    color: #1d6d93;
+    transform: scale(0.8,1) translate(-12.5%,0);
+    width: 125%;
+}
+#owned_careteam_page table, 
+#owned_careteam_page td, 
+#owned_careteam_page tr, 
+#owned_careteam_page th {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#owned_careteam_page #head {
+	padding: 5px;
+	position: absolute;
+	display: inline-block;
+	min-width: 80vw;
+    top: 5vh;
+    left: 50vw;
+    transform: translate(-50%,0%);
+	background: #B1DAEE;
+    box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
 }
 
 /* Landscape layout (with min-width) */
