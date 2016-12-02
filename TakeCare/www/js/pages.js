@@ -442,10 +442,14 @@ function addupdate(){
         }
     }));
     //create cancel button
-    buttons.appendChild(link_button("Cancel", updates));
-    text_area.appendChild(buttons);
+    var cancel = document.createElement("div");
+    cancel.appendChild(link_button("Cancel", updates));
+    cancel.className = "cancelbutton";
+    buttons.className = "postbutton";
     text_area.className = "textarea";
     elems.push(text_area);
+    elems.push(cancel);
+    elems.push(buttons);
 
 
     return elems;
