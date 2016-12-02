@@ -1,32 +1,5 @@
-// Sample/test function for loading a page
-function page1() {
-    //create the array to store returned HTMLElements
-    var elems = [];
-
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-
-    // Create paragraph element saying "this is page 1!"
-    var pagenum = document.createElement("p");
-    pagenum.innerHTML = "This is page 1";
-    elems.push(pagenum);
-
-    // Create tasks table
-    var tasks = document.createElement("div");
-    tasks.appendChild(writetasks());
-    elems.push(tasks);
-
-    // Create buttons div with button linking to page 2
-    var buttons = document.createElement("div");
-    buttons.appendChild(link_button("button1", page2));
-    elems.push(buttons);
-
-    return elems;
-}
-
 // Sample/test function for loading a different page
-function page2() {
+function testing() {
     //create the array to store returned HTMLElements
     var elems = [];
 
@@ -76,7 +49,7 @@ function page2() {
 
     // Create buttons div with button linking to page 1
     var buttons = document.createElement("div");
-    buttons.appendChild(link_button("button2", page1));
+    buttons.appendChild(link_button("landing",landing));
     buttons.appendChild(popbutton);
 	buttons.appendChild(errorbutton);
 	buttons.appendChild(confirmbutton);
@@ -179,22 +152,22 @@ function landing() {
 
     // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
-    buttons.appendChild(link_button("button1", page2));
+    buttons.appendChild(link_button("testing", testing));
     elems.push(buttons);
 
     return elems;
 }
 
-// Placeholder for profile page
-function profile() {
+// Placeholder for owned careteam
+function owned_careteam() {
     var elems = [];
 
-    var pagename = document.createElement("p");
-    pagename.innerHTML = "Profile page";
-    elems.push(pagename);
+    return elems;
+}
 
-    var returnbutton = link_button("Return", page1);
-    elems.push(returnbutton);
+// Placeholder for careteam
+function careteam() {
+    var elems = [];
 
     return elems;
 }
@@ -212,7 +185,7 @@ function tasks() {
     pagename.className = "taskpage";
     elems.push(pagename);
 
-    var returnbutton = link_button("Return", page1);
+    var returnbutton = link_button("Return", landing);
     elems.push(returnbutton);
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
@@ -435,7 +408,7 @@ function updates() {
     pagename.className = "updatepage";
     elems.push(pagename);
 
-    var returnbutton = link_button("Return", page1);
+    var returnbutton = link_button("Return", landing);
     elems.push(returnbutton);
 
    //only add "Add a new update" button if user is care manager
@@ -563,10 +536,10 @@ function settings() {
     var elems = [];
 
     var pagename = document.createElement("p");
-    pagename.innerHTML = "Profile page";
+    pagename.innerHTML = "Settings page";
     elems.push(pagename);
 
-    var returnbutton = link_button("Return", page1);
+    var returnbutton = link_button("Return to Profile", landing);
     elems.push(returnbutton);
 
     return elems;
