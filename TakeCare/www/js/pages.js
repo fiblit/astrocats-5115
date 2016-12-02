@@ -396,7 +396,7 @@ function addtasks() {
                 "time": Date.parse(date+" "+time),
                 "location": text_area.querySelector("#location > input").value,
                 "own": null,
-                "description": text_area.querySelector("#description > input").value
+                "description": text_area.querySelector("#description > textarea").value
             });
             build_page(tasks);
         }
