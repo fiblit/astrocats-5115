@@ -1,6 +1,8 @@
 //call at window load
 function __init() {
     app.initialize();
+    database['stack'] = [];
+    database['last_page'] = null;
     build_page(login);
 }
 
@@ -9,6 +11,8 @@ function build_page(page) {
     var app = document.querySelector(".app");
     app.innerHTML = "";
     app.id = page.name+'_page';
+    database['stack'].push(database['last_page']);
+    database['last_page'] = page;
 
     // add the dimmer div
     var dimmer = document.createElement("div");
@@ -22,6 +26,22 @@ function build_page(page) {
     var pageElements = page();//given that a page returns an array of HTMLElements.
     for (var i = 0; i < pageElements.length; i++) {
         app.appendChild(pageElements[i]);
+    }
+}
+
+function back() {
+    if (database['stack'].length > 1) {
+        build_page(database['stack'].pop());
+        database['stack'].pop();
+    }
+    else {
+        var p = document.createElement("div");
+        p.innerHTML = "No more pages to go back to.";
+        p.id = "error";
+        p.style.width = "250px";
+        p.style.height = "125px";
+        document.querySelector(".app").appendChild(errorpopup(p));
+        dim();
     }
 }
 
@@ -50,6 +70,11 @@ function menubar() {
         }
     });
     navbar.appendChild(menubutton);
+    var backbutton = self_button("Back", function () {
+        back();
+    });
+    backbutton.id = "backbutton";
+    navbar.appendChild(backbutton);
     return navbar;
 }
 

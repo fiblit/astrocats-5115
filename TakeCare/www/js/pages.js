@@ -236,8 +236,6 @@ function owned_careteam() {
     /* tasks preview + view all button */
     elems.push(preview_tasks());
 
-    var returnbutton = link_button("Return", landing);
-    elems.push(returnbutton);
     return elems;
 }
 
@@ -253,13 +251,11 @@ function friend_careteam() {
     elems.push(profile_title());
 
     /* most recent update + view all */
-    
+
 
     /* tasks preview + view all */
     elems.push(preview_tasks());
 
-    var returnbutton = link_button("Return", landing);
-    elems.push(returnbutton);
     return elems;
 }
 
@@ -276,8 +272,6 @@ function tasks() {
     pagename.className = "taskpage";
     elems.push(pagename);
 
-    var returnbutton = link_button("Return", landing);
-    elems.push(returnbutton);
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
     var followedTasks = [];
@@ -376,7 +370,7 @@ function addtasks() {
     }
 
     //create buttons
-    var cancelButton = link_button("Cancel", tasks);
+    var cancelButton = self_button("Cancel", back);
     cancelButton.className = "cancel";
     text_area.appendChild(cancelButton);
 
@@ -481,7 +475,7 @@ function accepttask() {
 
 	var buttons = document.createElement("div");
     //create cancel button
-	var cancelbutton = link_button("Cancel", tasks);
+	var cancelbutton = self_button("Cancel", back);
 	cancelbutton.className = "cancel";
 	buttons.appendChild(cancelbutton);
     //Create send update button
@@ -521,9 +515,6 @@ function updates() {
     pagename.innerHTML = "Updates";
     pagename.className = "updatepage";
     elems.push(pagename);
-
-    var returnbutton = link_button("Return", landing);
-    elems.push(returnbutton);
 
    //only add "Add a new update" button if user is care manager
    var addupdatebutton = document.createElement("div");
@@ -604,7 +595,7 @@ function addupdate() {
 
     var buttons = document.createElement("div");
     //create cancel button
-    var cancelbutton = link_button("Cancel", updates);
+    var cancelbutton = self_button("Cancel", back);
     cancelbutton.className = "cancel";
     buttons.appendChild(cancelbutton);
     //Create send update button
@@ -650,12 +641,12 @@ function addupdate() {
 function settings() {
     var elems = [];
 
+    var navbar = menubar();
+    elems.push(navbar);
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Settings page";
     elems.push(pagename);
-
-    var returnbutton = link_button("Return to Profile", landing);
-    elems.push(returnbutton);
 
     return elems;
 }

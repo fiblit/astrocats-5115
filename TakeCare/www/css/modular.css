@@ -16,6 +16,10 @@ nav button {
 	border-radius: 5px;
 }
 
+#backbutton {
+	float: right;
+}
+
 /* on mouse down */
 nav button:active {
 	background: #DDDDDD;
