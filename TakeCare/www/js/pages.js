@@ -322,14 +322,13 @@ function accepttask() {
 	var taskinfo = document.createElement("div");
 
     // Find the info about the task we're accepting from the database
-	var current_care_team = database["current_care_team"];
+	var care_team = database["current_care_team"];
 	var current_task = database["current_task"];
     // now that we've grabbed them, delete the temporary variables;
 	database["current_care_team"] = undefined;
 	database["current_task"] = undefined;
 
 	var taskobj = database["teams"][current_care_team]["tasks"][current_task];  // just for copying information without having to retype this
-	var careteam = database["current_care_team"];                                                       // same here
 
 	var d = new Date(taskobj["time"]);
 	var strTime = formattime(d);
