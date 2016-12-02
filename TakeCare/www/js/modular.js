@@ -56,7 +56,7 @@ function menubar() {
 // Function for creating the sidebar
 function sidebar() {    
     var sidebar = document.createElement("div");
-    sidebar.appendChild(link_button("Profile", profile));
+    sidebar.appendChild(link_button("Profile", landing));
     sidebar.appendChild(link_button("Tasks", tasks));
     sidebar.appendChild(link_button("Updates", updates));
     sidebar.appendChild(link_button("Settings", settings));
