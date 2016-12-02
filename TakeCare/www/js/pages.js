@@ -136,11 +136,7 @@ function landing() {
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                database['persons'][database['current_user']]['teams'][name]['own']);
-    }, true,  true, "CareTeam");
-    ownedTeams.map(function(e) {
-        e['CareTeam'] = e['CareTeam'];
-        return e;
-    });
+    }, true,  false, "CareTeam");
     var ownedTeams_list = data_list(ownedTeams);
 
     /* turn Careteam column into buttons linking to their page */
@@ -172,8 +168,27 @@ function landing() {
     var followedTeams = ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                !database['persons'][database['current_user']]['teams'][name]['own']);
-    }, true, false );
+    }, true, false, "CareTeam" );
     var followedTeams_list = data_list(followedTeams);
+
+    [].slice.call(followedTeams_list.querySelectorAll(".data_CareTeam")).map( function (e) {
+        var team = e.innerText;
+        e.onclick =  function () {
+            database['current_team'] = team;
+
+            /* current user's teams */
+            var cut = database['persons'][database['current_user']]['teams'];
+            /* if owned */
+            if (cut.hasOwnProperty(team) && cut[team]['own']) {
+                build_page(owned_careteam);
+            }
+            else {
+                build_page(friend_careteam);
+            }
+        };
+        return e;
+    });
+
     elems.push(followedTeams_list);
 
     var buttons = document.createElement("div");
@@ -230,19 +245,15 @@ function owned_careteam() {
 function friend_careteam() {
     var elems = [];
 
-            // Create navbar element
+    // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-
-    var p = document.createElement("p");
-    p.innerHTML = "unowned";
-    elems.push(p);
 
     /* image & title bar */
     elems.push(profile_title());
 
     /* most recent update + view all */
-
+    
 
     /* tasks preview + view all */
     elems.push(preview_tasks());
@@ -277,7 +288,6 @@ function tasks() {
         }
     }
 
-    console.log(followedTasks);
     followedTasks.map(function( e ) {
         console.log(e);
         console.log(e['time']);

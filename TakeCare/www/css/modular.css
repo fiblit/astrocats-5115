@@ -149,9 +149,9 @@ nav button:active {
 	background: #FF714C;
 	color: #FFFFFF;
 	border: 0px;
+    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
 	width: 6em;
 	height: 2.5em;
-    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
 }
 
 .inputarea button,
@@ -249,14 +249,6 @@ nav button:active {
 	font-size: 140%;
 }
 
-table, td, th, tr {
-	border: 3px solid black;
-	border-collapse: collapse;
-	margin: 5px;
-	padding: 5px;
-}
-
-
 /* you'll probably have stuff like this
 but actually doing something decent */
 #landing_page .head_CareTeam {
@@ -284,7 +276,7 @@ but actually doing something decent */
 	overflow-wrap: none;
 }
 
-#owned_careteam_page #head p {
+#head p {
     position: relative;
     display: block;
     margin: 0;
@@ -294,16 +286,7 @@ but actually doing something decent */
     transform: scale(0.8,1) translate(-12.5%,0);
     width: 125%;
 }
-#owned_careteam_page table, 
-#owned_careteam_page td, 
-#owned_careteam_page tr, 
-#owned_careteam_page th {
-	border: 0px;
-	padding: 0px;
-	margin: 0px;
-}
-
-#owned_careteam_page #head {
+#head {
 	padding: 5px;
 	position: absolute;
 	display: inline-block;
@@ -315,7 +298,7 @@ but actually doing something decent */
     box-shadow: 3px 5px 3px hsla(0,0%,20%,0.8);
 }
 
-#owned_careteam_page #button_bar {
+#button_bar {
 	padding: 0px;
 	position: absolute;
 	display: block;
@@ -335,6 +318,50 @@ but actually doing something decent */
     position: absolute;
     right: 10vw;
     width: 35vw;
+}
+
+.taskpreview {
+	padding: 0px;
+	position: absolute;
+	display: block;
+	width: 80vw;
+    left: 10vw;
+    /*transform: translate(-50%,0%);*/
+}
+
+#owned_careteam_page .taskpreview {
+    top: 32vh;
+}
+
+#friend_careteam_page .taskpreview {
+	top: 25vh;
+}
+
+.taskpreview #header {
+    background: #B1DAEE; /* For browsers that do not support gradients */
+    color: #1D6D93;
+    font-weight: bold;
+    font-size: 120%;
+    height: 30px;
+}
+.taskpreview #nest {
+    box-shadow: inset 2px 3px 2px hsla(0,0%,20%,0.8);
+}
+.taskpreview table {
+	border-collapse: collapse;
+	border: 3px solid #B1DAEE;
+    box-shadow: 2px 3px 2px hsla(0,0%,20%,0.8);
+}
+
+#view_all {	
+    top: 0;
+    position: absolute;
+    right: 10px;
+    transform: translate(0%,75%);
+	background: #FF714C;
+	color: #FFFFFF;
+	border: 0px;
+    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);    
 }
 
 /* Landscape layout (with min-width) */

@@ -70,16 +70,31 @@ function sidebar() {
 //goes on the two careteam pages
 function preview_tasks() {
     var _container = document.createElement("div");
-    _container.className = "container";
+    _container.className = "taskpreview";
     _container.innerHTML = 
-    "<table>" +
-        "<tr>"+
-            "<p>Tasks Preview</p><span id=\"a\"/>"+
+    "<table style=\"width:100%;overflow-x:scroll;\">" +
+        "<tr id=\"header\">"+
+            "<td><p>Tasks Preview</p></td>"+
         "</tr>"+
-        "<tr>"+
+        "<tr id=\"nest\">"+
         "</tr>"+
     "</table>";
-    _container.querySelector("tr < #a");
+
+    var view = link_button("View all", tasks)
+    view.id = "view_all";
+    _container.querySelector("#header > td").appendChild(view);
+
+    var followedTasks = [];
+    for (var task in database['teams'][database['current_team']]['tasks']) {
+            followedTasks.push(database['teams'][database['current_team']]['tasks'][task]);
+    }
+    followedTasks.map( function (e) {
+        var d = new Date(e['time']);
+        e['time'] = d.toLocaleString();
+        return e;
+    });
+    _container.querySelector("#nest").appendChild(data_list(followedTasks));
+    return _container;
 }
 
 function profile_title() {
