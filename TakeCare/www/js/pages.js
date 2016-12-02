@@ -399,7 +399,7 @@ function updates() {
    var addupdate = document.createElement("div");
    var isFriend = false; //remove after isFriend is implemented
     if (!isFriend) {
-    var addbutton = link_button("Add a new update",addupdate);
+    var addbutton = link_button("Add a new update", addupdates);
     addupdate.appendChild(addbutton);
     }
     elems.push(addupdate)
@@ -407,7 +407,7 @@ function updates() {
     return elems;
 }
 
-function addupdate(){
+function addupdates(){
  var elems = [];
 
      // Create navbar element
