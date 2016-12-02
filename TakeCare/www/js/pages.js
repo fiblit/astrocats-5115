@@ -425,7 +425,7 @@ function addupdate(){
         "<label>Message: * </label>"+
         "<input type=\"text\" name=\"message\" required/>" +
     "</div>";
-
+ 	elems.push(text_area);
      //Create send update button
     var buttons = document.createElement("div");
     buttons.appendChild(self_button("Send Update", function () {
@@ -447,11 +447,9 @@ function addupdate(){
     cancel.className = "cancelbutton";
     buttons.className = "postbutton";
     text_area.className = "textarea";
-    elems.push(text_area);
+   
     elems.push(cancel);
     elems.push(buttons);
-
-
     return elems;
 }
 
