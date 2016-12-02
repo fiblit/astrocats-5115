@@ -473,9 +473,11 @@ function addupdate() {
 
     var buttons = document.createElement("div");
     //create cancel button
-    buttons.appendChild(link_button("Cancel", updates));
+    var cancelbutton = link_button("Cancel", updates);
+    cancelbutton.className = "cancel";
+    buttons.appendChild(cancelbutton);
     //Create send update button
-    buttons.appendChild(self_button("Send Update", function () {
+    var postbutton = self_button("Send Update", function () {
         var careteam = selector.options[selector.selectedIndex].textContent;
         var titletext = text_area.querySelector("#title > input").value;
         var messagetext = text_area.querySelector("#message > textarea").value;
@@ -505,7 +507,9 @@ function addupdate() {
             document.querySelector(".app").appendChild(box);
             dim();
         }
-    }));
+    });
+    postbutton.className = "post";
+    buttons.appendChild(postbutton);
     text_area.appendChild(buttons);
     text_area.className = "textarea";
     elems.push(text_area);
