@@ -328,7 +328,7 @@ function accepttask() {
 	database["current_care_team"] = undefined;
 	database["current_task"] = undefined;
 
-	var taskobj = database["teams"][current_care_team]["tasks"][current_task];  // just for copying information without having to retype this
+	var taskobj = database["teams"][care_team]["tasks"][current_task];  // just for copying information without having to retype this
 
 	var d = new Date(taskobj["time"]);
 	var strTime = formattime(d);
@@ -377,7 +377,7 @@ function accepttask() {
 	    d.style.width = "60vw";
 	    d.style.height = "40vh";
 	    var box = confirmationpopup(d, function () {
-	        database["teams"][current_care_team]["tasks"][current_task]["own"] = current_user;
+	        database["teams"][care_team]["tasks"][current_task]["own"] = current_user;
 	        build_page(tasks);
 	    });
 	    document.querySelector(".app").appendChild(box);
