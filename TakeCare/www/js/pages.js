@@ -348,14 +348,8 @@ function accepttask() {
 	
 	var taskinfo = document.createElement("div");
 	
-	var d = new Date();
-	var hours = d.getHours();
-	var minutes = d.getMinutes();
-	var ampm = hours >= 12 ? 'pm' : 'am';
-	hours = hours % 12;
-	hours = hours ? hours : 12; // the hour '0' should be '12'
-	minutes = minutes < 10 ? '0'+minutes : minutes;
-	var strTime = hours + ':' + minutes + ' ' + ampm;
+	var d = new Date(); // TODO: change this to the date stamp stored for the task
+	var strTime = formattime(d);
 	
 	var careteam = document.createElement("p");
 	careteam.innerHTML = "Care Team: " + "PLACEHOLDER TEXT";

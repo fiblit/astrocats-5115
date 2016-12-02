@@ -163,6 +163,18 @@ function undim() {
     dimmer.style.display = "none";
 }
 
+// Function for getting a string in the format "12:30 PM" from a date object
+function formattime(d) {
+    var hours = d.getHours();
+    var minutes = d.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
+
 
 //NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
 //  This may be useful for creating dataToList
