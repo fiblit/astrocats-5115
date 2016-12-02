@@ -408,53 +408,54 @@ function updates() {
 }
 
 function addupdate(){
-    var elems = [];
+ var elems = [];
 
-    // Create navbar element
+     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-    
+
     var pagename = document.createElement("p");
-    pagename.innerHTML = "Add an update";
+    pagename.innerHTML = "Add a new update";
     pagename.className = "addupdatepage";
     elems.push(pagename);
 
-     //create input area for updates
+    //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
     text_area.innerHTML = ""+
-    "<div id=\"update\">"+
+    "<div id=\"sendto\">"+
+    /* we should change this to a dropdown */
         "<label>Send update to: * </label>"+
-        "<input type=\"text\" name=\"update\" required/>" +
+        "<input type=\"text\" name=\"sendto" required/>" +
     "</div>"+
     "<div id=\"message\">"+
-        "<label>Message: * </label>"+
-        "<input type=\"text\" name=\"message\" required/>" +
+        "<label>Task Message: * </label>"+
+        "<input type=\"text\" name=\"message\" required/>"+
     "</div>";
- 	elems.push(text_area);
-     //Create send update button
-    var buttons = document.createElement("div");
-    buttons.appendChild(self_button("Send Update", function () {
-        var update = text_area.querySelector("#update > input").value;
+
+    //create buttons
+    text_area.appendChild(link_button("Cancel", updates));
+    text_area.className = "textarea";
+    elems.push(text_area);
+
+     //Create post button
+    text_area.appendChild(self_button("Post", function () {
+        var sendto = text_area.querySelector("#sendto > input").value;
         var message = text_area.querySelector("#message > input").value;
-        if (update == null || message == null || update.trim()=="" || message.trim()=="") {
-            var p = document.createElement("p");
-            p.innerHTML = "Error: Field is required.";
+        if (sendto == null || message == null || sendto.trim()=="" || message.trim()=="") {
+            var p = document.createElement("div");
+            p.innerHTML = "Please fill all the fields.";
             p.id = "error";
-            text_area.appendChild(p);
+            p.style.width = "250px";
+            p.style.height = "125px";
+            document.querySelector(".app").appendChild(errorpopup(p));
+            dim();
         }
         else {
-         build_page(updates);
+          
+            build_page(updates);
         }
     }));
-    //create cancel button
-    var cancel = document.createElement("div");
-    cancel.appendChild(link_button("Cancel", updates));
-    cancel.className = "cancelbutton";
-    buttons.className = "postbutton";
-    text_area.className = "textarea";
-   
-    elems.push(cancel);
-    elems.push(buttons);
+
     return elems;
 }
 
