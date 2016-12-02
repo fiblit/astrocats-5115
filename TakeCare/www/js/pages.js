@@ -126,31 +126,56 @@ function landing() {
     //pagenum.innerHTML = "CareTeams";
     elems.push(pagenum);
 
-    //*** SETH ***//
+
     /* you may want to make the next line a div which will have ownedTeams in it */
     var h = document.createElement("p");
     h.innerHTML = "CateTeams You Help Manage";
     elems.push(h);
-    var ownedTeams = data_list(ufilter(database['teams'] , function(e, name) {
+
+    /**** get the ownedTeams datalist *****/
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                database['persons'][database['current_user']]['teams'][name]['own']);
-    }, true,  true, "team", "details_press_f12"));
-    elems.push(ownedTeams);
+    }, true,  true, "CareTeam");
+    ownedTeams.map(function(e) {
+        e['CareTeam'] = e['CareTeam'];
+        return e;
+    });
+    var ownedTeams_list = data_list(ownedTeams);
 
-    //*** SETH ***//
-    /* you may want to make the next line a div which will have unownedTeams in it */
+    /* turn Careteam column into buttons linking to their page */
+    [].slice.call(ownedTeams_list.querySelectorAll(".data_CareTeam")).map( function (e) {
+        var team = e.innerText;
+        e.onclick =  function () {
+            database['current_team'] = team;
+
+            /* current user's teams */
+            var cut = database['persons'][database['current_user']]['teams'];
+            /* if owned */
+            if (cut.hasOwnProperty(team) && cut[team]['own']) {
+                build_page(owned_careteam);
+            }
+            else {
+                build_page(friend_careteam);
+            }
+        };
+        return e;
+    });
+    elems.push(ownedTeams_list);
+
+    //TODO should be div
     var h = document.createElement("p");
     h.innerHTML = "CareTeams You Follow";
     elems.push(h);
-    var followedTeams = data_list(ufilter(database['teams'] , function(e, name) {
+
+    /**** get the followed teams data_list ****/
+    var followedTeams = ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                !database['persons'][database['current_user']]['teams'][name]['own']);
-    }, true, false ));
-    elems.push(followedTeams);
-    //** the above is rather broken **//
+    }, true, false );
+    var followedTeams_list = data_list(followedTeams);
+    elems.push(followedTeams_list);
 
-
-    // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("testing", testing));
     elems.push(buttons);
@@ -161,14 +186,22 @@ function landing() {
 // Placeholder for owned careteam
 function owned_careteam() {
     var elems = [];
-
+    var p = document.createElement("p");
+    p.innerHTML = "owned";
+    elems.push(p);
+    var returnbutton = link_button("Return", landing);
+    elems.push(returnbutton);
     return elems;
 }
 
 // Placeholder for careteam
-function careteam() {
+function friend_careteam() {
     var elems = [];
-
+    var p = document.createElement("p");
+    p.innerHTML = "unowned";
+    elems.push(p);
+    var returnbutton = link_button("Return", landing);
+    elems.push(returnbutton);
     return elems;
 }
 

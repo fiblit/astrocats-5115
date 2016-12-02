@@ -296,10 +296,10 @@ table, td, th, tr {
 
 /* you'll probably have stuff like this
 but actually doing something decent */
-#landing_page .head_team {
+#landing_page .head_CareTeam {
 	background: yellow;
 }
-#landing_page .data_team {
+#landing_page .data_CareTeam {
 	background: white;
 }
 
