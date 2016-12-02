@@ -402,7 +402,7 @@ function updates() {
     var addbutton = link_button("Add a new update",addupdate);
     addupdate.appendChild(addbutton);
     }
-    elems.push(addupdate.)
+    elems.push(addupdate)
     addupdate.className = "addupdate";
     return elems;
 }
