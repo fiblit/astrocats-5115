@@ -425,7 +425,7 @@ function addupdate(){
     "<div id=\"sendto\">"+
     /* we should change this to a dropdown */
         "<label>Send update to: * </label>"+
-        "<input type=\"text\" name=\"sendto" required/>" +
+        "<input type=\"text\" name=\"sendto\" required/>"+
     "</div>"+
     "<div id=\"message\">"+
         "<label>Task Message: * </label>"+
