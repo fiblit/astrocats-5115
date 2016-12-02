@@ -403,7 +403,7 @@ function updates() {
     return elems;
 }
 
-function addupdate(){
+function addupdate() {
     var elems = [];
     
     // Create navbar element
@@ -412,29 +412,86 @@ function addupdate(){
     
      //create input area for updates
     var text_area = document.createElement("div");
-    text_area.innerHTML = ""+
-    "<div id=\"update\">"+
-        "<label>Send update to: * </label>"+
-        "<input type=\"text\" name=\"update\" required/>" +
-    "</div>"+
-    "<div id=\"message\">"+
-        "<label>Message: * </label>"+
-        "<input type=\"text\" name=\"message\" required/>" +
-    "</div>";
+
+    var update = document.createElement("div");
+    update.id = "update";
+    var lab = document.createElement("label");
+    lab.innerHTML = "Care Team: *";
+    update.appendChild(lab);
+    var selector = document.createElement("select");
+    selector.name = "careteam";
+    var carepages = ufilter(database['persons'][database['current_user']]['teams'], function(e, team) {
+        return database['persons'][database['current_user']]['teams'][team].hasOwnProperty('own');
+    }, true, false, 'name').map(function(obj) {
+        return obj['name'];
+    });
+
+    //I changed this because it's supposedly faster from what I've read.
+    //feel free to change it back to:
+    //for (var team in carepages) {
+    for (var i = 0; i < carepages.length; i++) {
+        var option = document.createElement("option");
+        option.value = carepages[i];//and these to carepages[team]
+        option.innerHTML = carepages[i];
+        selector.appendChild(option);
+    }
+
+    update.appendChild(selector);
+    text_area.appendChild(update);
+
+    var title = document.createElement("div");
+    title.id = "title";
+    lab = document.createElement("label");
+    lab.innerHTML = "Title: *";
+    title.appendChild(lab);
+    var titlebox = document.createElement("input");
+    titlebox.type = "text";
+    title.appendChild(titlebox);
+    text_area.appendChild(title);
+
+    var message = document.createElement("div");
+    message.id = "message";
+    lab = document.createElement("label");
+    lab.innerHTML = "Message: *";
+    message.appendChild(lab);
+    var messagebox = document.createElement("textarea");
+    messagebox.name = "message";
+    messagebox.rows = "5";
+    message.appendChild(messagebox);
+    text_area.appendChild(message);
+
     
      //Create send update button
     var buttons = document.createElement("div");
     buttons.appendChild(self_button("Send Update", function () {
-        var update = text_area.querySelector("#update > input").value;
-        var message = text_area.querySelector("#message > input").value;
-        if (update == null || message == null || update.trim()=="" || message.trim()=="") {
-            var p = document.createElement("p");
-            p.innerHTML = "Error: Field is required.";
-            p.id = "error";
-            text_area.appendChild(p);
+        var careteam = selector.options[selector.selectedIndex].textContent;
+        var titletext = text_area.querySelector("#message > textarea").value;
+        var messagetext = text_area.querySelector("#message > textarea").value;
+        if (careteam == null || titletext == null || messagetext == null || careteam.trim() == "" || titletext.trim() == "" || messagetext.trim() == "") {
+            var d = document.createElement("div");
+            d.innerHTML = "Error: Please enter a Care Team, a title, and a message.";
+            d.style.width = "40vw";
+            d.style.height = "20vh";
+            var box = errorpopup(d);
+            document.querySelector(".app").appendChild(box);
+            dim();
         }
         else {
-         build_page(updates);
+            var d = document.createElement("div");
+            d.innerHTML = "Create update for Care Team page " + careteam + "?";
+            d.style.width = "60vw";
+            d.style.height = "40vh";
+            var box = confirmationpopup(d, function () {
+                database["teams"][careteam]["updates"].push({
+                    "title": titletext,
+                    "time": Date.now(),
+                    "html": messagetext
+                })
+                console.log(database);
+                build_page(updates);
+            });
+            document.querySelector(".app").appendChild(box);
+            dim();
         }
     }));
     //create cancel button
