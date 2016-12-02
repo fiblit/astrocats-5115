@@ -32,7 +32,7 @@ nav button:active {
 
 .alert {
     background: #FFFFFF;
-    position: absolute;
+    position: fixed;
     top:0;
     bottom: 0;
     left: 0;
@@ -217,7 +217,7 @@ nav button:active {
     font: 30px arial, sans-serif;
 }
 
-.addupdate button {
+.addupdatebutton button {
 	float: center;
 	background: #FF714C;
 	color: #FFFFFF;
@@ -227,7 +227,61 @@ nav button:active {
     box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
 }
 
-.addupdate button:active {
+.addupdatebutton button:active {
+    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
+}
+
+.addupdatepage {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    font: 30px arial, sans-serif;
+}
+
+.messagearea {
+	position: absolute;
+	padding: 10px;
+	display: inline-block;
+	background: #B1DAEE;
+    top: 50vmax;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.messagearea label {
+	color: #1d6d93;
+	font-weight: bold;
+	font-size: 140%;
+}
+
+.cancel button {
+	float: center;
+	background: #FF714C;
+	color: #FFFFFF;
+	border: 0px;
+	height: 2.5em;
+	width: 12em;
+    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
+}
+
+.cancel button:active {
+    box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
+}
+
+.post button {
+	float: center;
+	background: #FF714C;
+	color: #FFFFFF;
+	border: 0px;
+	height: 2.5em;
+	width: 12em;
+    box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
+}
+
+.post button:active {
     box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
 }
 
