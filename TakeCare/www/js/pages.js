@@ -11,25 +11,25 @@ function page1() {
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is page 1";
     elems.push(pagenum);
-    
+
     // Create tasks table
     var tasks = document.createElement("div");
     tasks.appendChild(writetasks());
     elems.push(tasks);
-    
+
     // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
-    buttons.appendChild(link_button("button1", page2)); 
+    buttons.appendChild(link_button("button1", page2));
     elems.push(buttons);
 
     return elems;
-}   
+}
 
 // Sample/test function for loading a different page
 function page2() {
     //create the array to store returned HTMLElements
-    var elems = []; 
-    
+    var elems = [];
+
     // Create paragraph element saying "this is page 2!"
     var pagenum = document.createElement("p");
     pagenum.innerHTML = "This is page 2";
@@ -45,7 +45,7 @@ function page2() {
         document.querySelector(".app").appendChild(box);
         dim();
     });
-	
+
 	// create a button that opens an error popup
 	var errorbutton = self_button("error", function () {
         var stuff = document.createElement("div");
@@ -56,7 +56,7 @@ function page2() {
         document.querySelector(".app").appendChild(box);
         dim();
     });
-	
+
 	var confirmbutton = self_button("confirmation", function () {
         var stuff = document.createElement("div");
         stuff.style.width = "30vw";
@@ -70,10 +70,10 @@ function page2() {
         document.querySelector(".app").appendChild(box);
         dim();
     });
-	
+
 	// Create a confirmation button that either does the thing you want or lets you cancel
-	
-    
+
+
     // Create buttons div with button linking to page 1
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("button2", page1));
@@ -150,13 +150,13 @@ function landing() {
 
     // Create paragraph element saying "this is page 1!"
     var pagenum = document.createElement("p");
-    pagenum.innerHTML = "This is landing page (WIP)";
+    //pagenum.innerHTML = "CareTeams";
     elems.push(pagenum);
 
     //*** SETH ***//
     /* you may want to make the next line a div which will have ownedTeams in it */
     var h = document.createElement("p");
-    h.innerHTML = "owned";
+    h.innerHTML = "CateTeams You Help Manage";
     elems.push(h);
     var ownedTeams = data_list(ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
@@ -167,7 +167,7 @@ function landing() {
     //*** SETH ***//
     /* you may want to make the next line a div which will have unownedTeams in it */
     var h = document.createElement("p");
-    h.innerHTML = "unowned";
+    h.innerHTML = "CareTeams You Follow";
     elems.push(h);
     var followedTeams = data_list(ufilter(database['teams'] , function(e, name) {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
@@ -179,7 +179,7 @@ function landing() {
 
     // Create buttons div with button linking to page 2
     var buttons = document.createElement("div");
-    buttons.appendChild(link_button("button1", page2)); 
+    buttons.appendChild(link_button("button1", page2));
     elems.push(buttons);
 
     return elems;
@@ -188,30 +188,30 @@ function landing() {
 // Placeholder for profile page
 function profile() {
     var elems = [];
-    
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Profile page";
     elems.push(pagename);
-    
+
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
-    
+
     return elems;
 }
 
 // Tasks page
 function tasks() {
     var elems = [];
-        
+
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-    
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Tasks page";
     pagename.className = "taskpage";
     elems.push(pagename);
-    
+
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
     var followedTeams = database['persons'][database['current_user']]['teams'];
@@ -240,22 +240,22 @@ function tasks() {
         buttons.className = "addtaskbutton";
         elems.push(buttons);
     }
-    
+
     return elems;
 }
 
 function addtasks() {
      var elems = [];
-    
+
         // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-    
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Add a new task";
     pagename.className = "addtaskpage";
     elems.push(pagename);
-   
+
     //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
     text_area.innerHTML = ""+
@@ -284,19 +284,19 @@ function addtasks() {
         "<label>Description: (optional) </label>"+
         "<textarea class=\"description\" rows=\"5\" optional/></textarea>"+
     "</div>";
-    
+
     //create buttons
     text_area.appendChild(link_button("Cancel", tasks));
     text_area.className = "textarea";
     elems.push(text_area);
-    
+
      //Create post button
     text_area.appendChild(self_button("Post", function () {
         var careteam = text_area.querySelector("#careteam > input").value;
         var taskname = text_area.querySelector("#taskname > input").value;
         var date = text_area.querySelector("#date > input").value;
         var time = text_area.querySelector("#time > input").value;
-        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {    
+        if (careteam == null || taskname == null || date == null || time == null || careteam.trim()=="" || taskname.trim()=="" || date.trim()=="" || time.trim()=="") {
             var p = document.createElement("div");
             p.innerHTML = "Please fill all the fields.";
             p.id = "error";
@@ -324,33 +324,33 @@ function addtasks() {
             build_page(tasks);
         }
     }));
-	
+
     return elems;
-} 
+}
 
 // Accept Task page
 function accepttask() {
 	var elems = [];
-    
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Accept a task";
     elems.push(pagename);
-    
+
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-	
+
 	var taskbutton = document.createElement("div");
 	taskbutton.appendChild(self_button("Accept Task", function(){
-		
+
 	}));
 	elems.push(taskbutton)
-	
+
 	var taskinfo = document.createElement("div");
-	
+
 	var d = new Date(); // TODO: change this to the date stamp stored for the task
 	var strTime = formattime(d);
-	
+
 	var careteam = document.createElement("p");
 	careteam.innerHTML = "Care Team: " + "PLACEHOLDER TEXT";
 	var taskname = document.createElement("p");
@@ -365,7 +365,7 @@ function accepttask() {
 	importance.innerHTML = "Importance: " + "Sure";
 	var description = document.createElement("p");
 	description.innerHTML = "Description: " + "PLACEHOLDER TEXT";
-	
+
 	taskinfo.appendChild(careteam);
 	taskinfo.appendChild(taskname);
 	taskinfo.appendChild(monthday);
@@ -374,32 +374,36 @@ function accepttask() {
 	taskinfo.appendChild(importance);
 	taskinfo.appendChild(description);
 	elems.push(taskinfo);
-	
+
     return elems;
 }
 
 // Updates page
 function updates() {
     var elems = [];
-    
-        
+
+
     // Create navbar element
     var navbar = menubar();
     elems.push(navbar);
-    
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Updates";
+    pagename.className = "updatepage";
     elems.push(pagename);
-    
+
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
-    
+
    //only add "Add a new update" button if user is care manager
+   var addupdatebutton = document.createElement("div");
    var isFriend = false; //remove after isFriend is implemented
     if (!isFriend) {
     var addbutton = link_button("Add a new update",addupdate);
-    elems.push(addbutton);
+    addupdatebutton.appendChild(addbutton);
     }
+    elems.push(addupdatebutton)
+    addupdatebutton.className = "addupdatebutton";
     return elems;
 }
 
@@ -407,10 +411,16 @@ function addupdate() {
     var elems = [];
     
     // Create navbar element
+
     var navbar = menubar();
     elems.push(navbar);
-    
-     //create input area for updates
+
+    var pagename = document.createElement("p");
+    pagename.innerHTML = "Add a new update";
+    pagename.className = "addupdatepage";
+    elems.push(pagename);
+
+    //create input area for task, need to add importance buttons
     var text_area = document.createElement("div");
 
     var update = document.createElement("div");
@@ -459,13 +469,15 @@ function addupdate() {
     messagebox.rows = "5";
     message.appendChild(messagebox);
     text_area.appendChild(message);
+     
 
-    
-     //Create send update button
     var buttons = document.createElement("div");
+    //create cancel button
+    buttons.appendChild(link_button("Cancel", updates));
+    //Create send update button
     buttons.appendChild(self_button("Send Update", function () {
         var careteam = selector.options[selector.selectedIndex].textContent;
-        var titletext = text_area.querySelector("#message > textarea").value;
+        var titletext = text_area.querySelector("#title > input").value;
         var messagetext = text_area.querySelector("#message > textarea").value;
         if (careteam == null || titletext == null || messagetext == null || careteam.trim() == "" || titletext.trim() == "" || messagetext.trim() == "") {
             var d = document.createElement("div");
@@ -481,39 +493,35 @@ function addupdate() {
             d.innerHTML = "Create update for Care Team page " + careteam + "?";
             d.style.width = "60vw";
             d.style.height = "40vh";
+            console.log(d);
             var box = confirmationpopup(d, function () {
                 database["teams"][careteam]["updates"].push({
                     "title": titletext,
                     "time": Date.now(),
                     "html": messagetext
                 })
-                console.log(database);
                 build_page(updates);
             });
             document.querySelector(".app").appendChild(box);
             dim();
         }
     }));
-    //create cancel button
-    buttons.appendChild(link_button("Cancel", updates));
     text_area.appendChild(buttons);
     text_area.className = "textarea";
     elems.push(text_area);
-
-    
     return elems;
 }
 
 // Placeholder for settings page
 function settings() {
     var elems = [];
-    
+
     var pagename = document.createElement("p");
     pagename.innerHTML = "Profile page";
     elems.push(pagename);
-    
+
     var returnbutton = link_button("Return", page1);
     elems.push(returnbutton);
-    
+
     return elems;
 }
