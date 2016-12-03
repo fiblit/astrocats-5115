@@ -160,9 +160,9 @@ function landing() {
     elems.push(ownedTeams_list);
 
     //TODO should be div
-    var h = document.createElement("p");
-    h.innerHTML = "CareTeams You Follow";
-    elems.push(h);
+    var g = document.createElement("p");
+    g.innerHTML = "CareTeams You Follow";
+    elems.push(g);
 
     /**** get the followed teams data_list ****/
     var followedTeams = ufilter(database['teams'] , function(e, name) {
