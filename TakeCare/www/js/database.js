@@ -4,41 +4,42 @@ var database =
     "Alice" : {
       "password" : "admin",
       "teams" : {
-        "Martin's Care Team": {"own":false}
+        "Martin": {"own":false}
       }
     },
     "Jane" : {
       "password" : "admin",
       "teams" : {
-        "Betty's Care Team" : {"own":true},
-        "Charlie's Care Team" : {"own":false},
-        "Linda's Care Team" : {"own":false}
+        "Betty" : {"own":true},
+        "Charlie" : {"own":false},
+        "Linda" : {"own":false}
       }
     },
     "Bertrand" : {
       "password" : "admin",
       "teams" : {
-        "TeamMartin": {"own":false},
-        "TeamCharile": {"own":true}
+        "Marshmellow": {"own":false},
+        "Coffee": {"own":true}
       }
     },
     "Caroline" : {
       "password" : "admin",
       "teams" : {
-        "TeamCharilearoline": {"own":true},
-        "TeamMartin": {"own":true},
-        "TeamCharile": {"own":false}
+        "Charilearoline": {"own":true},
+        "Marshmellow": {"own":true},
+        "Coffee": {"own":false}
       }
     },
     "Dennis" : {
       "password" : "admin",
       "teams" : {
-        "TeamCharilearoline": {"own":false}
+        "Charilearoline": {"own":false}
       }
     }
   },
   "teams" : {
-    "Martin's Care Team" : {
+    "Martin" : {
+      /* I just realized that this field is kinda neglected. I never use it */
       "owners" : [
           "Bertrand"
       ],
@@ -65,21 +66,20 @@ var database =
       "updates" : [
         {"title": "Recovering after chemo! Things are looking up!",
         "time" : 1480347929365,
-        "html": "<p>Martin’s feeling a lot better today. Last week was rough… 
-        He had just received chemo, so lost his appetite and felt extremely weak. 
-        Lots of time in bed.  The doctors told us yesterday that the tumors have 
-        shrunk by 50%, so that helped a lot. Now he’s back on his feet, but there’s 
-        still a lot to do around the house and Daisy just hasn’t been getting as 
-        many long walks as she likes… We’re all tired, but we are so grateful for 
-        all the help. We feel blessed to have you in our lives as we fight this 
-        battle together.</p>"},
+        "html": "<p>Martin’s feeling a lot better today. Last week was rough… "+
+        "He had just received chemo, so lost his appetite and felt extremely weak. "+
+        "Lots of time in bed.  The doctors told us yesterday that the tumors have "+
+        "shrunk by 50%, so that helped a lot. Now he’s back on his feet, but there’s "+
+        "still a lot to do around the house and Daisy just hasn’t been getting as "+
+        "many long walks as she likes… We’re all tired, but we are so grateful for "+
+        "all the help. We feel blessed to have you in our lives as we fight this "+
+        "battle together.</p>"},
         {"title": "Going to get chemo next Thurs… It’s not going to be easy.",
         "time" : 1480347929365,
         "html": "<p>Martin received a diagnosis last week.</p><p> We just made this Care Team to try to find ways to help him out.</p>"},
       ]
     },
-
-    "Charlie's Care Team" : {
+    "Charlie" : {
       "owners" : [ 
         "Bertrand"  
       ],
@@ -102,9 +102,8 @@ var database =
         "time" : 1480347931365,
         "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
       ]
-    }
-
-    "Linda's Care Team" : {
+    },
+    "Linda" : {
       "owners" : [ 
         "Bertrand"  
       ],
@@ -127,9 +126,8 @@ var database =
         "time" : 1480347931365,
         "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
       ]
-    }
-
-    "Betty's Care Team" : {
+    },
+    "Betty" : {
       "owners" : [ 
         "Jane"  
       ],
@@ -152,10 +150,8 @@ var database =
         "time" : 1480347929365,
         "html": "<p>The doctors told us that Betty is on track to be back to 100% after a few procedures.</p><p>We were so excited to hear this.</p>"}
       ]
-    }
-
-
-    "TeamCharilearoline" : {
+    },
+    "Charilearoline" : {
       "owners" : [ 
         "Caroline"  
       ],
@@ -179,7 +175,7 @@ var database =
         "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
       ]
     },
-    "TeamMartin" : {
+    "Marshmellow" : {
       "owners" : [ 
         "Alice, Caroline"  
       ],
@@ -203,7 +199,7 @@ var database =
         "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
       ]
     },
-    "TeamCharile" : {
+    "Coffee" : {
       "owners" : [ 
         "Bertrand"  
       ],
