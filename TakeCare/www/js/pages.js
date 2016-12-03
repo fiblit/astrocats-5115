@@ -129,10 +129,7 @@ function landing() {
 
     /* you may want to make the next line a div which will have ownedTeams in it */
     var manage_text = document.createElement("div");
-     manage_text.innerHTML = 
-    "<div id=\"managetext\">"+
-        "<label>CareTeams You Help Manage <span class=\"required\">*</span> </label>"+
-        "</div>";
+    manage_text.innerHTML = "CareTeams You Help Manage";
     manage_text.className = "manageteamtext";
     elems.push(manage_text);
 
@@ -165,10 +162,7 @@ function landing() {
 
     //TODO should be div
     var follow_text = document.createElement("div");
-     follow_text.innerHTML = 
-    "<div id=\"teamsfollowtext\">"+
-        "<label>CareTeams You Follow <span class=\"required\">*</span> </label>"+
-        "</div>";
+    follow_text.innerHTML = "CareTeams You Follow";
     follow_text.className = "followtext";
     elems.push(follow_text);
 
