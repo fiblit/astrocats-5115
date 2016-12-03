@@ -143,6 +143,18 @@ nav button:active {
 	border-bottom: 2px solid #1d6d93;
 }
 
+.manageteamtext label {
+	color: #1d6d93;
+	font-weight: bold;
+	font-size: 140%;
+}
+
+.folowtext label {
+	color: #1d6d93;
+	font-weight: bold;
+	font-size: 140%;
+}
+
 .inputarea button,
 .addtaskbutton button,
 .addupdatebutton button,
