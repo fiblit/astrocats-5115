@@ -128,10 +128,9 @@ function landing() {
 
 
     /* you may want to make the next line a div which will have ownedTeams in it */
-    var manage_text = document.createElement("div");
-    manage_text.innerHTML = "CareTeams You Help Manage";
-    manage_text.className = "manageteamtext";
-    elems.push(manage_text);
+    var h = document.createElement("div");
+    h.innerHTML = "CareTeams You Help Manage";
+    elems.push(h);
 
     /**** get the ownedTeams datalist *****/
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
@@ -161,10 +160,9 @@ function landing() {
     elems.push(ownedTeams_list);
 
     //TODO should be div
-    var follow_text = document.createElement("div");
-    follow_text.innerHTML = "CareTeams You Follow";
-    follow_text.className = "followtext";
-    elems.push(follow_text);
+    var h = document.createElement("div");
+    h.innerHTML = "CareTeams You Follow";
+    elems.push(h);
 
     /**** get the followed teams data_list ****/
     var followedTeams = ufilter(database['teams'] , function(e, name) {
