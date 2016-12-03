@@ -128,13 +128,13 @@ function landing() {
 
 
     /* you may want to make the next line a div which will have ownedTeams in it */
-    var text = document.createElement("div");
-     text.innerHTML = 
+    var manage_text = document.createElement("div");
+     manage_text.innerHTML = 
     "<div id=\"managetext\">"+
         "<label>CareTeams You Help Manage <span class=\"required\">*</span> </label>"+
         "</div>";
-    text.className = "manageteamtext";
-    elems.push(text);
+    manage_text.className = "manageteamtext";
+    elems.push(manage_text);
 
     /**** get the ownedTeams datalist *****/
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
