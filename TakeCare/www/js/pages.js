@@ -295,7 +295,7 @@ function tasks() {
     });
     var task_list = data_list(followedTasks);
     
-    //elems.push(task_list);
+    elems.push(task_list);
     }
 
     //only show "Add a new task" button for CM UI
