@@ -351,6 +351,11 @@ but actually doing something decent */
 	border-width: 2px;
 }
 
+.taskteamname {
+	font: 25px arial, sans-serif;
+	margin-bottom: 15px;
+}
+
 .taskpreview .header, .mostrecent .header {
     background: #B1DAEE; /* For browsers that do not support gradients */
     color: #1D6D93;
