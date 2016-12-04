@@ -345,6 +345,10 @@ but actually doing something decent */
 	top: 25vh;
 }
 
+.viewtasks {
+	font: 30px arial, sans-serif;
+}
+
 .taskpreview .header, .mostrecent .header {
     background: #B1DAEE; /* For browsers that do not support gradients */
     color: #1D6D93;
