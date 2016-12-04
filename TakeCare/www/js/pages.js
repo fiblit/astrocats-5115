@@ -280,7 +280,7 @@ function tasks() {
     var followedTasks = [];
     for (var team in followedTeams) {
     	var name = document.createElement("div");
-    	name.innerHTML = "\n" + team;
+    	name.innerHTML = team;
     	elems.push(name);
         for (var task in database['teams'][team]['tasks']) {
 
