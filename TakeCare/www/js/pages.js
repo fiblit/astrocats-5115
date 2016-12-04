@@ -279,11 +279,15 @@ function tasks() {
 
     var followedTasks = [];
     for (var team in followedTeams) {
+    	var name = document.createElement("div");
+    	name.innerHTML = team;
+    	name.className = "taskteamname";
+	elems.push(name);
         for (var task in database['teams'][team]['tasks']) {
 
             followedTasks.push(database['teams'][team]['tasks'][task]);
         }
-    }
+    
 
     followedTasks.map(function( e ) {
         var d = new Date(e['time']);
@@ -292,7 +296,7 @@ function tasks() {
     });
     var task_list = data_list(followedTasks);
     elems.push(task_list);
-
+}
     //only show "Add a new task" button for CM UI
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
         return (followedTeams.hasOwnProperty(name) &&
