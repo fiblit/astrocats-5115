@@ -97,17 +97,17 @@ function preview_tasks() {
     var _container = document.createElement("div");
     _container.className = "taskpreview";
     _container.innerHTML = 
-    "<table style=\"width:100%;overflow-x:scroll;\">" +
-        "<tr id=\"header\">"+
+    "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
+        "<tr class=\"header\">"+
             "<td><p>Tasks Preview</p></td>"+
         "</tr>"+
-        "<tr id=\"nest\">"+
+        "<tr class=\"nest\">"+
         "</tr>"+
     "</table>";
 
     var view = link_button("View all", tasks)
     view.id = "view_all";
-    _container.querySelector("#header > td").appendChild(view);
+    _container.querySelector(".header > td").appendChild(view);
 
     var followedTasks = [];
     for (var task in database['teams'][database['current_team']]['tasks']) {
@@ -118,8 +118,51 @@ function preview_tasks() {
         e['time'] = d.toLocaleString();
         return e;
     });
-    _container.querySelector("#nest").appendChild(data_list(followedTasks));
+    _container.querySelector(".nest").appendChild(data_list(followedTasks));
     return _container;
+}
+
+function most_recent_update() {
+    /* I should probably put this in a function */
+    var mostrecent = document.createElement("div");
+    mostrecent.className = "mostrecent";
+    mostrecent.innerHTML = 
+    "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
+        "<tr class=\"header\">"+
+            "<td><p>Most Recent Update</p></td>"+
+        "</tr>"+
+        "<tr class=\"nest\">"+
+        "</tr>"+
+    "</table>";
+
+    var view = link_button("View all Updates", updates)
+    view.id = "view_all";
+    mostrecent.querySelector(".header > td").appendChild(view);
+
+    var followedUpdates = [];
+    for (var update in database['teams'][database['current_team']]['updates']) {
+            followedUpdates.push(database['teams'][database['current_team']]['updates'][update]);
+    }
+    var mostrecenttime = Number.MAX_VALUE;
+    for (var update in followedUpdates) {
+        /* check for recency */
+        if ( followedUpdates[update]['time'] < mostrecenttime ) {
+            mostrecenttime = followedUpdates[update]['time'];
+        }
+    }
+
+    //create most recent update
+    followedUpdates.map(function (e) {
+        if (e['time'] === mostrecenttime) {
+            var d = new Date(e['time']);
+            e['time'] = d.toLocaleString();
+            return e;
+        }
+    });
+
+    //create the data "list"
+    mostrecent.querySelector(".nest").appendChild(data_list(followedUpdates));
+    return mostrecent;
 }
 
 function profile_title() {
@@ -233,6 +276,10 @@ function undim() {
 }
 
 // Function for getting a string in the format "12:30 PM" from a date object
+/* I don't think we need this */
+/* see: 
+var d = new Date(atimestamp);
+var formattedtime = d.toLocaleString(); */
 function formattime(d) {
     var hours = d.getHours();
     var minutes = d.getMinutes();

@@ -206,6 +206,8 @@ function owned_careteam() {
     var navbar = menubar();
     elems.push(navbar);
 
+
+    /* these next few things may want to be in a "content" div */
     /* image & title */
     elems.push(profile_title());
 
@@ -247,11 +249,12 @@ function friend_careteam() {
     var navbar = menubar();
     elems.push(navbar);
 
+    /* these next few things may want to be in a "content" div */
     /* image & title bar */
     elems.push(profile_title());
 
     /* most recent update + view all */
-
+    elems.push(most_recent_update());
 
     /* tasks preview + view all */
     elems.push(preview_tasks());

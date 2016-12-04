@@ -325,7 +325,8 @@ but actually doing something decent */
     width: 35vw;
 }
 
-.taskpreview {
+/* there is definitely a better/more responsive way to do this (the 8 next properties) */
+.taskpreview, .mostrecent {
 	padding: 0px;
 	position: absolute;
 	display: block;
@@ -333,26 +334,28 @@ but actually doing something decent */
     left: 10vw;
     /*transform: translate(-50%,0%);*/
 }
-
 #owned_careteam_page .taskpreview {
     top: 32vh;
 }
 
 #friend_careteam_page .taskpreview {
+	bottom: 5vh;
+}
+#friend_careteam_page .mostrecent {
 	top: 25vh;
 }
 
-.taskpreview #header {
+.taskpreview .header, .mostrecent .header {
     background: #B1DAEE; /* For browsers that do not support gradients */
     color: #1D6D93;
     font-weight: bold;
     font-size: 120%;
     height: 30px;
 }
-.taskpreview #nest {
+.taskpreview .nest, .mostrecent .nest {
     box-shadow: inset 2px 3px 2px hsla(0,0%,20%,0.8);
 }
-.taskpreview table {
+.taskpreview table, .mostrecent table {
 	border-collapse: collapse;
 	border: 3px solid #B1DAEE;
     box-shadow: 2px 3px 2px hsla(0,0%,20%,0.8);
@@ -368,6 +371,7 @@ but actually doing something decent */
 	border: 0px;
     box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);    
 }
+/* the above 8 */
 
 /* Landscape layout (with min-width) */
 /* it's better to write responsive design that doesn't need to use this */
