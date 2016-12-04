@@ -294,8 +294,11 @@ function tasks() {
         e['time'] = d.toLocaleString();
         return e;
     });
+    var taskdiv = document.createElement("div");
     var task_list = data_list(followedTasks);
-    elems.push(task_list);
+    taskdiv.appendChild(task_list);
+    taskdiv.className = "viewtasks";
+    elems.push(taskdiv);
 }
     //only show "Add a new task" button for CM UI
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
