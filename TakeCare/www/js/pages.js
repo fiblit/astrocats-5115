@@ -281,7 +281,7 @@ function tasks() {
     for (var team in followedTeams) {
     	var name = document.createElement("div");
     	name.HTML = team;
-    	elems.push(name);
+    	followedTeams.push(name);
         for (var task in database['teams'][team]['tasks']) {
 
             followedTasks.push(database['teams'][team]['tasks'][task]);
