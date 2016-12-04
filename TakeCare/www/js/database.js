@@ -11,7 +11,7 @@ var database =
       "password" : "admin",
       "teams" : {
         "Betty" : {"own":true},
-        "Charlie" : {"own":false},
+        "Coffee" : {"own":false},
         "Linda" : {"own":false}
       }
     },
@@ -79,7 +79,7 @@ var database =
         "html": "<p>Martin received a diagnosis last week.</p><p> We just made this Care Team to try to find ways to help him out.</p>"},
       ]
     },
-    "Charlie" : {
+    "Coffee" : {
       "owners" : [ 
         "Bertrand"  
       ],
@@ -214,7 +214,7 @@ var database =
       "updates" : [
         {"title": "The Best Update",
         "time" : 1480347929365,
-        "html": "<p>Charile make updates</p><p>The absolute best updates</p>"},
+        "html": "<p>Charlie makes updates</p><p>The absolute best updates</p>"},
         {"title": "The Worst Update",
         "time" : 1480347930365,
         "html": "<p>The absolute <i>worst</i></p>"},

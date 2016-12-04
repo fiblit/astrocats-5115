@@ -248,8 +248,10 @@ function formattime(d) {
 //NOTE: javascript has map, reduce (a.k.a. fold left), reduceRight (a.k.a. fold right), and filter.
 //  This may be useful for creating dataToList
 //dataToList is an array of objects with key:value pairs.
-//** this is broken
 function data_list(dataToList) {
+
+    /* SHOULD PROBABLY CHANGE THE TABLE FORMAT TO DIVS FOR THE SAKE OF STYLING */
+
     var dataListed = document.createElement("table");
     var row = document.createElement("tr");
     for (var k in dataToList[0]) {
@@ -263,7 +265,8 @@ function data_list(dataToList) {
         row = document.createElement("tr");
         for (var k in dataToList[i]) {
             var col = document.createElement("td");
-            col.appendChild(document.createTextNode(dataToList[i][k]));
+            col.innerHTML = dataToList[i][k];
+            //col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
             row.appendChild(col);
         }

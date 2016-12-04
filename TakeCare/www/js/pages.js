@@ -283,8 +283,6 @@ function tasks() {
     }
 
     followedTasks.map(function( e ) {
-        console.log(e);
-        console.log(e['time']);
         var d = new Date(e['time']);
         e['time'] = d.toLocaleString();
         return e;
@@ -516,15 +514,40 @@ function updates() {
     pagename.className = "updatepage";
     elems.push(pagename);
 
-   //only add "Add a new update" button if user is care manager
-   var addupdatebutton = document.createElement("div");
-   var isFriend = false; //remove after isFriend is implemented
-    if (!isFriend) {
-    var addbutton = link_button("Add a new update",addupdate);
-    addupdatebutton.appendChild(addbutton);
+    //only add "Add a new update" button if user is care manager
+
+    var followedTeams = database['persons'][database['current_user']]['teams'];
+
+    /* add the updates data list (not most recent) */
+    var followedUpdates = [];
+    for (var team in followedTeams) {
+        for (var update in database['teams'][team]['updates']) {
+
+            followedUpdates.push(database['teams'][team]['updates'][update]);
+        }
     }
-    elems.push(addupdatebutton)
-    addupdatebutton.className = "addupdatebutton";
+    followedUpdates.map(function( e ) {
+        var d = new Date(e['time']);
+        e['time'] = d.toLocaleString();
+        return e;
+    });
+    var update_list = data_list(followedUpdates);
+    elems.push(update_list);
+    
+    //only show "Add a new task" button for CM UI
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        return (followedTeams.hasOwnProperty(name) &&
+                followedTeams[name]['own']);
+    }, true, false );
+
+    //If you own SOME team, then you are a CM.
+    if (ownedTeams.length > 0){
+        var addupdatebutton = document.createElement("div");
+        var addbutton = link_button("Add a new update",addupdate);
+        addupdatebutton.appendChild(addbutton);
+        elems.push(addupdatebutton)
+        addupdatebutton.className = "addupdatebutton";
+    }
     return elems;
 }
 
@@ -549,8 +572,10 @@ function addupdate() {
     var lab = document.createElement("label");
     lab.innerHTML = "Care Team: *";
     update.appendChild(lab);
+
     var selector = document.createElement("select");
     selector.name = "careteam";
+
     var carepages = ufilter(database['persons'][database['current_user']]['teams'], function(e, team) {
         return database['persons'][database['current_user']]['teams'][team].hasOwnProperty('own') &&
                database['persons'][database['current_user']]['teams'][team]['own'];
@@ -567,6 +592,7 @@ function addupdate() {
         option.innerHTML = carepages[i];
         selector.appendChild(option);
     }
+
 
     update.appendChild(selector);
     text_area.appendChild(update);
