@@ -352,8 +352,9 @@ but actually doing something decent */
 }
 
 .taskteamname {
-	font: 25px arial, sans-serif;
-	margin-bottom: 15px;
+	font: 20px arial, sans-serif;
+	margin-top: 15px;
+	margin-bottom: 5px;
 }
 
 .taskpreview .header, .mostrecent .header {
