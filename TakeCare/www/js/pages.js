@@ -293,7 +293,7 @@ function tasks() {
         e['time'] = d.toLocaleString();
         return e;
     });
-    var taskdiv = document.createElement("div");
+    var taskdiv = document.createElement("table");
     var task_list = data_list(followedTasks);
     taskdiv.appendChild(task_list);
     taskdiv.className = "viewtasks";
