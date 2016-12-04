@@ -284,7 +284,7 @@ function tasks() {
     	elems.push(name);
         for (var task in database['teams'][team]['tasks']) {
 
-            followedTasks.push(database['teams'][team]['tasks'][task]['name'][task]);
+            followedTasks.push(database['teams'][team]['tasks'][task]['name']);
         }
     
 
