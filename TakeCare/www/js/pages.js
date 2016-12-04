@@ -281,6 +281,7 @@ function tasks() {
     for (var team in followedTeams) {
     	var name = document.createElement("div");
     	name.innerHTML = team;
+    	name.className = "taskteamname"
     	elems.push(name);
         for (var task in database['teams'][team]['tasks']) {
 
