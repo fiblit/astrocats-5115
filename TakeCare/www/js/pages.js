@@ -456,7 +456,7 @@ function accepttask() {
 	var navbar = menubar();
 	elems.push(navbar);
 
-    var pagename = document.createElement("p");
+    var pagename = document.createElement("h1");
     pagename.innerHTML = "Accept a task";
     elems.push(pagename);
 
