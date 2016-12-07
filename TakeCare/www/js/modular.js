@@ -84,7 +84,7 @@ function sidebar() {
     sidebar.appendChild(link_button("Profile", landing));
     sidebar.appendChild(link_button("Tasks", tasks));
     sidebar.appendChild(link_button("Updates", updates));
-    sidebar.appendChild(link_button("Settings", settings));
+    //sidebar.appendChild(link_button("Settings", settings));
     sidebar.appendChild(link_button("Log out", login));
     sidebar.className = "sidebar";
     var box = popout(sidebar, 0.65);
