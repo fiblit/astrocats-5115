@@ -316,7 +316,7 @@ function tasks() {
 			if (row.cells[4].innerText == "")
 			{
 			    row.onclick = makeonclick(team, task_name);
-			    row.className = "unowned_task";
+			    row.className = "clickable_dataentry";
 			}
 		}
 		
@@ -588,6 +588,7 @@ function updates() {
             };
         }
         row.onclick = makeonclick(update_team, update_title);
+        row.className = "clickable_dataentry";
     }
     elems.push(update_list);
     

@@ -254,8 +254,10 @@ nav button:active {
 	font-size: 140%;
 }
 
-.unowned_task {
-    background: #FFFFFF;
+.clickable_dataentry
+{
+    background: #FFFFFF ;
+    box-shadow: 2px 3px 2px hsla(0,0%,20%,0.8);
 }
 
 /* you'll probably have stuff like this
