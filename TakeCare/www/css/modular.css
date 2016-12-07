@@ -254,6 +254,10 @@ nav button:active {
 	font-size: 140%;
 }
 
+.unowned_task {
+    background: #FFFFFF;
+}
+
 /* you'll probably have stuff like this
 but actually doing something decent */
 #landing_page .head_CareTeam {

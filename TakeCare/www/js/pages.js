@@ -313,8 +313,11 @@ function tasks() {
                     build_page(accepttask);
 			    };
 			}
-            if (row.cells[4].innerText == "")
+			if (row.cells[4].innerText == "")
+			{
 			    row.onclick = makeonclick(team, task_name);
+			    row.className = "unowned_task";
+			}
 		}
 		
 		taskdiv.appendChild(task_list);
@@ -456,7 +459,6 @@ function accepttask() {
     // Find the info about the task we're accepting from the database
 	var care_team = database["current_care_team"];
 	var current_task = database["current_task"];
-	console.log(current_task);
 	
     // now that we've grabbed them, delete the temporary variables;
 	database["current_care_team"] = undefined;
