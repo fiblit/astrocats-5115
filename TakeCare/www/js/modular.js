@@ -60,7 +60,7 @@ function writetasks() {
 // Function for creating the navbar that contains the menu button
 function menubar() {
     var navbar = document.createElement("nav");
-    var menubutton = self_button("Menu", function () {
+    var menubutton = self_button("<img src=\"img/menu_icon.jpg\" style=\"width:2em;height2em;\">", function () {
         var app = document.querySelector(".app");
         if (!document.querySelector(".sidebar")) {
             app.appendChild(sidebar());
@@ -70,7 +70,7 @@ function menubar() {
         }
     });
     navbar.appendChild(menubutton);
-    var backbutton = self_button("Back", function () {
+    var backbutton = self_button("<img src=\"img/back_icon.png\" style=\"width:2em;height2em;\">", function () {
         back();
     });
     backbutton.id = "backbutton";

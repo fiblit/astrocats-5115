@@ -354,7 +354,7 @@ function addtasks() {
     elems.push(navbar);
 
     var pagename = document.createElement("p");
-    pagename.innerHTML = "Add a new task";
+    pagename.innerHTML = "Create New Help Request";
     pagename.className = "addtaskpage";
     elems.push(pagename);
 
@@ -453,7 +453,7 @@ function accepttask() {
     var elems = [];
 
     // Create navbar element
-	var navbar = menubar();
+	var navbar = bar();
 	elems.push(navbar);
 
     var pagename = document.createElement("h1");
