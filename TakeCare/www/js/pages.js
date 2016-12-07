@@ -129,7 +129,7 @@ function landing() {
 
     /* you may want to make the next line a div which will have ownedTeams in it */
     var h = document.createElement("p");
-    h.innerHTML = "CareTeams You Help Manage";
+    h.innerHTML = "Care Teams You Manage";
     elems.push(h);
 
     /**** get the ownedTeams datalist *****/
@@ -162,7 +162,7 @@ function landing() {
 
     //TODO should be div
     var h = document.createElement("p");
-    h.innerHTML = "CareTeams You Follow";
+    h.innerHTML = "Care Teams You Follow";
     elems.push(h);
 
     /**** get the followed teams data_list ****/

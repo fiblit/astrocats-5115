@@ -81,9 +81,9 @@ function menubar() {
 // Function for creating the sidebar
 function sidebar() {    
     var sidebar = document.createElement("div");
-    sidebar.appendChild(link_button("Profile", landing));
-    sidebar.appendChild(link_button("Tasks", tasks));
-    sidebar.appendChild(link_button("Updates", updates));
+    sidebar.appendChild(link_button("Care Teams", landing));
+    sidebar.appendChild(link_button("Manage Help", tasks));
+    sidebar.appendChild(link_button("View Updates", updates));
     //sidebar.appendChild(link_button("Settings", settings));
     sidebar.appendChild(link_button("Log out", login));
     sidebar.className = "sidebar";
@@ -205,7 +205,7 @@ function profile_title() {
     "<table>"+
     "<tr>"+
         "<td><img id=\"profilepic\" src=\"img/default_profile_icon.jpg\"></td>"+
-        "<td id=\"right_data\"><p>"+database['current_team']+"'s CareTeam Page</p></td>"+
+        "<td id=\"right_data\"><p>"+database['current_team']+"'s Care Team</p></td>"+
     "</tr>"+
     "</table>";
     head.id = "head";
