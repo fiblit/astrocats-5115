@@ -48,19 +48,19 @@ var database =
         "time": 1480348031365,
         "location": "6401 France Ave S, Edina, MN 55435",
         "importance": "Urgent",
-        "own":null,
+        "helper":null,
         "description" : "Follow-up after chemo with Dr. Ringo... Shouldn’t be a long appointment, but sometimes they’re late getting him in."},
         {"name": "Long Walk with Daisy",
         "time": 1480348031365,
         "location": "anywhere!",
         "importance": "Helpful",
-        "own":null,
+        "helper":null,
         "description" : "Daisy hasn’t been for a hike in a month and she’s going a little stir crazy. If you could take her out for a long hike and run in the woods, it would make martin so happy!"},
         {"name": "Clean up before martin’s bday!",
         "time": 1480348031365,
         "location": "1234 Green Street, Minneapolis, MN 55443",
         "importance": "Helpful",
-        "own":null,
+        "helper":null,
         "description" : "Martin’s bday is on December 12, 2017, so we’re having a little party. Really need some help getting the house in order ahead of time… Would love some help with chores. Thanks so much!"}
       ],
       "updates" : [
@@ -88,7 +88,7 @@ var database =
         "time": 1480349931365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
-        "own": null,
+        "helper": null,
         "description": "We need 2 tons of frozen milk ASAP"}
       ],
       "updates" : [
@@ -112,7 +112,7 @@ var database =
         "time": 1480349931365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
-        "own": null,
+        "helper": null,
         "description": "We need 2 tons of frozen milk ASAP"}
       ],
       "updates" : [
@@ -136,13 +136,13 @@ var database =
         "time": 1480349931365,
         "location": "1234 Red Street, Minneapolis, MN 55443",
         "importance": "Helpful",
-        "own": "Bertrand",
+        "helper": "Bertrand",
         "description": "We’d like some pizza, kthanks!"},
         {"name": "Childcare help",
         "time": 1480349931365,
         "location": "1234 Red Street, Minneapolis, MN 55443",
         "importance": "Helpful",
-        "own": null,
+        "helper": null,
         "description": "Betty’s kids would love to have someone come play with them and take them to the park. Thanks!"}
       ],
       "updates" : [
@@ -160,7 +160,7 @@ var database =
         "time": 1480348031365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
-        "own": "Dennis",
+        "helper": "Dennis",
         "description": "We need 2 boxes of cookies"}
       ],
       "updates" : [
@@ -184,7 +184,7 @@ var database =
         "time": 1480349031365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
-        "own": "Dennis",
+        "helper": "Dennis",
         "description": "We need 2 boxes of brownies"}
       ],
       "updates" : [
@@ -208,7 +208,7 @@ var database =
         "time": 1480349931365,
         "location": "Keller Hall, MN",
         "importance": "Necessary",
-        "own": null,
+        "helper": null,
         "description": "We need 2 tons of frozen milk ASAP"}
       ],
       "updates" : [

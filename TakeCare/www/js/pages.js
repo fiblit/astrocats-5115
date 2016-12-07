@@ -141,7 +141,8 @@ function landing() {
 
     /* turn Careteam column into buttons linking to their page */
     [].slice.call(ownedTeams_list.querySelectorAll(".data_CareTeam")).map( function (e) {
-        var team = e.innerText;
+        var team = e.innerText;        
+        e.className = "clickable_dataentry";
         e.onclick =  function () {
             database['current_team'] = team;
 
@@ -173,6 +174,7 @@ function landing() {
 
     [].slice.call(followedTeams_list.querySelectorAll(".data_CareTeam")).map( function (e) {
         var team = e.innerText;
+        e.className = "clickable_dataentry";
         e.onclick =  function () {
             database['current_team'] = team;
 
@@ -284,15 +286,17 @@ function tasks() {
     	name.innerHTML = team;
     	name.className = "taskteamname";
 		elems.push(name);
-			for (var task in database['teams'][team]['tasks']) {
-
-				followedTasks.push(database['teams'][team]['tasks'][task]);
-			}
+		for (var task in database['teams'][team]['tasks']) {
+            var o = shallowcopy(database['teams'][team]['tasks'][task]);
+			followedTasks.push(o);
+		}
 		
-
 		followedTasks.map(function( e ) {
 			var d = new Date(e['time']);
 			e['time'] = d.toLocaleString();
+            if (e.hasOwnProperty('description')) {
+                delete e['description'];
+            }
 			return e;
 		});
 		var taskdiv = document.createElement("div");
@@ -463,8 +467,9 @@ function accepttask() {
 	var current_task = database["current_task"];
 	
     // now that we've grabbed them, delete the temporary variables;
-	database["current_care_team"] = undefined;
-	database["current_task"] = undefined;
+	//database["current_care_team"] = undefined;
+	//database["current_task"] = undefined;
+    /* for the sake of the back button working, let's NOT delete them :P */
 
 	var taskobj = database["teams"][care_team]["tasks"].filter(function (el) {
 	    return el["name"] == current_task;
@@ -517,7 +522,7 @@ function accepttask() {
 	    d.style.width = "60vw";
 	    d.style.height = "40vh";
 	    var box = confirmationpopup(d, function () {
-	        taskobj["own"] = database["current_user"];
+	        taskobj["helper"] = database["current_user"];
 	        // Remove the old version of the task and add the updated one
             // This sucks, but whatever
 	        database["teams"][care_team]["tasks"] = database["teams"][care_team]["tasks"].filter(function (el) {
@@ -572,6 +577,9 @@ function updates() {
     followedUpdates.map(function( e ) {
         var d = new Date(e['time']);
         e['time'] = d.toLocaleString();
+        if (e.hasOwnProperty('html')) {
+            delete e['html'];
+        }
         return e;
     });
     var update_list = data_list(followedUpdates);
@@ -581,7 +589,7 @@ function updates() {
         // Add onclick listeners for each row that lead to the corresponding task page
         var row = update_list.rows[i];
         var update_title = row.cells[0].innerText;
-        var update_team = row.cells[3].innerText;
+        var update_team = row.cells[row.cells.length - 1].innerText;
         // Closure so the onclick function has the right update_title and team
         function makeonclick(te, ti) {
             return function () {

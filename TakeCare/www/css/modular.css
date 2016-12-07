@@ -357,10 +357,12 @@ but actually doing something decent */
 }
 
 #friend_careteam_page .taskpreview {
-	bottom: 5vh;
+	top: 45vh;
+	max-height: 50vh;
 }
 #friend_careteam_page .mostrecent {
 	top: 25vh;
+	max-height: 10vh;
 }
 
 .taskpreview .header, .mostrecent .header {
@@ -372,11 +374,25 @@ but actually doing something decent */
 }
 .taskpreview .nest, .mostrecent .nest {
     box-shadow: inset 2px 3px 2px hsla(0,0%,20%,0.8);
+    max-width: calc(80vw - 8px);
+	overflow: auto;
 }
+.taskpreview .nest {
+	max-height: 50vh;
+}
+.mostrecent .nest {
+	max-height: 10vh;
+}
+
 .taskpreview table, .mostrecent table {
 	border-collapse: collapse;
 	border: 3px solid #B1DAEE;
     box-shadow: 2px 3px 2px hsla(0,0%,20%,0.8);
+    width: 100%;
+}
+
+.taskpreview table table, .mostrecent table table {
+    width: 100%;
 }
 
 #view_all {	

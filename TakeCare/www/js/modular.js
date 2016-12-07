@@ -97,11 +97,15 @@ function preview_tasks() {
     var _container = document.createElement("div");
     _container.className = "taskpreview";
     _container.innerHTML = 
-    "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
+    "<table>" + /* this was admittedly hacky */
         "<tr class=\"header\">"+
             "<td><p>Tasks Preview</p></td>"+
         "</tr>"+
-        "<tr class=\"nest\">"+
+        "<tr>"+
+            "<td>"+
+                "<div class=\"nest\">"+
+                "</div>"+
+            "</td>"+
         "</tr>"+
     "</table>";
 
@@ -111,16 +115,35 @@ function preview_tasks() {
 
     var followedTasks = [];
     for (var task in database['teams'][database['current_team']]['tasks']) {
-            followedTasks.push(database['teams'][database['current_team']]['tasks'][task]);
+        var o = {};
+        for (var key in database['teams'][database['current_team']]['tasks'][task]) {
+            o[key] = database['teams'][database['current_team']]['tasks'][task][key];
+        }
+        followedTasks.push(o);
     }
     followedTasks.map( function (e) {
         var d = new Date(e['time']);
         e['time'] = d.toLocaleString();
+        if (e.hasOwnProperty('description')) {
+            delete e['description'];
+        }
         return e;
     });
+
     _container.querySelector(".nest").appendChild(data_list(followedTasks));
+
     return _container;
 }
+
+/* todo: go and find where I just typed this out and replace it */
+function shallowcopy(obj) {
+    var o = {};
+    for (var key in obj) {
+        o[key] = obj[key];
+    }
+    return o;
+}
+
 
 function most_recent_update() {
     /* I should probably put this in a function */
@@ -131,7 +154,11 @@ function most_recent_update() {
         "<tr class=\"header\">"+
             "<td><p>Most Recent Update</p></td>"+
         "</tr>"+
-        "<tr class=\"nest\">"+
+        "<tr>"+
+            "<td>"+
+                "<div class=\"nest\">"+
+                "</div>"+
+            "</td>"+
         "</tr>"+
     "</table>";
 
@@ -160,6 +187,9 @@ function most_recent_update() {
         if (e['time'] === mostrecenttime) {
             var d = new Date(e['time']);
             e['time'] = d.toLocaleString();
+            if (e.hasOwnProperty('html')) {
+                delete e['html'];
+            }
             return e;
         }
     }).slice(0,1);
