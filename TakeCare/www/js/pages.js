@@ -274,7 +274,7 @@ function tasks() {
     elems.push(navbar);
 
     var pagename = document.createElement("p");
-    pagename.innerHTML = "Tasks page";
+    pagename.innerHTML = "Help Manager";
     pagename.className = "taskpage";
     elems.push(pagename);
 
@@ -338,7 +338,7 @@ function tasks() {
     //If you own SOME team, then you are a CM.
     if (ownedTeams.length > 0){
         var buttons = document.createElement("div");
-        buttons.appendChild(link_button("Add a new task",addtasks));
+        buttons.appendChild(link_button("New Task",addtasks));
         buttons.className = "addtaskbutton";
         elems.push(buttons);
     }
@@ -517,8 +517,8 @@ function accepttask() {
     //Create send update button
 	var acceptbutton = self_button("Accept Task", function () {
 	    var d = document.createElement("div");
-	    d.innerHTML = "Are you sure you want to accept the task " +
-            taskobj["name"] + "?";
+	    d.innerHTML = "Are you sure you want to commit to " +
+            taskobj["name"] + "? If you click OK, your friend is counting on you to do this!";
 	    d.style.width = "60vw";
 	    d.style.height = "40vh";
 	    var box = confirmationpopup(d, function () {
@@ -614,7 +614,7 @@ function updates() {
     //If you own SOME team, then you are a CM.
     if (ownedTeams.length > 0){
         var addupdatebutton = document.createElement("div");
-        var addbutton = link_button("Add a new update",addupdate);
+        var addbutton = link_button("New Update",addupdate);
         addupdatebutton.appendChild(addbutton);
         elems.push(addupdatebutton)
         addupdatebutton.className = "addupdatebutton";

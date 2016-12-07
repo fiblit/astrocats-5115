@@ -99,7 +99,7 @@ function preview_tasks() {
     _container.innerHTML = 
     "<table>" + /* this was admittedly hacky */
         "<tr class=\"header\">"+
-            "<td><p>Tasks Preview</p></td>"+
+            "<td><p>Help Requests</p></td>"+
         "</tr>"+
         "<tr>"+
             "<td>"+
@@ -109,7 +109,7 @@ function preview_tasks() {
         "</tr>"+
     "</table>";
 
-    var view = link_button("View all", tasks)
+    var view = link_button("View all Help Requests", tasks)
     view.id = "view_all";
     _container.querySelector(".header > td").appendChild(view);
 
@@ -152,7 +152,7 @@ function most_recent_update() {
     mostrecent.innerHTML = 
     "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
         "<tr class=\"header\">"+
-            "<td><p>Most Recent Update</p></td>"+
+            "<td><p>Latest Update</p></td>"+
         "</tr>"+
         "<tr>"+
             "<td>"+

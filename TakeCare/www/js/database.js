@@ -11,7 +11,7 @@ var database =
       "password" : "admin",
       "teams" : {
         "Betty" : {"own":true},
-        "Coffee" : {"own":false},
+        "Caitlin" : {"own":false},
         "Linda" : {"own":false}
       }
     },
@@ -19,7 +19,7 @@ var database =
       "password" : "admin",
       "teams" : {
         "Marshmellow": {"own":false},
-        "Coffee": {"own":true}
+        "Caitlin": {"own":true}
       }
     },
     "Caroline" : {
@@ -27,7 +27,7 @@ var database =
       "teams" : {
         "Charilearoline": {"own":true},
         "Marshmellow": {"own":true},
-        "Coffee": {"own":false}
+        "Caitlin": {"own":false}
       }
     },
     "Dennis" : {
@@ -87,7 +87,7 @@ var database =
         {"name": "Milk",
         "time": 1480349931365,
         "location": "Keller Hall, MN",
-        "importance": "Necessary",
+        "importance": "Urgent",
         "helper": null,
         "description": "We need 2 tons of frozen milk ASAP"}
       ],
@@ -108,23 +108,23 @@ var database =
         "Bertrand"  
       ],
       "tasks" :  [
-        {"name": "Milk",
+        {"name": "Pick up some bandaids and tylenol stat",
         "time": 1480349931365,
         "location": "Keller Hall, MN",
-        "importance": "Necessary",
+        "importance": "Urgent",
         "helper": null,
-        "description": "We need 2 tons of frozen milk ASAP"}
+        "description": "Linda got cut really bad and she is bleeding out. Bandaids are clearly the only way to solve this, so you'd best head on out to Walgreens right about now and assist."}
       ],
       "updates" : [
-        {"title": "The Best Update",
+        {"title": "Problems on the home front",
         "time" : 1480347929365,
-        "html": "<p>Charlie makes updates</p><p>The absolute best updates</p>"},
-        {"title": "The Worst Update",
+        "html": "There is gaping wound on Linda's ankle from that bike accident. We are hoping somebody can help us out before faints. Check out the helpful task we posted... Yea, we'd super appreciate that."},
+        {"title": "Just got back from the surgery.",
         "time" : 1480347930365,
-        "html": "<p>The absolute <i>worst</i></p>"},
-        {"title": "FANCY",
+        "html": "Surgery went well."},
+        {"title": "There's a surgery scheduled for next week.",
         "time" : 1480347931365,
-        "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
+        "html": "Linda is totally not looking forward to it."}
       ]
     },
     "Betty" : {
@@ -159,7 +159,7 @@ var database =
         {"name": "Cookies",
         "time": 1480348031365,
         "location": "Keller Hall, MN",
-        "importance": "Necessary",
+        "importance": "Urgent",
         "helper": "Dennis",
         "description": "We need 2 boxes of cookies"}
       ],
@@ -177,13 +177,13 @@ var database =
     },
     "Marshmellow" : {
       "owners" : [ 
-        "Alice, Caroline"  
+        "Caroline"  
       ],
       "tasks" :  [
         {"name": "Brownies",
         "time": 1480349031365,
         "location": "Keller Hall, MN",
-        "importance": "Necessary",
+        "importance": "Urgent",
         "helper": "Dennis",
         "description": "We need 2 boxes of brownies"}
       ],
@@ -199,28 +199,28 @@ var database =
         "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
       ]
     },
-    "Coffee" : {
+    "Caitlin" : {
       "owners" : [ 
         "Bertrand"  
       ],
       "tasks" :  [
-        {"name": "Milk",
+        {"name": "Pick up kids from school",
         "time": 1480349931365,
         "location": "Keller Hall, MN",
-        "importance": "Necessary",
+        "importance": "Urgent",
         "helper": null,
         "description": "We need 2 tons of frozen milk ASAP"}
       ],
       "updates" : [
-        {"title": "The Best Update",
+        {"title": "Got back from Barcelona Neurosurgery",
         "time" : 1480347929365,
-        "html": "<p>Charlie makes updates</p><p>The absolute best updates</p>"},
-        {"title": "The Worst Update",
+        "html": "<p>Total brain transplant a stunning success."},
+        {"title": "News from the frontier",
         "time" : 1480347930365,
-        "html": "<p>The absolute <i>worst</i></p>"},
-        {"title": "FANCY",
+        "html": "Stuff is just peachy."},
+        {"title": "Fancy life on the farm",
         "time" : 1480347931365,
-        "html": "<p>FANCY <span style=\"color:red;\">PANTS</span></p>"}
+        "html": "This is literally just random text"}
       ]
     }
   }
