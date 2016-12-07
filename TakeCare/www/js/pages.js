@@ -427,6 +427,7 @@ function addtasks() {
                 "name": taskname,
                 "time": Date.parse(date+" "+time),
                 "location": text_area.querySelector("#location > input").value,
+                "importance": text_area.querySelector("#importance > div > input[value='urgent']").checked ? "Necessary" : "Helpful",
                 "own": null,
                 "description": text_area.querySelector("#description > textarea").value
             });
