@@ -453,7 +453,7 @@ function accepttask() {
     var elems = [];
 
     // Create navbar element
-	var navbar = bar();
+	var navbar = menubar();
 	elems.push(navbar);
 
     var pagename = document.createElement("h1");
