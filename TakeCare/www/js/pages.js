@@ -560,8 +560,8 @@ function updates() {
     var followedUpdates = [];
     for (var team in followedTeams) {
         for (var update in database['teams'][team]['updates']) {
-
             followedUpdates.push(database['teams'][team]['updates'][update]);
+            followedUpdates[followedUpdates.length-1]['team'] = team;
         }
     }
     followedUpdates.map(function( e ) {
