@@ -277,8 +277,8 @@ function tasks() {
 
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
-    var followedTasks = [];
     for (var team in followedTeams) {
+        var followedTasks = [];
     	var name = document.createElement("div");
     	name.innerHTML = team;
     	name.className = "taskteamname";
