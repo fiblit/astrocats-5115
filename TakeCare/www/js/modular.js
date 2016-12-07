@@ -160,7 +160,6 @@ function most_recent_update() {
         if (e['time'] === mostrecenttime) {
             var d = new Date(e['time']);
             e['time'] = d.toLocaleString();
-            console.log(e);
             return e;
         }
     }).slice(0,1);
