@@ -753,7 +753,8 @@ function viewupdate()
     update_info.appendChild(team);
 
     var time = document.createElement("p");
-    time.innerHTML = "Posted on " + update_obj["time"];
+    var d = new Date(update_obj["time"]);
+    time.innerHTML = "Posted on " + d.toLocaleString();
     update_info.appendChild(time);
 
     var description = document.createElement("p");
