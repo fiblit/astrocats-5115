@@ -191,10 +191,11 @@ function landing() {
 
     elems.push(followedTeams_list);
 
+/*
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("testing", testing));
     elems.push(buttons);
-
+*/
     return elems;
 }
 
