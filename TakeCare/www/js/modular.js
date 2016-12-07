@@ -141,27 +141,32 @@ function most_recent_update() {
 
     var followedUpdates = [];
     for (var update in database['teams'][database['current_team']]['updates']) {
-            followedUpdates.push(database['teams'][database['current_team']]['updates'][update]);
+        var o = {};
+        for (var key in database['teams'][database['current_team']]['updates'][update]){
+            o[key] = database['teams'][database['current_team']]['updates'][update][key];
+        }
+        followedUpdates.push(o);
     }
     var mostrecenttime = Number.MAX_VALUE;
     for (var update in followedUpdates) {
         /* check for recency */
-        if ( followedUpdates[update]['time'] < mostrecenttime ) {
+        if ( followedUpdates[update]['time'] < mostrecenttime) {
             mostrecenttime = followedUpdates[update]['time'];
         }
     }
 
     //create most recent update
-    followedUpdates.map(function (e) {
+    var list_mru = followedUpdates.map(function (e) {
         if (e['time'] === mostrecenttime) {
             var d = new Date(e['time']);
             e['time'] = d.toLocaleString();
+            console.log(e);
             return e;
         }
-    });
+    }).slice(0,1);
 
     //create the data "list"
-    mostrecent.querySelector(".nest").appendChild(data_list(followedUpdates));
+    mostrecent.querySelector(".nest").appendChild(data_list(list_mru));
     return mostrecent;
 }
 
