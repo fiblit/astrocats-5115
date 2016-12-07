@@ -67,7 +67,7 @@ nav button:active {
 }
 
 .sidebar button {
-	background: #FFC8BA;
+	background: #b1daee;
 	color: #000000;
 	border: 0px;
     box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);
@@ -405,6 +405,8 @@ but actually doing something decent */
 	border: 0px;
     box-shadow: 1px 2px 1px hsla(0,0%,20%,0.8);    
 }
+
+Table { font-size: 115%} 
 /* the above 8 */
 
 /* Landscape layout (with min-width) */

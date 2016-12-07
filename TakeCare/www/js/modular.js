@@ -82,7 +82,7 @@ function menubar() {
 function sidebar() {    
     var sidebar = document.createElement("div");
     sidebar.appendChild(link_button("Care Teams", landing));
-    sidebar.appendChild(link_button("Manage Help", tasks));
+    sidebar.appendChild(link_button("Help Requests", tasks));
     sidebar.appendChild(link_button("View Updates", updates));
     //sidebar.appendChild(link_button("Settings", settings));
     sidebar.appendChild(link_button("Log out", login));

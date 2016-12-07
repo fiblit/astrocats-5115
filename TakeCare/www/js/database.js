@@ -44,24 +44,24 @@ var database =
           "Bertrand"
       ],
       "tasks" : [
-        {"name": "Ride to Fairview Southdale",
-        "time": 1480348031365,
-        "location": "6401 France Ave S, Edina, MN 55435",
-        "importance": "Urgent",
-        "helper":null,
-        "description" : "Follow-up after chemo with Dr. Ringo... Shouldn’t be a long appointment, but sometimes they’re late getting him in."},
         {"name": "Long Walk with Daisy",
-        "time": 1480348031365,
+        "time":   1512853200000,
         "location": "anywhere!",
         "importance": "Helpful",
         "helper":null,
         "description" : "Daisy hasn’t been for a hike in a month and she’s going a little stir crazy. If you could take her out for a long hike and run in the woods, it would make martin so happy!"},
         {"name": "Clean up before martin’s bday!",
-        "time": 1480348031365,
+        "time": 1513015200000,
         "location": "1234 Green Street, Minneapolis, MN 55443",
         "importance": "Helpful",
         "helper":null,
-        "description" : "Martin’s bday is on December 12, 2017, so we’re having a little party. Really need some help getting the house in order ahead of time… Would love some help with chores. Thanks so much!"}
+        "description" : "Martin’s bday is on December 12, 2017, so we’re having a little party. Really need some help getting the house in order ahead of time… Would love some help with chores. Thanks so much!"},
+        {"name": "Ride to Fairview Southdale",
+        "time": 1513198800000,
+        "location": "6401 France Ave S, Edina, MN 55435",
+        "importance": "Urgent",
+        "helper":null,
+        "description" : "Follow-up after chemo with Dr. Ringo... Shouldn’t be a long appointment, but sometimes they’re late getting him in."}
       ],
       "updates" : [
         {"title": "Recovering after chemo! Things are looking up!",
