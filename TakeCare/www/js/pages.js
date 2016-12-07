@@ -218,7 +218,7 @@ function owned_careteam() {
     var buttonBar = document.createElement("div");
 
     /* invite teammates button */
-    var inviteTeammates = self_button("Invite Teammates", function() {
+    var inviteTeammates = self_button("<img src=\"img/team_icon.jpg\" style=\"width:2em;height2em;\">Invite Teammates", function() {
         var p = document.createElement("div");
         p.innerHTML = "I'm sorry, this is currently unimplemented.";
         p.id = "error";
@@ -231,7 +231,7 @@ function owned_careteam() {
     buttonBar.appendChild(inviteTeammates);
 
     /* add update button */
-    var newupdate = link_button("<img src=\"img/update_icon.jpg\" style=\"width:2em;height2em;\">Add Update", addupdate);
+    var newupdate = link_button("<img src=\"img/update_megaphone.jpg\" style=\"width:2em;height2em;\">Add Update", addupdate);
     newupdate.id = "add_update";
     buttonBar.appendChild(newupdate);
 

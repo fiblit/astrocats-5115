@@ -81,9 +81,9 @@ function menubar() {
 // Function for creating the sidebar
 function sidebar() {    
     var sidebar = document.createElement("div");
-    sidebar.appendChild(link_button("Care Teams", landing));
-    sidebar.appendChild(link_button("Help Requests", tasks));
-    sidebar.appendChild(link_button("View Updates", updates));
+    sidebar.appendChild(link_button("<img src=\"img/team_icon.jpg\" style=\"width:2em;height2em;\">Care Teams", landing));
+    sidebar.appendChild(link_button("<img src=\"img/task_new.jpg\" style=\"width:2em;height2em;\">Help Requests", tasks));
+    sidebar.appendChild(link_button("<img src=\"img/update_megaphone.jpg\" style=\"width:2em;height2em;\">View Updates", updates));
     //sidebar.appendChild(link_button("Settings", settings));
     sidebar.appendChild(link_button("Log out", login));
     sidebar.className = "sidebar";
