@@ -338,7 +338,7 @@ function tasks() {
     //If you own SOME team, then you are a CM.
     if (ownedTeams.length > 0){
         var buttons = document.createElement("div");
-        buttons.appendChild(link_button("New Task",addtasks));
+        buttons.appendChild(link_button("Request Help",addtasks));
         buttons.className = "addtaskbutton";
         elems.push(buttons);
     }
