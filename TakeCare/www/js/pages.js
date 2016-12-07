@@ -570,6 +570,25 @@ function updates() {
         return e;
     });
     var update_list = data_list(followedUpdates);
+    // Add onclick listeners to expand individual updates
+    for (var i = 1; i < update_list.rows.length; i++) {
+        // Loop through the rows of the table (skip the header row)
+        // Add onclick listeners for each row that lead to the corresponding task page
+        var row = update_list.rows[i];
+        var update_title = row.cells[0].innerText;
+        var update_team = row.cells[3].innerText;
+        // Closure so the onclick function has the right update_title and team
+        function makeonclick(te, ti) {
+            return function () {
+                // Set the "global" variables that tell the accept task page what task is being accepted
+                database['current_care_team'] = te;
+                database['current_update'] = ti;
+                // Now load the accept task page
+                build_page(viewupdate);
+            };
+        }
+        row.onclick = makeonclick(update_team, update_title);
+    }
     elems.push(update_list);
     
     //only show "Add a new task" button for CM UI
@@ -698,6 +717,46 @@ function addupdate() {
     text_area.appendChild(buttons);
     text_area.className = "textarea";
     elems.push(text_area);
+    return elems;
+}
+
+// Page for viewing individual update
+function viewupdate()
+{
+    var elems = [];
+
+    // Create navbar element
+    var navbar = menubar();
+    elems.push(navbar);
+
+    var update_info = document.createElement("div");
+
+    var update_title = database["current_update"];
+    database["current_update"] = undefined;
+    var update_team = database["current_care_team"];
+    database["current_care_team"] = undefined;
+    var update_obj = database["teams"][update_team]["updates"].filter(function (el) {
+        return el["title"] == update_title;
+    })[0];
+
+    var title = document.createElement("p");
+    title.innerHTML = update_title;
+    update_info.appendChild(title);
+
+    var team = document.createElement("p");
+    team.innerHTML = "Care Team: " + update_team;
+    update_info.appendChild(team);
+
+    var time = document.createElement("p");
+    time.innerHTML = "Posted on " + update_obj["time"];
+    update_info.appendChild(time);
+
+    var description = document.createElement("p");
+    description.innerHTML = update_obj["html"];
+    update_info.appendChild(description);
+
+    elems.push(update_info);
+
     return elems;
 }
 
