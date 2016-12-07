@@ -282,24 +282,45 @@ function tasks() {
     	var name = document.createElement("div");
     	name.innerHTML = team;
     	name.className = "taskteamname";
-	elems.push(name);
-        for (var task in database['teams'][team]['tasks']) {
+		elems.push(name);
+			for (var task in database['teams'][team]['tasks']) {
 
-            followedTasks.push(database['teams'][team]['tasks'][task]);
-        }
-    
+				followedTasks.push(database['teams'][team]['tasks'][task]);
+			}
+		
 
-    followedTasks.map(function( e ) {
-        var d = new Date(e['time']);
-        e['time'] = d.toLocaleString();
-        return e;
-    });
-    var taskdiv = document.createElement("div");
-    var task_list = data_list(followedTasks);
-    taskdiv.appendChild(task_list);
-    taskdiv.className = "viewtasks";
-    elems.push(taskdiv);
-}
+		followedTasks.map(function( e ) {
+			var d = new Date(e['time']);
+			e['time'] = d.toLocaleString();
+			return e;
+		});
+		var taskdiv = document.createElement("div");
+		var task_list = data_list(followedTasks);
+		
+		for (var i = 1; i < task_list.rows.length; i++) {
+			// Loop through the rows of the table (skip the header row)
+			// Add onclick listeners for each row that lead to the corresponding task page
+			var row = task_list.rows[i];
+			var task_name = row.cells[0].innerText;
+            
+		    // Closure so the onclick function has the right task_name and team
+			function makeonclick(te, ta) {
+			    return function () {
+                    // Set the "global" variables that tell the accept task page what task is being accepted
+                    database['current_care_team'] = te;
+                    database['current_task'] = ta;
+			        // Now load the accept task page
+                    build_page(accepttask);
+			    };
+			}
+            if (row.cells[4].innerText == "")
+			    row.onclick = makeonclick(team, task_name);
+		}
+		
+		taskdiv.appendChild(task_list);
+		taskdiv.className = "viewtasks";
+		elems.push(taskdiv);
+	}
     //only show "Add a new task" button for CM UI
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
         return (followedTeams.hasOwnProperty(name) &&
@@ -420,38 +441,36 @@ function addtasks() {
 
 // Accept Task page
 function accepttask() {
-	var elems = [];
+    var elems = [];
+
+    // Create navbar element
+	var navbar = menubar();
+	elems.push(navbar);
 
     var pagename = document.createElement("p");
     pagename.innerHTML = "Accept a task";
     elems.push(pagename);
-
-    // Create navbar element
-    var navbar = menubar();
-    elems.push(navbar);
-
-	var taskbutton = document.createElement("div");
-	taskbutton.appendChild(self_button("Accept Task", function(){
-
-	}));
-	elems.push(taskbutton)
 
 	var taskinfo = document.createElement("div");
 
     // Find the info about the task we're accepting from the database
 	var care_team = database["current_care_team"];
 	var current_task = database["current_task"];
+	console.log(current_task);
+	
     // now that we've grabbed them, delete the temporary variables;
 	database["current_care_team"] = undefined;
 	database["current_task"] = undefined;
 
-	var taskobj = database["teams"][care_team]["tasks"][current_task];  // just for copying information without having to retype this
+	var taskobj = database["teams"][care_team]["tasks"].filter(function (el) {
+	    return el["name"] == current_task;
+	})[0];  // just for copying information without having to retype this
 
 	var d = new Date(taskobj["time"]);
 	var strTime = formattime(d);
 
 	var careteam = document.createElement("p");
-	careteam.innerHTML = "Care Team: " + careteam;
+	careteam.innerHTML = "Care Team: " + care_team;
 	taskinfo.appendChild(careteam);
 
 	var taskname = document.createElement("p");
@@ -489,12 +508,19 @@ function accepttask() {
     //Create send update button
 	var acceptbutton = self_button("Accept Task", function () {
 	    var d = document.createElement("div");
-	    d.innerHTML = "Are you sure you want to accept the task" +
+	    d.innerHTML = "Are you sure you want to accept the task " +
             taskobj["name"] + "?";
 	    d.style.width = "60vw";
 	    d.style.height = "40vh";
 	    var box = confirmationpopup(d, function () {
-	        database["teams"][care_team]["tasks"][current_task]["own"] = current_user;
+	        taskobj["own"] = database["current_user"];
+	        // Remove the old version of the task and add the updated one
+            // This sucks, but whatever
+	        database["teams"][care_team]["tasks"] = database["teams"][care_team]["tasks"].filter(function (el) {
+	            return el["name"] != current_task;
+	        });
+	        database["teams"][care_team]["tasks"].push(taskobj);
+
 	        build_page(tasks);
 	    });
 	    document.querySelector(".app").appendChild(box);
@@ -504,7 +530,6 @@ function accepttask() {
 	taskinfo.appendChild(buttons);
 
 	elems.push(taskinfo);
-    database["current"]
 
 
     return elems;
