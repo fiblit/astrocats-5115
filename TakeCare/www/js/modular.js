@@ -178,6 +178,31 @@ function profile_title() {
     return head;
 }
 
+function preview_all_tasks() {
+    var _container = document.createElement("div");
+    _container.className = "taskpagepreview";
+    _container.innerHTML = 
+    "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
+        "<tr class=\"header\">"+
+            "<td><p> </p></td>"+
+        "</tr>"+
+        "<tr class=\"nest\">"+
+        "</tr>"+
+    "</table>";
+
+    var followedTasks = [];
+    for (var task in database['teams'][database['current_team']]['tasks']) {
+            followedTasks.push(database['teams'][database['current_team']]['tasks'][task]);
+    }
+    followedTasks.map( function (e) {
+        var d = new Date(e['time']);
+        e['time'] = d.toLocaleString();
+        return e;
+    });
+    _container.querySelector(".nest").appendChild(data_list(followedTasks));
+    return _container;
+}
+
 // link_button
 // Simple function to write a button with an javascript onclick function
 // First argument is the text that appears on button
