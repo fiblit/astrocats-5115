@@ -586,6 +586,7 @@ function updates() {
         }
         return e;
     });
+    var updatediv = document.createElement("div");
     var update_list = data_list(followedUpdates);
     // Add onclick listeners to expand individual updates
     for (var i = 1; i < update_list.rows.length; i++) {
@@ -607,7 +608,7 @@ function updates() {
         row.onclick = makeonclick(update_team, update_title);
         row.className = "clickable_dataentry";
     }
-    elems.push(update_list);
+    //elems.push(update_list);
     
     //only show "Add a new task" button for CM UI
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
@@ -623,6 +624,10 @@ function updates() {
         elems.push(addupdatebutton)
         addupdatebutton.className = "addupdatebutton";
     }
+    
+    updatediv.appendChild(update_list);
+    updatediv.className = "viewupdates";
+    elems.push(updatediv);
     return elems;
 }
 
