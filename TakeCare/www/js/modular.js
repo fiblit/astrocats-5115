@@ -190,11 +190,12 @@ function preview_all_tasks() {
         "</tr>"+
     "</table>";
 
-    var followedTasks = [];
-    for (var task in database['teams'][database['current_team']]['tasks']) {
-            followedTasks.push(database['teams'][database['current_team']]['tasks'][task]);
-    }
-    followedTasks.map( function (e) {
+            for (var task in database['teams'][team]['tasks']) {
+
+            followedTasks.push(database['teams'][team]['tasks'][task]);
+        }
+
+    followedTasks.map(function( e ) {
         var d = new Date(e['time']);
         e['time'] = d.toLocaleString();
         return e;
