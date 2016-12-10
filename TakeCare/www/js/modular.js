@@ -179,14 +179,14 @@ function profile_title() {
 }
 
 function preview_all_tasks() {
-    var _container = document.createElement("div");
-    _container.className = "taskpagepreview";
-    _container.innerHTML = 
+    var _contain = document.createElement("div");
+    _contain.className = "taskpagepreview";
+    _contain.innerHTML = 
     "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
         "<tr class=\"header\">"+
-            "<td><p> </p></td>"+
+            "<td><p> task </p></td>"+
         "</tr>"+
-        "<tr class=\"nest\">"+
+        "<tr class=\"taskTable\">"+
         "</tr>"+
     "</table>";
 
@@ -200,8 +200,8 @@ function preview_all_tasks() {
         e['time'] = d.toLocaleString();
         return e;
     });
-    _container.querySelector(".nest").appendChild(data_list(followedTasks));
-    return _container;
+    _contain.querySelector(".nest").appendChild(data_list(followedTasks));
+    return _contain;
 }
 
 // link_button
