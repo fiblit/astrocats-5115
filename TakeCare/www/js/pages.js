@@ -280,15 +280,12 @@ function tasks() {
     _container.innerHTML = 
     "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
         "<tr class=\"header\">"+
-            "<td><p>Tasks Preview</p></td>"+
+            "<td><p>Tasks Page Preview</p></td>"+
         "</tr>"+
         "<tr class=\"nest\">"+
         "</tr>"+
     "</table>";
 
-    var view = link_button("View all", tasks)
-    view.id = "view_all";
-_container.querySelector(".header > td").appendChild(view);
 
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
@@ -302,18 +299,19 @@ _container.querySelector(".header > td").appendChild(view);
 
             followedTasks.push(database['teams'][team]['tasks'][task]);
         }
-    
 
     followedTasks.map(function( e ) {
         var d = new Date(e['time']);
         e['time'] = d.toLocaleString();
         return e;
     });
-    var taskdiv = document.createElement("div");
-    var task_list = data_list(followedTasks);
-    taskdiv.appendChild(task_list);
-    taskdiv.className = "viewtasks";
-    elems.push(taskdiv);
+   // var taskdiv = document.createElement("div");
+ //   var task_list = data_list(followedTasks);
+  //  taskdiv.appendChild(task_list);
+ //   taskdiv.className = "viewtasks";
+ //   elems.push(taskdiv);
+    _container.querySelector(".nest").appendChild(data_list(followedTasks));
+    return _container;
     }
 
     //only show "Add a new task" button for CM UI
