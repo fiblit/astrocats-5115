@@ -385,6 +385,21 @@ but actually doing something decent */
 }
 /* the above 8 */
 
+.taskpagepreview .header, .mostrecent .header {
+    background: #B1DAEE; /* For browsers that do not support gradients */
+    color: #1D6D93;
+    font-weight: bold;
+    font-size: 120%;
+    height: 30px;
+}
+.taskpagepreview .nest, .mostrecent .nest {
+    box-shadow: inset 2px 3px 2px hsla(0,0%,20%,0.8);
+}
+.taskpagepreview table, .mostrecent table {
+	border-collapse: collapse;
+	border: 3px solid #B1DAEE;
+    box-shadow: 2px 3px 2px hsla(0,0%,20%,0.8);
+}
 /* Landscape layout (with min-width) */
 /* it's better to write responsive design that doesn't need to use this */
 /* this is a 'last' resort */
