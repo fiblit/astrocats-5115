@@ -200,7 +200,7 @@ function preview_all_tasks() {
         e['time'] = d.toLocaleString();
         return e;
     });
-    _contain.querySelector(".nest").appendChild(data_list(followedTasks));
+    _contain.querySelector(".taskTable").appendChild(data_list(followedTasks));
     return _contain;
 }
 
