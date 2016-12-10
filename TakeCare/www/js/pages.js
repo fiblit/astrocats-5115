@@ -274,6 +274,21 @@ function tasks() {
     pagename.innerHTML = "Tasks page";
     pagename.className = "taskpage";
     elems.push(pagename);
+    
+    var _container = document.createElement("div");
+    _container.className = "taskpagepreview";
+    _container.innerHTML = 
+    "<table style=\"width:100%;overflow-x:scroll;\">" + /* this was admittedly hacky */
+        "<tr class=\"header\">"+
+            "<td><p>Tasks Preview</p></td>"+
+        "</tr>"+
+        "<tr class=\"nest\">"+
+        "</tr>"+
+    "</table>";
+
+    var view = link_button("View all", tasks)
+    view.id = "view_all";
+_container.querySelector(".header > td").appendChild(view);
 
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
