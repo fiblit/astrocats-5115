@@ -565,6 +565,10 @@ function updates() {
     /* add the updates data list (not most recent) */
     var followedUpdates = [];
     for (var team in followedTeams) {
+    	var name = document.createElement("div");
+    	name.innerHTML = team;
+    	name.className = "updateteamname";
+	elems.push(name);
         for (var update in database['teams'][team]['updates']) {
             var o = {};
             for (var key in database['teams'][team]['updates'][update]) {
