@@ -343,6 +343,18 @@ but actually doing something decent */
 	margin-bottom: 5px;
 }
 
+.updatediv {
+	font: 15px arial, sans-serif;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.updateteamname {
+	font: 20px arial, sans-serif;
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
 /* there is definitely a better/more responsive way to do this (the 8 next properties) */
 .taskpreview, .mostrecent {
 	padding: 0px;
