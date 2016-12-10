@@ -577,7 +577,7 @@ function updates() {
             o['team'] = team;
             followedUpdates.push(o);
         }
-    }
+    //}
     followedUpdates.map(function( e ) {
         var d = new Date(e['time']);
         e['time'] = d.toLocaleString();
@@ -609,7 +609,10 @@ function updates() {
         row.className = "clickable_dataentry";
     }
     //elems.push(update_list);
-    
+    updatediv.appendChild(update_list);
+    updatediv.className = "viewupdates";
+    elems.push(updatediv);
+    }
     //only show "Add a new task" button for CM UI
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
         return (followedTeams.hasOwnProperty(name) &&
@@ -625,9 +628,7 @@ function updates() {
         addupdatebutton.className = "addupdatebutton";
     }
     
-    updatediv.appendChild(update_list);
-    updatediv.className = "viewupdates";
-    elems.push(updatediv);
+    
     return elems;
 }
 
