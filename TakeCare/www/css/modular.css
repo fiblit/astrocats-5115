@@ -178,13 +178,13 @@ nav button:active {
     box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
 }
 .addtaskbutton button {
-	position: absolute;
-    left: 10vw;
+	
+    left: 20vw;
     width: 35vw;
 }
 .addupdatebutton button {
-	position: absolute;
-    left: 10vw;
+	
+    left: 20vw;
     width: 35vw;
 }
 
