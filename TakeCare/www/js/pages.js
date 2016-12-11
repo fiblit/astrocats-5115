@@ -141,6 +141,7 @@ function landing() {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                database['persons'][database['current_user']]['teams'][name]['own']);
     }, true,  false, "CareTeam");
+    
     var ownedTeams_list = data_list(ownedTeams);
 
     /* turn Careteam column into buttons linking to their page */
@@ -163,7 +164,7 @@ function landing() {
     });
    // elems.push(ownedTeams_list);
    
-   	if (ownedTeams_list.length == 0)){
+   	if (ownedTeams == 0)){
    		h.innerHTML = "You currently do not help manage any Care Teams";
    	}
    	else{
