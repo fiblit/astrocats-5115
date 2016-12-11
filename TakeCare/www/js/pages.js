@@ -162,15 +162,21 @@ function landing() {
         return e;
     });
    // elems.push(ownedTeams_list);
+   	if (ownedTeams_list == []){
+   		h.innerHTML = "You currently do not help manage any Care Teams"
+   	}
+   	else{
 	h.appendChild(ownedTeams_list);
 	h.className = "owndiv";
 	elems.push(h);
+   	}
 	
     //TODO should be div
     var text2 = document.createElement("div");
     text2.innerHTML = "CareTeams You Follow";
     text2.className = "text2";
     elems.push(text2);
+  
     var h2 = document.createElement("div");
    
     
@@ -201,7 +207,7 @@ function landing() {
     });
 
    // elems.push(followedTeams_list);
-   
+   	
 	h2.appendChild(followedTeams_list);
 	h2.className = "followdiv";
 	elems.push(h2);
