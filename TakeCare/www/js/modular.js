@@ -368,11 +368,12 @@ function data_list2(dataToList) {
         row = document.createElement("tr");
         for (var k in dataToList[i]) {
             var col = document.createElement("td");
+            col.appendChild(pic);
             col.innerHTML = dataToList[i][k];
             //col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
             row.appendChild(col);
-            row.appendChild(pic);
+            
         }
         dataListed.appendChild(row);
     }
