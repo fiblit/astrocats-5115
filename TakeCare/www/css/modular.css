@@ -259,11 +259,20 @@ but actually doing something decent */
 .owndiv {
 	font-size: 120%;
 	padding: 5px;
+	position: relative;
+	width: 100%;
+    	overflow: hidden;
+    	background: #b1daee;
+
 }
 
 .followdiv {
 	font-size: 120%;
 	padding: 5px;
+	position: relative;
+	width: 100%;
+    	overflow: hidden;
+    	background: #b1daee;
 }
 #landing_page .head_CareTeam {
 	background: yellow;
