@@ -256,6 +256,13 @@ nav button:active {
 
 /* you'll probably have stuff like this
 but actually doing something decent */
+.owndiv {
+	font-size: 90%;
+}
+
+.followdiv {
+	font-size: 90%;
+}
 #landing_page .head_CareTeam {
 	background: yellow;
 }
