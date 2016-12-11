@@ -344,9 +344,10 @@ but actually doing something decent */
 }
 
 .viewupdates {
-	font: 15px arial, sans-serif;
-	border-style: solid;
-	border-width: 2px;
+	position: relative;
+	width: 50%;
+    	overflow: hidden;
+    	background: #B1DAEE;
 }
 
 .updateteamname {
