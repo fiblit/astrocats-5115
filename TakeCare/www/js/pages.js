@@ -164,7 +164,7 @@ function landing() {
     });
    // elems.push(ownedTeams_list);
    
-   	if (ownedTeams == null)){
+   	if (ownedTeams == null){
    		h.innerHTML = "You currently do not help manage any Care Teams";
    	}
    	else{
