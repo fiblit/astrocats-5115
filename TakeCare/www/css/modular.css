@@ -257,11 +257,13 @@ nav button:active {
 /* you'll probably have stuff like this
 but actually doing something decent */
 .owndiv {
-	font-size: 113%;
+	font-size: 120%;
+	padding: 5px;
 }
 
 .followdiv {
-	font-size: 113%;
+	font-size: 120%;
+	padding: 5px;
 }
 #landing_page .head_CareTeam {
 	background: yellow;
