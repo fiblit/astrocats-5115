@@ -296,6 +296,15 @@ but actually doing something decent */
 	background: red;
 }
 
+#landing_page table {
+	border-collapse: collapse;
+}
+
+#landing_page td {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
 #tasks_page table, #tasks_page td, #tasks_page th, #tasks_page tr {
 	border: 0px;
 	margin: 0px;
