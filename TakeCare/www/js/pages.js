@@ -168,8 +168,8 @@ function landing() {
 	
     //TODO should be div
     var text2 = document.createElement("div");
-    text2.innerHTML = "CareTeams You Help Manage";
-    text2.className = "CareTeams You Follow";
+    text2.innerHTML = "CareTeams You Follow";
+    text2.className = "text2";
     elems.push(text2);
     var h2 = document.createElement("div");
    
