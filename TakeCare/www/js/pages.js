@@ -305,7 +305,7 @@ function tasks() {
 
     for (var team in followedTeams) {
         var followedTasks = [];
-        count = count+;
+        count += count;
     	var name = document.createElement("div");
     	name.innerHTML = team + "'s Help Requests:";
     	name.className = "taskteamname";
