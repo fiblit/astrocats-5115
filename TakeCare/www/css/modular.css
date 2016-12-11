@@ -262,6 +262,36 @@ nav button:active {
 
 /* you'll probably have stuff like this
 but actually doing something decent */
+
+.owndiv {
+	font-size: 100%;
+	padding: 5px;
+	position: relative;
+	width: 100%;
+    	overflow: hidden;
+    	background: #b1daee;
+    	margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.text1 {
+	font-size:130%;
+}
+
+.text2 {
+	font-size:130%;
+}
+
+.followdiv {
+	font-size: 100%;
+	padding: 5px;
+	position: relative;
+	width: 100%;
+    	overflow: hidden;
+    	background: #b1daee;
+    	margin-top: 0.5em;
+    margin-bottom: 1em;
+}
 #landing_page .head_CareTeam {
 	background: yellow;
 }
