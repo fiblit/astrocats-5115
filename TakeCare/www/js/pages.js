@@ -164,7 +164,7 @@ function landing() {
 	
     //TODO should be div
     var h2 = document.createElement("div");
-    h.innerHTML = "CareTeams You Follow";
+    h2.innerHTML = "CareTeams You Follow";
     
 
     /**** get the followed teams data_list ****/
