@@ -178,10 +178,14 @@ nav button:active {
     box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
 }
 .addtaskbutton button {
-	float:center;
+	position: absolute;
+    left: 10vw;
+    width: 35vw;
 }
 .addupdatebutton button {
-	float:center;
+	position: absolute;
+    left: 10vw;
+    width: 35vw;
 }
 
 .taskpage {
