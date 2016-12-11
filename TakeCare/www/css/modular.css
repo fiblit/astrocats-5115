@@ -307,11 +307,12 @@ but actually doing something decent */
 
 #profile_pic{
 	position: absolute;
+	top:2px;
 	left:0;
 	width: 20px;
 	height: 20px;
 	display: inline-block;
-	overflow-wrap: none;
+
 }
 
 #tasks_page table, #tasks_page td, #tasks_page th, #tasks_page tr {
