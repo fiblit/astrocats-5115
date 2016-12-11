@@ -147,6 +147,14 @@ nav button:active {
 .inputarea button,
 .addtaskbutton button,
 .addupdatebutton button,
+
+.addtaskbutton {
+	float:center;
+}
+
+.addupdatebutton {
+	float:center;
+}
 #addtasks_page .cancel,
 #addtasks_page .post,
 #button_bar #invite,
