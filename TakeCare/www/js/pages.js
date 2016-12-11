@@ -139,7 +139,7 @@ function landing() {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                database['persons'][database['current_user']]['teams'][name]['own']);
     }, true,  false, "CareTeam");
-    var ownedTeams_list = data_list(ownedTeams);
+    var ownedTeams_list = data_list2(ownedTeams);
 
     /* turn Careteam column into buttons linking to their page */
     [].slice.call(ownedTeams_list.querySelectorAll(".data_CareTeam")).map( function (e) {
@@ -183,7 +183,7 @@ function landing() {
         return (database['persons'][database['current_user']]['teams'].hasOwnProperty(name) &&
                !database['persons'][database['current_user']]['teams'][name]['own']);
     }, true, false, "CareTeam" );
-    var followedTeams_list = data_list(followedTeams);
+    var followedTeams_list = data_list2(followedTeams);
 
     [].slice.call(followedTeams_list.querySelectorAll(".data_CareTeam")).map( function (e) {
         var team = e.innerText;
