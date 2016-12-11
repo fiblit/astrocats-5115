@@ -128,9 +128,9 @@ function landing() {
 
 
     /* you may want to make the next line a div which will have ownedTeams in it */
-    var h = document.createElement("p");
+    var h = document.createElement("div");
     h.innerHTML = "CareTeams You Help Manage";
-    elems.push(h);
+    
 
     /**** get the ownedTeams datalist *****/
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
@@ -157,12 +157,15 @@ function landing() {
         };
         return e;
     });
-    elems.push(ownedTeams_list);
-
+   // elems.push(ownedTeams_list);
+	h.appendChild(ownedTeams_list);
+	h.className = "owndiv";
+	elems.push(h);
+	
     //TODO should be div
-    var h = document.createElement("p");
+    var h2 = document.createElement("div");
     h.innerHTML = "CareTeams You Follow";
-    elems.push(h);
+    
 
     /**** get the followed teams data_list ****/
     var followedTeams = ufilter(database['teams'] , function(e, name) {
@@ -189,8 +192,12 @@ function landing() {
         return e;
     });
 
-    elems.push(followedTeams_list);
-
+   // elems.push(followedTeams_list);
+   
+	h2.appendChild(followedTeams_list);
+	h2.className = "followdiv";
+	elems.push(h2);
+	
     var buttons = document.createElement("div");
     buttons.appendChild(link_button("testing", testing));
     elems.push(buttons);
