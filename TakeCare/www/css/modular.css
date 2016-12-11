@@ -305,6 +305,13 @@ but actually doing something decent */
 	padding-bottom: .5em;
 }
 
+#profile_pic{
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	overflow-wrap: none;
+}
+
 #tasks_page table, #tasks_page td, #tasks_page th, #tasks_page tr {
 	border: 0px;
 	margin: 0px;
