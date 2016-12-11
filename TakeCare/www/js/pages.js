@@ -298,6 +298,20 @@ function tasks() {
     pagename.innerHTML = "Help Manager";
     pagename.className = "taskpage";
     elems.push(pagename);
+    
+        //only show "Add a new task" button for CM UI
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        return (followedTeams.hasOwnProperty(name) &&
+                followedTeams[name]['own']);
+    }, true, false );
+
+    //If you own SOME team, then you are a CM.
+    if (ownedTeams.length > 0){
+        var buttons = document.createElement("div");
+        buttons.appendChild(link_button("Request Help",addtasks));
+        buttons.className = "addtaskbutton";
+        elems.push(buttons);
+    }
 
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
@@ -350,19 +364,7 @@ function tasks() {
 		taskdiv.className = "viewtasks";
 		elems.push(taskdiv);
 	}
-    //only show "Add a new task" button for CM UI
-    var ownedTeams = ufilter(database['teams'] , function(e, name) {
-        return (followedTeams.hasOwnProperty(name) &&
-                followedTeams[name]['own']);
-    }, true, false );
 
-    //If you own SOME team, then you are a CM.
-    if (ownedTeams.length > 0){
-        var buttons = document.createElement("div");
-        buttons.appendChild(link_button("Request Help",addtasks));
-        buttons.className = "addtaskbutton";
-        elems.push(buttons);
-    }
 
     return elems;
 }
@@ -578,6 +580,21 @@ function updates() {
     pagename.innerHTML = "Updates";
     pagename.className = "updatepage";
     elems.push(pagename);
+    
+        //only show "Add a new task" button for CM UI
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        return (followedTeams.hasOwnProperty(name) &&
+                followedTeams[name]['own']);
+    }, true, false );
+
+    //If you own SOME team, then you are a CM.
+    if (ownedTeams.length > 0){
+        var addupdatebutton = document.createElement("div");
+        var addbutton = link_button("New Update",addupdate);
+        addupdatebutton.appendChild(addbutton);
+        elems.push(addupdatebutton)
+        addupdatebutton.className = "addupdatebutton";
+    }
 
     //only add "Add a new update" button if user is care manager
 
@@ -634,20 +651,7 @@ function updates() {
     updatediv.className = "viewupdates";
     elems.push(updatediv);
     }
-    //only show "Add a new task" button for CM UI
-    var ownedTeams = ufilter(database['teams'] , function(e, name) {
-        return (followedTeams.hasOwnProperty(name) &&
-                followedTeams[name]['own']);
-    }, true, false );
 
-    //If you own SOME team, then you are a CM.
-    if (ownedTeams.length > 0){
-        var addupdatebutton = document.createElement("div");
-        var addbutton = link_button("New Update",addupdate);
-        addupdatebutton.appendChild(addbutton);
-        elems.push(addupdatebutton)
-        addupdatebutton.className = "addupdatebutton";
-    }
     
     
     return elems;
