@@ -575,7 +575,8 @@ function accepttask() {
 // Updates page
 function updates() {
     var elems = [];
-
+	
+	var count = 0;
 
     // Create navbar element
     var navbar = menubar();
@@ -585,21 +586,7 @@ function updates() {
     pagename.innerHTML = "Updates";
     pagename.className = "updatepage";
     elems.push(pagename);
-    
-        //only show "Add a new task" button for CM UI
-    var ownedTeams = ufilter(database['teams'] , function(e, name) {
-        return (followedTeams.hasOwnProperty(name) &&
-                followedTeams[name]['own']);
-    }, true, false );
-
-    //If you own SOME team, then you are a CM.
-    if (ownedTeams.length > 0){
-        var addupdatebutton = document.createElement("div");
-        var addbutton = link_button("New Update",addupdate);
-        addupdatebutton.appendChild(addbutton);
-        elems.push(addupdatebutton)
-        addupdatebutton.className = "addupdatebutton";
-    }
+   
 
     //only add "Add a new update" button if user is care manager
 
@@ -608,10 +595,11 @@ function updates() {
     /* add the updates data list (not most recent) */
     var followedUpdates = [];
     for (var team in followedTeams) {
+    	count += 1;
     	var name = document.createElement("div");
     	name.innerHTML = team + "'s Updates:";
     	name.className = "updateteamname";
-	elems.push(name);
+
         for (var update in database['teams'][team]['updates']) {
             var o = {};
             for (var key in database['teams'][team]['updates'][update]) {
@@ -651,9 +639,26 @@ function updates() {
         row.onclick = makeonclick(update_team, update_title);
         row.className = "clickable_dataentry";
     }
+    if (count == 1){
+    	        //only show "Add a new task" button for CM UI
+    var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        return (followedTeams.hasOwnProperty(name) &&
+                followedTeams[name]['own']);
+    }, true, false );
+
+    //If you own SOME team, then you are a CM.
+    if (ownedTeams.length > 0){
+        var addupdatebutton = document.createElement("div");
+        var addbutton = link_button("New Update",addupdate);
+        addupdatebutton.appendChild(addbutton);
+        elems.push(addupdatebutton)
+        addupdatebutton.className = "addupdatebutton";
+    }
+    }
     //elems.push(update_list);
     updatediv.appendChild(update_list);
     updatediv.className = "viewupdates";
+    	elems.push(name);
     elems.push(updatediv);
     }
 
