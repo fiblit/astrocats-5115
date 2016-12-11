@@ -277,7 +277,7 @@ but actually doing something decent */
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
-	font-size: 113%;
+	font-size: 100%;
 }
 
 #tasks_page th, td {
