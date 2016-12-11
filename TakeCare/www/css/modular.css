@@ -292,6 +292,16 @@ but actually doing something decent */
 	background: white;
 }
 
+#profile_pic .data_CareTeam{
+	position: absolute;
+	top:2px;
+	left:0;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	
+}
+
 #landing_page .head_tasks, #landing_page .data_tasks {
 	background: red;
 }
@@ -305,15 +315,6 @@ but actually doing something decent */
 	padding-bottom: .5em;
 }
 
-#profile_pic{
-	position: absolute;
-	top:2px;
-	left:0;
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-
-}
 
 #tasks_page table, #tasks_page td, #tasks_page th, #tasks_page tr {
 	border: 0px;
