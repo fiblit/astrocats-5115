@@ -304,7 +304,7 @@ function tasks() {
     for (var team in followedTeams) {
         var followedTasks = [];
     	var name = document.createElement("div");
-    	name.innerHTML = team;
+    	name.innerHTML = team + "'s Help Requests:";
     	name.className = "taskteamname";
 		elems.push(name);
 		for (var task in database['teams'][team]['tasks']) {
@@ -587,7 +587,7 @@ function updates() {
     var followedUpdates = [];
     for (var team in followedTeams) {
     	var name = document.createElement("div");
-    	name.innerHTML = team;
+    	name.innerHTML = team + "'s Updates:";
     	name.className = "updateteamname";
 	elems.push(name);
         for (var update in database['teams'][team]['updates']) {
