@@ -351,9 +351,9 @@ function data_list(dataToList) {
 function data_list2(dataToList) {
 
     /* SHOULD PROBABLY CHANGE THE TABLE FORMAT TO DIVS FOR THE SAKE OF STYLING */
-var pic = document.createElement('img');
+    var pic = document.createElement('img');
     pic.id = "profile_pic";
-    pic.setAttribute("src","img/FULL_LOGO.png");
+    pic.setAttribute("src","img/default_profile_icon.jpg");
 
     var dataListed = document.createElement("table");
 //    var row = document.createElement("tr");
@@ -372,6 +372,7 @@ var pic = document.createElement('img');
             //col.appendChild(document.createTextNode(dataToList[i][k]));
             col.className = "data_"+k;
             row.appendChild(col);
+            row.appendChild(pic);
         }
         dataListed.appendChild(row);
     }
