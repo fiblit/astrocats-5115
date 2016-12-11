@@ -179,12 +179,12 @@ nav button:active {
 }
 .addtaskbutton button {
 	
-    left: 20vw;
+   margin: 0 auto;
     width: 35vw;
 }
 .addupdatebutton button {
 	
-    left: 20vw;
+    margin: 0 auto;
     width: 35vw;
 }
 
