@@ -162,9 +162,8 @@ function landing() {
         return e;
     });
    // elems.push(ownedTeams_list);
-   	ownedTeams_list.id = "ownedTable";
-   	var numRows = document.getElementById('ownedTable').rows.length;
-   	if (numRows == 0){
+   
+   	if (ownedTeams_list.length == 0)){
    		h.innerHTML = "You currently do not help manage any Care Teams";
    	}
    	else{
