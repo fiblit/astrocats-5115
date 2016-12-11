@@ -344,8 +344,8 @@ but actually doing something decent */
 }
 
 .viewupdates {
-	position: relative;
-	width: 50%;
+	position: center;
+	width: 90%;
     	overflow: hidden;
     	background: #B1DAEE;
 }
