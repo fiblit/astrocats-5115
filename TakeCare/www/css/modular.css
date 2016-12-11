@@ -263,9 +263,16 @@ but actually doing something decent */
 	width: 100%;
     	overflow: hidden;
     	background: #b1daee;
-    	margin-top: 1em;
-    margin-bottom: 1em;
+    	margin-top: 3em;
+    margin-bottom: 3em;
+}
 
+.text1 {
+	font-size:130%;
+}
+
+.text2{
+	font-size:130%;
 }
 
 .followdiv {
@@ -275,8 +282,8 @@ but actually doing something decent */
 	width: 100%;
     	overflow: hidden;
     	background: #b1daee;
-    	margin-top: 1em;
-    margin-bottom: 1em;
+    	margin-top: 3em;
+    margin-bottom: 3em;
 }
 #landing_page .head_CareTeam {
 	background: yellow;
