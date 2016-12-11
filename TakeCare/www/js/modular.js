@@ -356,6 +356,25 @@ function data_list(dataToList) {
     return dataListed;
 }
 
+function data_list2(dataToList) {
+
+    /* SHOULD PROBABLY CHANGE THE TABLE FORMAT TO DIVS FOR THE SAKE OF STYLING */
+
+    var dataListed = document.createElement("table");
+
+    for (var i = 0; i < dataToList.length; i++) {
+        row = document.createElement("tr");
+        for (var k in dataToList[i]) {
+            var col = document.createElement("td");
+            col.innerHTML = dataToList[i][k];
+            //col.appendChild(document.createTextNode(dataToList[i][k]));
+            col.className = "data_"+k;
+            row.appendChild(col);
+        }
+        dataListed.appendChild(row);
+    }
+    return dataListed;
+}
 // this filter works on assoc and non-assoc arrays/objects AFAIK.
 //Will optionally return either an array of {"key","val"} objects, or just an array of the val's
 //  obj:: object 
