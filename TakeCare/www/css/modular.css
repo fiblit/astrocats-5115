@@ -280,6 +280,19 @@ but actually doing something decent */
 	font-size: 113%;
 }
 
+#tasks_page th, td {
+	padding: 5px;
+}
+
+#tasks_page table {
+	border-collapse: collapse;
+}
+
+#tasks_page td {
+	padding-top: .5em;
+    padding-bottom: .5em;
+}
+
 #profilepic {
 	width: 60px;
 	height: 60px;
