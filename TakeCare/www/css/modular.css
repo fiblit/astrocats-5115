@@ -147,14 +147,6 @@ nav button:active {
 .inputarea button,
 .addtaskbutton button,
 .addupdatebutton button,
-
-.addtaskbutton {
-	float:center;
-}
-
-.addupdatebutton {
-	float:center;
-}
 #addtasks_page .cancel,
 #addtasks_page .post,
 #button_bar #invite,
@@ -184,6 +176,12 @@ nav button:active {
 #addtasks_page .post:active,
 #owned_careteam_page button:active {
     box-shadow: 0px 1px 1px hsla(0,0%,20%,0.8);
+}
+.addtaskbutton button {
+	float:center;
+}
+.addupdatebutton button {
+	float:center;
 }
 
 .taskpage {
