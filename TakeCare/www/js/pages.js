@@ -128,9 +128,11 @@ function landing() {
 
 
     /* you may want to make the next line a div which will have ownedTeams in it */
-    var h = document.createElement("p");
-    h.innerHTML = "Care Teams You Manage";
-    elems.push(h);
+   var text1 = document.createElement("div");
+    text1.innerHTML = "CareTeams You Help Manage";
+    text1.className = "text1";
+    elems.push(text1);
+    var h = document.createElement("div");
 
     /**** get the ownedTeams datalist *****/
     var ownedTeams = ufilter(database['teams'] , function(e, name) {
@@ -158,12 +160,23 @@ function landing() {
         };
         return e;
     });
-    elems.push(ownedTeams_list);
-
+   	if (ownedTeams == null || ownedTeams == undefined || ownedTeams == 0){
+   		h.innerHTML = "You currently do not help manage any Care Teams";
+   	}
+   	else{
+	h.appendChild(ownedTeams_list);
+   	}
+   	
+   	h.className = "owndiv";
+	elems.push(h);
+	
     //TODO should be div
-    var h = document.createElement("p");
-    h.innerHTML = "Care Teams You Follow";
-    elems.push(h);
+    var text2 = document.createElement("div");
+    text2.innerHTML = "CareTeams You Follow";
+    text2.className = "text2";
+    elems.push(text2);
+    
+    var h2 = document.createElement("div");
 
     /**** get the followed teams data_list ****/
     var followedTeams = ufilter(database['teams'] , function(e, name) {
@@ -190,8 +203,16 @@ function landing() {
         };
         return e;
     });
+    
+      	if (followedTeams == null || followedTeams == undefined || followedTeams == 0){
+   		h.innerHTML = "You currently do not follow any Care Teams";
+   	}
+   	else{
+	h2.appendChild(followedTeams_list);
+   	}
 
-    elems.push(followedTeams_list);
+	h2.className = "followdiv";
+	elems.push(h2);
 
 /*
     var buttons = document.createElement("div");
