@@ -299,28 +299,17 @@ function tasks() {
     pagename.className = "taskpage";
     elems.push(pagename);
     
-        //only show "Add a new task" button for CM UI
-    var ownedTeams = ufilter(database['teams'] , function(e, name) {
-        return (followedTeams.hasOwnProperty(name) &&
-                followedTeams[name]['own']);
-    }, true, false );
 
-    //If you own SOME team, then you are a CM.
-    if (ownedTeams.length > 0){
-        var buttons = document.createElement("div");
-        buttons.appendChild(link_button("Request Help",addtasks));
-        buttons.className = "addtaskbutton";
-        elems.push(buttons);
-    }
-
+	var count = 0;
     var followedTeams = database['persons'][database['current_user']]['teams'];
 
     for (var team in followedTeams) {
         var followedTasks = [];
+        count = count+;
     	var name = document.createElement("div");
     	name.innerHTML = team + "'s Help Requests:";
     	name.className = "taskteamname";
-		elems.push(name);
+		
 		for (var task in database['teams'][team]['tasks']) {
             var o = shallowcopy(database['teams'][team]['tasks'][task]);
 			followedTasks.push(o);
@@ -359,9 +348,25 @@ function tasks() {
 			    row.className = "clickable_dataentry";
 			}
 		}
+		if (count == 1) {
+			        //only show "Add a new task" button for CM UI
+    		var ownedTeams = ufilter(database['teams'] , function(e, name) {
+        	return (followedTeams.hasOwnProperty(name) &&
+                followedTeams[name]['own']);
+		 }, true, false );
+
+	  //If you own SOME team, then you are a CM.
+	 if (ownedTeams.length > 0){
+        var buttons = document.createElement("div");
+        buttons.appendChild(link_button("Request Help",addtasks));
+        buttons.className = "addtaskbutton";
+        elems.push(buttons);
+		 }
+		}
 		
 		taskdiv.appendChild(task_list);
 		taskdiv.className = "viewtasks";
+		elems.push(name);
 		elems.push(taskdiv);
 	}
 
