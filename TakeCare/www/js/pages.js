@@ -167,9 +167,10 @@ function landing() {
    	}
    	else{
 	h.appendChild(ownedTeams_list);
-	h.className = "owndiv";
-	elems.push(h);
    	}
+   	
+   	h.className = "owndiv";
+	elems.push(h);
 	
     //TODO should be div
     var text2 = document.createElement("div");
