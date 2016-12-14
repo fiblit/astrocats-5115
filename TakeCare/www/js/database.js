@@ -4,7 +4,8 @@ var database =
     "Alice" : {
       "password" : "admin",
       "teams" : {
-        "Martin": {"own":false}
+        "Martin": {"own":false},
+		"Betty" : {"own":false}
       }
     },
     "Jane" : {
